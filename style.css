@@ -1,0 +1,29 @@
+body{
+    background-color: #F5F5F5;
+}
+
+.myRedText, .myIntro span{
+    color: #850F0F;
+}
+
+.myNumbers{
+    background-color: #850F0F;
+    color: #F5F5F5;
+}
+
+.myNumbersContainer{
+    width: 50%;
+    background-color: #D3BCBC;
+}
+
+#mainGroupPhoto{
+    width: 100%;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+#textOverImg {
+    z-index:1;
+    font-size: 1.2em;
+    margin-top: -100px;
+    }
