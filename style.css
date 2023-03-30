@@ -1,12 +1,67 @@
 body{
     background-color: #F5F5F5;
+
 }
 
 .myRedText, .myIntro span{
     color: #850F0F;
 }
 
-.myNumbers{
+.myRedText{
+    transition: width 2s, height 4s;
+    transition-timing-function: ease;
+}
+
+/* --navigation-------------------------------- */
+header {
+    background-color: #3F3E40;
+}
+
+.navbar-nav a {
+    color:white;
+}
+
+.navbar {
+    height: 6em;
+}
+
+#navbarNav, #myLogIn{
+    white-space: nowrap;
+}
+
+.navabar, .container-fluid{
+    height:6em; 
+}
+
+#SDOlogo{
+   width:100px;
+   height:100px;
+}
+
+/* --photo------------------------*/
+#mainGroupPhoto{
+    width: 100%;
+    opacity: 0.5;
+}
+
+#myMainGroupPhotoContainer {
+  text-align: center;
+}
+
+#myMainGroupPhotoContainer .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #myMainGroupPhotoContainer #SDOlogoblack{
+    width:25%;
+    height:25%
+  }
+
+  /* --numbers------------------------> */
+  .myNumbers{
     background-color: #850F0F;
     color: #F5F5F5;
 }
@@ -15,15 +70,3 @@ body{
     width: 50%;
     background-color: #D3BCBC;
 }
-
-#mainGroupPhoto{
-    width: 100%;
-    z-index: 0;
-    opacity: 0.5;
-}
-
-#textOverImg {
-    z-index:1;
-    font-size: 1.2em;
-    margin-top: -100px;
-    }
