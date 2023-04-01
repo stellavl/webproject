@@ -13,24 +13,32 @@ body{
 }
 
 /* --navigation-------------------------------- */
-header {
-    background-color: #3F3E40;
-}
-
-.navbar-nav a {
+.navbar a {
     color:white;
 }
 
 .navbar {
     height: 6em;
+    background-color: #3F3E40;
+}
+
+
+#navbarNav{
+    justify-content: center;
+    background-color: #3F3E40;
 }
 
 #navbarNav, #myLogIn{
     white-space: nowrap;
 }
 
-.navabar, .container-fluid{
-    height:6em; 
+#navbarNav .dropdown-menu{
+    background-color: #3F3E40;
+}
+
+.navbar .container-fluid{
+    position: relative;
+    top:0px;
 }
 
 #SDOlogo{
@@ -46,6 +54,7 @@ header {
 
 #myMainGroupPhotoContainer {
   text-align: center;
+  position: relative;
 }
 
 #myMainGroupPhotoContainer .centered {
@@ -60,6 +69,19 @@ header {
     height:25%
   }
 
+  #myMainGroupPhotoContainer #myIntroText1{
+    font-size: 4vw; 
+  } 
+
+  #myMainGroupPhotoContainer #myIntroText2{
+    font-size: 2.5vw; 
+    white-space: nowrap;
+  }
+
+#groupPhoto2{
+    width: 50%; 
+}
+
   /* --numbers------------------------> */
   .myNumbers{
     background-color: #850F0F;
@@ -70,3 +92,10 @@ header {
     width: 50%;
     background-color: #D3BCBC;
 }
+
+/* @media (min-width: 760px){
+    .navbar-expand-sm .navbar-collapse {
+        display: flex;
+        flex-basis: auto;
+    }
+} */
