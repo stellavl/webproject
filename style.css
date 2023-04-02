@@ -93,9 +93,6 @@ body{
     background-color: #D3BCBC;
 }
 
-/* @media (min-width: 760px){
-    .navbar-expand-sm .navbar-collapse {
-        display: flex;
-        flex-basis: auto;
-    }
-} */
+.myMainHeader{
+    font-size: 4vm;
+}
