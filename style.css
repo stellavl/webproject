@@ -1,0 +1,98 @@
+body{
+    background-color: #F5F5F5;
+
+}
+
+.myRedText, .myIntro span{
+    color: #850F0F;
+}
+
+.myRedText{
+    transition: width 2s, height 4s;
+    transition-timing-function: ease;
+}
+
+/* --navigation-------------------------------- */
+.navbar a {
+    color:white;
+}
+
+.navbar {
+    height: 6em;
+    background-color: #3F3E40;
+}
+
+
+#navbarNav{
+    justify-content: center;
+    background-color: #3F3E40;
+}
+
+#navbarNav, #myLogIn{
+    white-space: nowrap;
+}
+
+#navbarNav .dropdown-menu{
+    background-color: #3F3E40;
+}
+
+.navbar .container-fluid{
+    position: relative;
+    top:0px;
+}
+
+#SDOlogo{
+   width:100px;
+   height:100px;
+}
+
+/* --photo------------------------*/
+#mainGroupPhoto{
+    width: 100%;
+    opacity: 0.5;
+}
+
+#myMainGroupPhotoContainer {
+  text-align: center;
+  position: relative;
+}
+
+#myMainGroupPhotoContainer .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #myMainGroupPhotoContainer #SDOlogoblack{
+    width:25%;
+    height:25%
+  }
+
+  #myMainGroupPhotoContainer #myIntroText1{
+    font-size: 4vw; 
+  } 
+
+  #myMainGroupPhotoContainer #myIntroText2{
+    font-size: 2.5vw; 
+    white-space: nowrap;
+  }
+
+#groupPhoto2{
+    width: 50%; 
+}
+
+  /* --numbers------------------------> */
+  .myNumbers{
+    background-color: #850F0F;
+    color: #F5F5F5;
+}
+
+.myNumbersContainer{
+    width: 50%;
+    background-color: #D3BCBC;
+}
+
+.myMainHeader{
+    font-size: 4vm;
+}
