@@ -1,15 +1,8 @@
+/* ALL PAGES */
+
 body{
     background-color: #F5F5F5;
 
-}
-
-.myRedText, .myIntro span{
-    color: #850F0F;
-}
-
-.myRedText{
-    transition: width 2s, height 4s;
-    transition-timing-function: ease;
 }
 
 /* --navigation-------------------------------- */
@@ -44,6 +37,14 @@ body{
 #SDOlogo{
    width:100px;
    height:100px;
+}
+
+
+
+/* HOME PAGE */
+
+.myRedText, .myIntro span{
+    color: #850F0F;
 }
 
 /* --photo------------------------*/
@@ -82,8 +83,9 @@ body{
     width: 50%; 
 }
 
-  /* --numbers------------------------> */
-  .myNumbers{
+/* --numbers------------------------> */
+
+.myNumbers{
     background-color: #850F0F;
     color: #F5F5F5;
 }
@@ -93,6 +95,39 @@ body{
     background-color: #D3BCBC;
 }
 
-.myMainHeader{
-    font-size: 4vm;
+/* ABOUT US  */
+
+
+/* PARTNERS  */
+.card{
+    width: 10rem; 
+    display: inline-block;
 }
+
+.card-body{
+    background-color: #C1BCA0;
+    text-align: center;
+    border: black;
+    border-radius: 30;
+}
+
+.myPartnersLogos{
+    text-align: center;
+}
+
+.myPartnersText{
+    font-size: 1rem;
+}
+
+@media (min-width: 992px) {  
+    .myPartnersText {
+        /* font-size:1.5rem; */
+    } 
+}
+
+
+
+
+
+
+/* CONTACT  */
