@@ -5,7 +5,7 @@ body{
 
 }
 
-/* --navigation-------------------------------- */
+/* --header-------------------------------- */
 .navbar a {
     color:white;
 }
@@ -39,6 +39,12 @@ body{
    height:100px;
 }
 
+
+/* --footer-------------------------------- */
+.myFooter{
+    background-color: #3F3E40; 
+    height: 7em;
+}
 
 
 /* HOME PAGE */
@@ -80,7 +86,7 @@ body{
   }
 
 #groupPhoto2{
-    width: 50%; 
+    width: 60%; 
 }
 
 /* --numbers------------------------> */
@@ -91,7 +97,7 @@ body{
 }
 
 .myNumbersContainer{
-    width: 50%;
+    width: 60%;
     background-color: #D3BCBC;
 }
 
@@ -122,3 +128,11 @@ body{
 
 
 /* CONTACT  */
+.myContactInfo {
+    background-color: #C1BCA0;
+    text-align: center;
+}
+
+.myContactForm{
+    max-width:600px;
+}

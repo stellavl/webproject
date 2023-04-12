@@ -12,7 +12,7 @@
 <body>
     <header class="sticky-top">
         <!--navigation-------------------------------->
-        <nav class="navbar navbar-expand-sm navbar-dark">
+        <nav class="navbar navbar-expand-md navbar-dark ">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="files\logos\output-onlinepngtools.png" id="SDOlogo" alt="SDO logo" >
@@ -35,7 +35,7 @@
                             <a class="nav-link" href="about.html">ABOUT US</a></li>
                         <li class="nav-item dropdown px-2">
                             <a class="nav-link dropdown-toggle" href="events.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">EVENTS</a>
-                            <ul class="dropdown-menu" style="background-color: #3F3E40" >
+                            <ul class="dropdown-menu" >
                                 <li class="dropdown-item"><a class="dropdown-link" href="events.html">EXTERNAL EVENTS</a></li>
                                 <li class="dropdown-item"><a class="dropdown-link" href="events.html">INTERNAL EVENTS</a></li>
                             </ul></li>
@@ -63,39 +63,39 @@
     </header>	
 
     <main>
-        <div class="myForm container text-center border border-dark border-2 rounded-3 mt-5">
+        <div class="myContactForm container text-center border border-dark border-2 rounded-3 mt-5 mb-5">
 			<div class="col mt-4">
 				<h3>Feeling like getting in touch with us? 💬 <br> Contact us via filling the form below: </h3>
 			</div>
 			<form>
 				<div class="row py-4">
-					<div class="col">
-						<input type="text" class="form-control" id="ContactName" placeholder="First name">
+					<div class="col ">
+						<input type="text" class="form-control myContactInfo" id="ContactName" placeholder="First name" >
 					</div>
 					<div class="col">
-						<input type="text" class="form-control" id="ContactSurname" placeholder="Last name">
-					</div>
-				</div>
-
-				<div class="row pb-4">
-					<div class="col">
-						<input type="email" class="form-control" id="ContactEmail" placeholder="Email">
+						<input type="text" class="form-control myContactInfo" id="ContactSurname" placeholder="Last name">
 					</div>
 				</div>
 
 				<div class="row pb-4">
 					<div class="col">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
+						<input type="email" class="form-control myContactInfo" id="ContactEmail" placeholder="Email">
+					</div>
+				</div>
+
+				<div class="row pb-4">
+					<div class="col">
+                        <textarea class="form-control myContactInfo" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
                     </div>
 					
 				  </div>
-				<button type="submit" class="btn btn-dark mb-3 mt-3">Submit</button>
+				<button type="submit" class="btn btn-dark mb-3">Submit</button>
 
 			  </form>
 		</div>
     </main>
 
-    <footer class="flex-wrap bg-body-tertiary justify-content-between pt-5 mt-4" style="background-color: #3F3E40; height: 7em;">
+    <footer class="myFooter flex-wrap bg-body-tertiary justify-content-between pt-5 mt-4" >
 		<div class="container text-center">
 			<div class=".col-12 .col-md-8 align-items-end">
 				<span class="mb-3 mb-md-0 text-muted">&copy; 2023 SDO. All rights reserved.</span>
