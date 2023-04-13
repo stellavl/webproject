@@ -2,7 +2,7 @@
 
 body{
     background-color: #F5F5F5;
-
+    
 }
 
 /* --header-------------------------------- */
@@ -105,27 +105,45 @@ body{
 
 
 /* PARTNERS  */
-.card{
-    width: 10rem; 
-    display: inline-block;
+.myPartnersText{
+    font-size: 1rem;
 }
 
-.card-body{
+.myPartnersLogos{
+    text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+  .myPartnersLogos .card {
+    width: 10rem; 
+    display: inline-block;
+    
+  }
+
+  .myPartnersLogos .card-body{
     background-color: #C1BCA0;
     text-align: center;
     border: black;
     border-radius: 30;
 }
 
-.myPartnersLogos{
-    text-align: center;
+  .myPartnersLogos::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+    
+  .photoScroll {
+    overflow-x: scroll;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
-.myPartnersText{
-    font-size: 1rem;
-}
-
-
+.photoScroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
 /* CONTACT  */
 .myContactInfo {
