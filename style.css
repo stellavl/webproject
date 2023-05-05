@@ -148,8 +148,14 @@ body{
  .btn-primary{
      background-color: #ffffff;
      color: #850F0F;
-     
  }
 
+ .card {
+    width: 300px; 
+    
+  }
 
-
+  .custom-img-size{
+    height: 200px;
+    object-fit: cover;
+  }
