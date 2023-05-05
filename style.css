@@ -125,7 +125,14 @@ body{
     font-size: 1rem;
 }
 
+#carousel{  
+    width: 300px; 
+}
 
+#carouselExampleControls{  
+    background-color: #ffffff;
+     color: #850F0F;
+}
 
 /* CONTACT  */
 .myContactInfo {
