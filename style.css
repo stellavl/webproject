@@ -1,11 +1,14 @@
 /* ALL PAGES */
 
 body{
-    background-color: #F5F5F5;
-    
+    background-color: #F5F5F5;   
 }
 
-/* --header-------------------------------- */
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .navbar a {
     color:white;
 }
@@ -39,8 +42,6 @@ body{
    height:100px;
 }
 
-
-/* --footer-------------------------------- */
 .myFooter{
     background-color: #3F3E40; 
     height: 7em;
@@ -53,7 +54,13 @@ body{
     color: #850F0F;
 }
 
-/* --photo------------------------*/
+.myIntroInfo{
+  animation-name: fade-in;
+  animation-duration: 2s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
 #mainGroupPhoto{
     width: 100%;
     opacity: 0.5;
@@ -89,8 +96,6 @@ body{
     width: 60%; 
 }
 
-/* --numbers------------------------> */
-
 .myNumbers{
     background-color: #850F0F;
     color: #F5F5F5;
@@ -102,7 +107,54 @@ body{
 }
 
 /* ABOUT US  */
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
+.myParagraph1{
+    animation-name: slide-in-left;
+    animation-duration: 1s;
+    transform: translateX(-100%);
+    animation-fill-mode: forwards;
+}
+
+.myParagraph2{
+  animation-name: slide-in-left;
+  animation-duration: 1.5s;
+  transform: translateX(-100%);
+  animation-fill-mode: forwards;
+}
+
+.myParagraph3{
+  animation-name: slide-in-left;
+  animation-duration: 2s;
+  transform: translateX(-100%);
+  animation-fill-mode: forwards;
+}
+
+.myParagraph4{
+  animation-name: slide-in-left;
+  animation-duration: 2.5s;
+  transform: translateX(-100%);
+  animation-fill-mode: forwards;
+}
+
+.myParagraph5{
+  animation-name: slide-in-left;
+  animation-duration: 3s;
+  transform: translateX(-100%);
+  animation-fill-mode: forwards;
+}
+
+.myHorizontalLine{
+  border: none;
+  height: 2px;
+}
 
 /* PARTNERS  */
 .myPartnersText{
@@ -153,4 +205,8 @@ body{
 
 .myContactForm{
     max-width:600px;
+    animation-name: fade-in;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
