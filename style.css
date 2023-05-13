@@ -96,14 +96,15 @@ body{
     width: 60%; 
 }
 
-.myNumbers{
-    background-color: #850F0F;
-    color: #F5F5F5;
+.myNumbersContainer{
+  background-color: #D3BCBC;
+  height: auto;
 }
 
-.myNumbersContainer{
-    width: 60%;
-    background-color: #D3BCBC;
+.myNumbers{
+  background-color: #850F0F;
+  color: #F5F5F5;
+  font-size: 2vw;
 }
 
 /* ABOUT US  */
@@ -152,8 +153,7 @@ body{
 }
 
 .myHorizontalLine{
-  border: none;
-  height: 2px;
+  width: 200px;
 }
 
 /* PARTNERS  */
@@ -161,34 +161,32 @@ body{
     font-size: 1rem;
 }
 
-.myPartnersLogos{
-    text-align: center;
-    overflow-x: auto;
-    white-space: nowrap;
-    cursor: pointer;
+.myPartnersLogos {
+  display: flex;
+  overflow-x: auto;
+  cursor: pointer;
 }
 
-  .myPartnersLogos .card {
-    width: 15rem; 
-    height: 12rem;
-    display: inline-block;
-    
-  }
+.myPartnersLogos .card {
+  flex: 0 0 auto;
+  width: 15rem;
+  height: 12rem;
+}
 
-  .myPartnersLogos .card-body {
-    border: black;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.myPartnersLogos .card-body {
+  border: 1px black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .myPartnersLogos .card-img-top {
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
-
 
   .myPartnersLogos::-webkit-scrollbar {
     width: 0;
