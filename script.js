@@ -66,10 +66,18 @@ if (window.location.href.includes('home.html')) {
     observer.observe(targetDiv);
 }
 
+function openPopup() {
+    var mainWidth = window.innerWidth;
+    var mainHeight = window.innerHeight;
 
-// ----------loginbutton------------
-const button = document.getElementById('myLogIn');
-button.addEventListener('click', function() {
-    const popupModal = document.getElementById('popupModal');
-    popupModal.style.display = 'block';
-});
+    var popupWidth = 300;
+    var popupHeight = 400;
+
+    var popupLeft = (mainWidth - popupWidth) / 2;
+    var popupTop = (mainHeight - popupHeight) / 2;
+
+    var features = 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupLeft + ',top=' + popupTop;
+
+    window.open('login.html', 'login', features);
+  }
+
