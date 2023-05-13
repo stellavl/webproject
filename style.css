@@ -4,11 +4,6 @@ body{
     background-color: #F5F5F5;   
 }
 
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 .navbar a {
     color:white;
 }
@@ -47,8 +42,12 @@ body{
     height: 7em;
 }
 
-
 /* HOME PAGE */
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 
 .myRedText, .myIntro span{
     color: #850F0F;
@@ -116,6 +115,14 @@ body{
     transform: translateX(0);
   }
 }
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
 .myParagraph1{
     animation-name: slide-in-left;
@@ -125,7 +132,7 @@ body{
 }
 
 .myParagraph2{
-  animation-name: slide-in-left;
+  animation-name: slide-in-right;
   animation-duration: 1.5s;
   transform: translateX(-100%);
   animation-fill-mode: forwards;
@@ -139,7 +146,7 @@ body{
 }
 
 .myParagraph4{
-  animation-name: slide-in-left;
+  animation-name: slide-in-right;
   animation-duration: 2.5s;
   transform: translateX(-100%);
   animation-fill-mode: forwards;
