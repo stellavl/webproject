@@ -66,18 +66,34 @@ if (window.location.href.includes('home.html')) {
     observer.observe(targetDiv);
 }
 
-function openPopup() {
-    var mainWidth = window.innerWidth;
-    var mainHeight = window.innerHeight;
+//LOGIN MODAL
+var btn = document.getElementById("myLogIn");
+var loginModal = document.getElementById("myLoginModal");
+var signUpModal = document.getElementById("mySignUpModal");
+var openSignUpModal = document.getElementById("openSignUp");
+var closeLoginModal = loginModal.getElementsByClassName("close")[0];
+var closeSignUpModal = signUpModal.getElementsByClassName("close")[0];
 
-    var popupWidth = 300;
-    var popupHeight = 400;
+btn.addEventListener('click', () => {
+    loginModal.style.display = "block";
+});
 
-    var popupLeft = (mainWidth - popupWidth) / 2;
-    var popupTop = (mainHeight - popupHeight) / 2;
+closeLoginModal.addEventListener('click', () => {
+    loginModal.style.display = "none";
+});
 
-    var features = 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupLeft + ',top=' + popupTop;
+openSignUpModal.addEventListener('click', (event) => {
+    loginModal.style.display = "none";
+    signUpModal.style.display = "block";
+  });
 
-    window.open('login.html', 'login', features);
-  }
+closeSignUpModal.addEventListener('click', () => {
+    signUpModal.style.display = "none";
+    loginModal.style.display = "block";
+});
+
+
+
+
+
 
