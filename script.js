@@ -67,33 +67,45 @@ if (window.location.href.includes('home.html')) {
 }
 
 //LOGIN MODAL
-var btn = document.getElementById("myLogIn");
-var loginModal = document.getElementById("myLoginModal");
-var signUpModal = document.getElementById("mySignUpModal");
-var openSignUpModal = document.getElementById("openSignUp");
-var closeLoginModal = loginModal.getElementsByClassName("close")[0];
-var closeSignUpModal = signUpModal.getElementsByClassName("close")[0];
+if (!window.location.href.includes('profile.html')) {
+    var loginButton = document.getElementById("myLogIn");
+    var loginModal = document.getElementById("myLoginModal");
+    var signUpModal = document.getElementById("mySignUpModal");
+    var openSignUpModal = document.getElementById("openSignUp");
+    var closeLoginModal = loginModal.getElementsByClassName("close")[0];
+    var closeSignUpModal = signUpModal.getElementsByClassName("close")[0];
+    
+    loginButton.addEventListener('click', () => {
+        loginModal.style.display = "block";
+    });
+    
+    closeLoginModal.addEventListener('click', () => {
+        loginModal.style.display = "none";
+    });
+    
+    openSignUpModal.addEventListener('click', (event) => {
+        loginModal.style.display = "none";
+        signUpModal.style.display = "block";
+      });
+    
+    closeSignUpModal.addEventListener('click', () => {
+        signUpModal.style.display = "none";
+        loginModal.style.display = "block";
+    });    
+}
 
-btn.addEventListener('click', () => {
-    loginModal.style.display = "block";
+// PROFILE DROPDOWN
+var profileButton = document.getElementById("myProfileButton");
+var profileDropdown = document.getElementById("myProfileDropdown");
+
+profileButton.addEventListener('click', () => {
+    console.log(profileDropdown.style.display);
+    if (profileDropdown.style.display === "none") {
+        profileDropdown.style.display = "block";
+      } else {
+        profileDropdown.style.display = "none";
+      }
 });
-
-closeLoginModal.addEventListener('click', () => {
-    loginModal.style.display = "none";
-});
-
-openSignUpModal.addEventListener('click', (event) => {
-    loginModal.style.display = "none";
-    signUpModal.style.display = "block";
-  });
-
-closeSignUpModal.addEventListener('click', () => {
-    signUpModal.style.display = "none";
-    loginModal.style.display = "block";
-});
-
-
-
 
 
 
