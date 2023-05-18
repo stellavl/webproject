@@ -319,3 +319,7 @@ body{
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  .myProfileData{
+    background-color: #C1BCA0;
+  }

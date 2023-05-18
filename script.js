@@ -67,7 +67,7 @@ if (window.location.href.includes('home.html')) {
 }
 
 //LOGIN MODAL
-if (!window.location.href.includes('profile.html')) {
+if (!window.location.href.includes('profile.html') && (!(window.location.href.includes('admin.html')))) {
     var loginButton = document.getElementById("myLogIn");
     var loginModal = document.getElementById("myLoginModal");
     var signUpModal = document.getElementById("mySignUpModal");
@@ -95,17 +95,31 @@ if (!window.location.href.includes('profile.html')) {
 }
 
 // PROFILE DROPDOWN
-var profileButton = document.getElementById("myProfileButton");
-var profileDropdown = document.getElementById("myProfileDropdown");
+if (window.location.href.includes('profile.html')){
 
-profileButton.addEventListener('click', () => {
-    console.log(profileDropdown.style.display);
-    if (profileDropdown.style.display === "none") {
-        profileDropdown.style.display = "block";
+    var profileButton = document.getElementById("myProfileButton");
+    var profileDropdown = document.getElementById("myProfileDropdown");
+    
+    profileButton.addEventListener('click', () => {
+        console.log(profileDropdown.style.display);
+        if (profileDropdown.style.display === "none") {
+            profileDropdown.style.display = "block";
+          } else {
+            profileDropdown.style.display = "none";
+          }});
+}
+
+
+
+// ADMIN DROPDOWN
+var adminButton = document.getElementById("myAdminButton");
+var adminDropdown = document.getElementById("myAdminDropdown");
+
+adminButton.addEventListener('click', () => {
+    console.log(adminDropdown.style.display);
+    if (adminDropdown.style.display === "none") {
+        adminDropdown.style.display = "block";
       } else {
-        profileDropdown.style.display = "none";
+        adminDropdown.style.display = "none";
       }
 });
-
-
-
