@@ -53,7 +53,7 @@ let function submit(req,res) {
 app.use(router)
 
 //defining some basic routes
-router.route('/').get()
+router.route('/').get((req,res) => { res.redirect('/') });
 router.route('/partners').get()
 
 //defining route for loging in
@@ -65,3 +65,5 @@ router.route('/contact/submit').get(submit)
 
 //starting server
 const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}`) });
+
+//export default router;

@@ -22,12 +22,37 @@ body{
 .navbar {
     height: 6em;
     background-color: #3F3E40;
+
+    /*mar*/
+    display: flex;
+    justify-content: center;
+    
 }
 
 
+ul.navbar-nav {
+  display: flex;
+  justify-content: space-between; /* push last-child to the right */
+  align-items: center; /* center elements vertically */
+  list-style: none; /* remove bullet points */
+  width: 100%; /* make ul full width of parent div */
+  padding: 0;
+  margin: 0;
+
+  padding-left: 200px;
+}
+
+ul.navbar-nav li:last-child {
+  margin-left: auto; /* push last-child to the right */
+  padding-right: 50px;
+}
+
 #navbarNav{
+    display: flex;
     justify-content: center;
     background-color: #3F3E40;
+    align-items: center;
+    
 }
 
 #navbarNav, #myLogIn{
@@ -41,6 +66,7 @@ body{
 .navbar .container-fluid{
     position: relative;
     top:0px;
+    
 }
 
 #SDOlogo{
@@ -257,4 +283,22 @@ body{
   .custom-img-size{
     height: 200px;
     object-fit: cover;
+  }
+
+  #text-to-click {
+    color: rgb(78, 21, 21); 
+    text-decoration: none; 
+  }
+ 
+  
+  .modal {
+     
+    position: fixed;
+    margin-top: 200px; 
+
+  }
+  
+  .modal-content {
+    display: flex;
+    align-items: center;
   }
