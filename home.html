@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
-	<script src="script.js" defer ></script>
+	<script src="script.js" defer=""></script>
     <title>Student Development Organisation</title>
 </head>
 
@@ -20,7 +20,9 @@
 				</a>
 	
 				<!-- if dimensions are too small for the navbar to be shown it'll be in a button/toggler -->
-				<button class="navbar-toggler ms-auto mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler ms-auto mb-4" type="button" 
+					data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" 
+					aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				  </button>
 	
@@ -53,108 +55,9 @@
 							</button>
 						  </a>
 						</li> 
-				  
-				  <div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
-					  <li class="nav-item px-2">
-						<a class="nav-link active" aria-current="page" href="home.html">HOME</a>
-					  </li>
-					  <li class="nav-item px-2">
-						<a class="nav-link" href="about.html">ABOUT US</a>
-					  </li>
-					  <li class="nav-item dropdown px-2">
-						<a class="nav-link dropdown-toggle" href="events.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">EVENTS</a>
-						<ul class="dropdown-menu">
-						  <li class="dropdown-item"><a class="dropdown-link" href="external events.html">EXTERNAL EVENTS</a></li>
-						  <li class="dropdown-item"><a class="dropdown-link" href="internal events.html">INTERNAL EVENTS</a></li>
-						</ul>
-					  </li>
-					  <li class="nav-item px-2">
-						<a class="nav-link" href="partners.html">PARTNERS</a>
-					  </li>
-					  <li class="nav-item px-2">
-						<a class="nav-link" href="contact.html">CONTACT US</a>
-					  </li>
-					</ul>				  
-					<ul class="nav navbar-nav navbar-right">
-						<button class="btn btn-outline-light" id="myLogIn">
-							<span>Log in</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-							</svg>
-						</button>
-						<div id="myLoginModal" class="modal">
-							<div class="modal-content py-2 px-4">
-								<span class="close">&times;</span>
-								<h3>Log in</h3>
-								<div class="row py-2">
-										<label for="logInEmail"><b>Email</b></label>
-										<input type="email" class="form-control" id="logInEmail" placeholder="Enter email">
-								</div>
-								<div class="row py-2">
-									<label for="logInPassword"><b>Password</b></label>
-									<input type="password" class="form-control" id="logInPassword" placeholder="Enter your Password">
-								</div>
-								<div>
-									<button type="submit" class="btn btn-outline-dark mt-2 mb-4">Submit</button>
-								</div>
-								<div class="row py-2">
-									<a href="#" class="pb-2 text-info text-wrap" id="openSignUp"> Don't have an account? Sign up to become a member!</a>
-									<a href="#" class="text-secondary">Forgot Password</a>
-									<a href="#" class="text-secondary">Remember Password</a>
-								</div>
-							</div>
-						</div>
-						<div id="mySignUpModal" class="modal">
-							<div class="modal-content py-2 px-4">
-								<span class="close">&times;</span>
-								<h3>Sign Up</h3>
-								<form>
-									<div class="row py-4">
-										<div class="col">
-											<label for="InpuName"><b>Name</b></label>
-											<input type="text" class="form-control" id="ApplicationName1" placeholder="Enter your Name">
-										</div>
-										<div class="col">
-											<label for="InputSurname"><b>Surname</b></label>
-											<input type="text" class="form-control" id="ApplicationSurname1" placeholder="Enter your Surname">
-										</div>
-									</div>
-									<div class="row pb-4">
-										<div class="col">
-											<label for="InputEmail"><b>Email address</b></label>
-											<input type="email" class="form-control" id="ApplicationEmail1" placeholder="Enter email">
-										</div>
-										<div class="col">
-											<label for="InputPhoneNumber"><b>Phone Number</b></label>
-											<input type="tel" class="form-control" id="ApplicationPhoneNumber2" placeholder="Enter phone number">
-										</div>
-									</div>
-									<div class="row pb-4">
-										<div class="col">
-											<label for="InputUniversity"><b>University</b></label>
-											<select class="form-select" id="ApplicationUniversity1" aria-label="Select University" text-muted>
-												<option selected>Select University</option>
-												<option>National Technical University of Athens (NTUA) </option>
-												<option>Aristotle University of Thessaloniki (AUTh)</option>
-												<option>University of Patras (UoP) </option>
-												<option>Technical University of Crete (TUC)</option>
-												<option>University of Thessaly (UTh) </option>
-											</select>
-										</div>
-										<div class="col">
-											<label for="InputDepartment"><b>Department</b></label>
-											<input type="text" class="form-control" id="ApplicationDepartment1" placeholder="Enter your Department (e.g. Physics)">
-										</div>
-									</div>
-									<button type="submit" class="btn btn-dark mb-5 mt-3">Submit</button>
-								</form>
-							  
-							</div>
-						</div>
 					</ul>
 				</div>
+
 			</div>
 		</nav>
 			
@@ -200,6 +103,7 @@
 				<h6 class="fst-italic">Apply to become a member</h6>
 			</div>
 			<form>
+
 				<div class="row py-4">
 					<div class="col">
 						<label for="InpuName"><b>Name</b></label>
