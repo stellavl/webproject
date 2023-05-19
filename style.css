@@ -321,5 +321,10 @@ body{
   }
 
   .myProfileData{
-    background-color: #C1BCA0;
+    background-color: #f9f9f9;
   }
+
+  .myProfileData:focus {
+    background-color:#C1BCA0;
+    outline: none;
+}

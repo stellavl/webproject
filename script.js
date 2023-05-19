@@ -68,12 +68,12 @@ if (window.location.href.includes('home.html')) {
 
 //LOGIN MODAL
 if (!window.location.href.includes('profile.html') && (!(window.location.href.includes('admin.html')))) {
-    var loginButton = document.getElementById("myLogIn");
-    var loginModal = document.getElementById("myLoginModal");
-    var signUpModal = document.getElementById("mySignUpModal");
-    var openSignUpModal = document.getElementById("openSignUp");
-    var closeLoginModal = loginModal.getElementsByClassName("close")[0];
-    var closeSignUpModal = signUpModal.getElementsByClassName("close")[0];
+    const loginButton = document.getElementById("myLogIn");
+    const loginModal = document.getElementById("myLoginModal");
+    const signUpModal = document.getElementById("mySignUpModal");
+    const openSignUpModal = document.getElementById("openSignUp");
+    const closeLoginModal = loginModal.getElementsByClassName("close")[0];
+    const closeSignUpModal = signUpModal.getElementsByClassName("close")[0];
     
     loginButton.addEventListener('click', () => {
         loginModal.style.display = "block";
@@ -97,8 +97,8 @@ if (!window.location.href.includes('profile.html') && (!(window.location.href.in
 // PROFILE DROPDOWN
 if (window.location.href.includes('profile.html')){
 
-    var profileButton = document.getElementById("myProfileButton");
-    var profileDropdown = document.getElementById("myProfileDropdown");
+    const profileButton = document.getElementById("myProfileButton");
+    const  profileDropdown = document.getElementById("myProfileDropdown");
     
     profileButton.addEventListener('click', () => {
         console.log(profileDropdown.style.display);
