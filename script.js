@@ -66,19 +66,60 @@ if (window.location.href.includes('home.html')) {
     observer.observe(targetDiv);
 }
 
-function openPopup() {
-    var mainWidth = window.innerWidth;
-    var mainHeight = window.innerHeight;
+//LOGIN MODAL
+if (!window.location.href.includes('profile.html') && (!(window.location.href.includes('admin.html')))) {
+    const loginButton = document.getElementById("myLogIn");
+    const loginModal = document.getElementById("myLoginModal");
+    const signUpModal = document.getElementById("mySignUpModal");
+    const openSignUpModal = document.getElementById("openSignUp");
+    const closeLoginModal = loginModal.getElementsByClassName("close")[0];
+    const closeSignUpModal = signUpModal.getElementsByClassName("close")[0];
+    
+    loginButton.addEventListener('click', () => {
+        loginModal.style.display = "block";
+    });
+    
+    closeLoginModal.addEventListener('click', () => {
+        loginModal.style.display = "none";
+    });
+    
+    openSignUpModal.addEventListener('click', (event) => {
+        loginModal.style.display = "none";
+        signUpModal.style.display = "block";
+      });
+    
+    closeSignUpModal.addEventListener('click', () => {
+        signUpModal.style.display = "none";
+        loginModal.style.display = "block";
+    });    
+}
 
-    var popupWidth = 300;
-    var popupHeight = 400;
+// PROFILE DROPDOWN
+if (window.location.href.includes('profile.html')){
 
-    var popupLeft = (mainWidth - popupWidth) / 2;
-    var popupTop = (mainHeight - popupHeight) / 2;
+    const profileButton = document.getElementById("myProfileButton");
+    const  profileDropdown = document.getElementById("myProfileDropdown");
+    
+    profileButton.addEventListener('click', () => {
+        console.log(profileDropdown.style.display);
+        if (profileDropdown.style.display === "none") {
+            profileDropdown.style.display = "block";
+          } else {
+            profileDropdown.style.display = "none";
+          }});
+}
 
-    var features = 'width=' + popupWidth + ',height=' + popupHeight + ',left=' + popupLeft + ',top=' + popupTop;
-
-    window.open('login.html', 'login', features);
-  }
 
 
+// ADMIN DROPDOWN
+var adminButton = document.getElementById("myAdminButton");
+var adminDropdown = document.getElementById("myAdminDropdown");
+
+adminButton.addEventListener('click', () => {
+    console.log(adminDropdown.style.display);
+    if (adminDropdown.style.display === "none") {
+        adminDropdown.style.display = "block";
+      } else {
+        adminDropdown.style.display = "none";
+      }
+});

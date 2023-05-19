@@ -22,37 +22,12 @@ body{
 .navbar {
     height: 6em;
     background-color: #3F3E40;
-
-    /*mar*/
-    display: flex;
-    justify-content: center;
-    
 }
 
-
-ul.navbar-nav {
-  display: flex;
-  justify-content: space-between; /* push last-child to the right */
-  align-items: center; /* center elements vertically */
-  list-style: none; /* remove bullet points */
-  width: 100%; /* make ul full width of parent div */
-  padding: 0;
-  margin: 0;
-
-  padding-left: 200px;
-}
-
-ul.navbar-nav li:last-child {
-  margin-left: auto; /* push last-child to the right */
-  padding-right: 50px;
-}
 
 #navbarNav{
-    display: flex;
     justify-content: center;
     background-color: #3F3E40;
-    align-items: center;
-    
 }
 
 #navbarNav, #myLogIn{
@@ -66,7 +41,6 @@ ul.navbar-nav li:last-child {
 .navbar .container-fluid{
     position: relative;
     top:0px;
-    
 }
 
 #SDOlogo{
@@ -78,6 +52,45 @@ ul.navbar-nav li:last-child {
     background-color: #3F3E40; 
     height: 7em;
 }
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  border: 1px solid #888;
+  margin: 10% auto;
+  width: 40%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /* HOME PAGE */
 
@@ -285,37 +298,33 @@ ul.navbar-nav li:last-child {
     object-fit: cover;
   }
 
-  #text-to-click {
-    color: rgb(78, 21, 21); 
-    text-decoration: none; 
-  }
- 
-  
-  .modal {
-     
-    position: fixed;
-    margin-top: 200px; 
 
-  }
-  
-  .modal-content {
-    display: flex;
-    align-items: center;
+  /* myPROFILE */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
   }
 
-  #myLoginModal, #mySignUpModal {
-
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-
+  .dropdown-item{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
   }
 
-  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .myProfileData{
+    background-color: #f9f9f9;
+  }
+
+  .myProfileData:focus {
+    background-color:#C1BCA0;
+    outline: none;
+}

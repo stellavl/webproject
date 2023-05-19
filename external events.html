@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
- 
     <title>Student Development Organisation</title>
 </head>
 
@@ -23,12 +22,12 @@
 
                 <button class="navbar-toggler ms-auto mb-4" type="button" 
                         data-bs-target="#navbarNav" aria-controls="navbarNav" data-bs-toggle="collapse"
-                        aria-expanded="true" aria-label="Toggle navigation">
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
     
                 <!-- navbar -->
-                <div class="navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="nav navbar-nav">
                         <li class="nav-item px-2">
                             <a class="nav-link" aria-current="page" href="home.html">HOME</a></li>
@@ -44,16 +43,17 @@
                             <a class="nav-link" href="partners.html">PARTNERS</a></li>
                         <li class="nav-item px-2">
                             <a class="nav-link" href="contact.html">CONTACT US</a></li>
-                        <li class="nav-item ms-auto">  
-                         
-                            <button class="btn btn-outline-light " id="myLogIn">
-                                <span>Log in</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                                </svg>
-                            </button>
-                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      
+                        <button class="btn btn-outline-light" id="myLogIn">
+                            <span>Log in</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                            </svg>
+                        </button>
+                        
                     </ul>
                 </div>
 
@@ -67,7 +67,7 @@
             <h3 class="myMainHeader py-3 text-center"><b>External Events</b></h3>
             
                 <p class="pd-2">
-                    <center>External events are a great opportunity for students who aren’t familiar with our organization and want to <b>get to know us better!</b>
+                    <center>External events are a great opportunity for students who aren’t familiar with our organization and want to<b>get to know us better!</b>
                     Through your participation in such event, be sure that you will gain valuable skills, have fun and get to know many like-minded people.
                     <br>So what are you waiting for? Apply in as many actions as you wish from the list below:</center><br>
                 </p>
@@ -76,127 +76,64 @@
                   <div class="card mb-4">
                     <img src="files/photos/ex-events1.jpeg" class="card-img-top custom-img-size" alt="External event 1">
                     <div class="card-body">
-                    <center>
                       <h5 class="card-title"><b>Motivational Weekend</b></h5>
-                      <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal5" id="text-to-click"><b>see more....</b></a></p>
+                      <p class="card-text">see more....</p>
                       <a href="#" class="btn btn-primary"><b>apply</b></a>
-                    </center>
                     </div>
                   </div>
-
-                  <div class="modal" id="myModal5" style="display: none;">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Motivational Weekend</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p>la la la la la la la la </p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary">Apply</button>
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
 
                   <div class="card mb-4">
                     <img src="files/photos/ai-photo.jpeg" class="card-img-top custom-img-size" alt="External event 2">
                     <div class="card-body">
-                    <center>
                       <h5 class="card-title"><b>AI Intro</b></h5>
-                      <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal6" id="text-to-click"><b>see more....</b></a></p>
+                      <p class="card-text">Some quick example text</p>
                       <a href="#" class="btn btn-primary"><b>apply</b></a>
-                    </center>
                     </div>
-
-                    <div class="modal" id="myModal6" style="display: none;">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">AI Intro</h5>
-                          </div>
-                          <div class="modal-body">
-                            <p>la la la la la la la la </p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Apply</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
                   </div>
                   <div class="card mb-4">
                     <img src="files/photos/vr-image.jpeg" class="card-img-top custom-img-size" alt="External event 3">
                     <div class="card-body">
-                    <center>
                       <h5 class="card-title"><b>Virtual Reality Seminar</b></h5>
-                      <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal7" id="text-to-click"><b>see more....</b></a></p>
+                      <p class="card-text">Some quick example text</p>
                       <a href="#" class="btn btn-primary"><b>apply</b></a>
-                    </center>
                     </div>
                   </div>
-
-                  <div class="modal" id="myModal7" style="display: none;">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Virtual Reality Seminar</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p>la la la la la la la la </p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary">Apply</button>
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-
                   <div class="card mb-4">
                     <img src="files/photos/planetarium.jpeg" class="card-img-top custom-img-size" alt="External event 4">
                     <div class="card-body">
-                    <center>
                       <h5 class="card-title"><b>Visit Planetarium</b></h5>
-                      <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal8" id="text-to-click"><b>see more....</b></a></p>
+                      <p class="card-text">see more...</p>
                       <a href="#" class="btn btn-primary"><b>apply</b></a>
-                    </center>
                     </div>
                   </div>
-
-                  <div class="modal" id="myModal8" style="display: none;">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Visit Planetarium</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p>la la la la la la la la </p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary">Apply</button>
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                        </div>
-                      </div>
+                  <!-- <div class="card mb-4">
+                    <img src="files/photos/ex-events1.jpeg" class="card-img-top" alt="External event 5">
+                    <div class="card-body">
+                      <h5 class="card-title">Nuclear Power seminar</h5>
+                      <p class="card-text">see more...</p>
+                      <a href="#" class="btn btn-primary"><b>apply</b></a>
                     </div>
                   </div>
-
-
+                  -->
                 </div> 
-              
-              </div>
+                
 
-        </div>
+
+                
+                        
+                     
+          
+            
+            
+            
+            
+            
+            
+            
+            
+              </div>
     </main>
 
-    
 
 
     <footer class="myFooter flex-wrap bg-body-tertiary justify-content-between pt-5 mt-4">
@@ -232,8 +169,9 @@
 
 	</footer>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 
