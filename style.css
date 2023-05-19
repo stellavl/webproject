@@ -54,7 +54,7 @@ body{
 }
 
 
-.modal {
+#myLoginModal, #mySignUpModal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -68,7 +68,7 @@ body{
 }
 
 /* Modal Content/Box */
-.modal-content {
+#myLoginModalContent, #mySignUpModalContent {
   background-color: #fefefe;
   border: 1px solid #888;
   margin: 10% auto;
@@ -298,6 +298,21 @@ body{
     object-fit: cover;
   }
 
+  #text-to-click {
+    color: rgb(78, 21, 21); 
+    text-decoration: none; 
+  }
+ 
+  .modal { 
+    position: fixed;
+    margin-top: 200px; 
+
+  }
+  
+  .modal-content{
+    display: flex;
+    align-items: center;
+  }
 
   /* myPROFILE */
   .dropdown-menu {
