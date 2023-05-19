@@ -298,12 +298,12 @@ body{
     object-fit: cover;
   }
 
-  #text-to-click {
+  .text-to-click {
     color: rgb(78, 21, 21); 
     text-decoration: none; 
   }
  
-  .modal { 
+  .events-modals { 
     position: fixed;
     margin-top: 200px; 
 
@@ -313,6 +313,9 @@ body{
     display: flex;
     align-items: center;
   }
+
+
+
 
   /* myPROFILE */
   .dropdown-menu {
