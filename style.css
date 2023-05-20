@@ -286,6 +286,15 @@ body{
  .btn-primary{
      background-color: #ffffff;
      color: #850F0F;
+     border-color: #000000;
+
+ }
+
+ .btn-primary:hover {
+    background-color: #850F0F;
+    border-color: #000000;
+    color: #ffffff;
+
  }
 
  .card {
