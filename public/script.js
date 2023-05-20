@@ -1,6 +1,6 @@
 // ------numberscounter----------
 
-if (window.location.href.includes('home.html')) {
+if (window.location.href.includes('home.hbs')) {
     function myNumbersCounter(){
         let var1=450;
         let var2=5;
@@ -112,14 +112,16 @@ if (window.location.href.includes('profile.html')){
 
 
 // ADMIN DROPDOWN
-var adminButton = document.getElementById("myAdminButton");
-var adminDropdown = document.getElementById("myAdminDropdown");
-
-adminButton.addEventListener('click', () => {
-    console.log(adminDropdown.style.display);
-    if (adminDropdown.style.display === "none") {
-        adminDropdown.style.display = "block";
-      } else {
-        adminDropdown.style.display = "none";
-      }
-});
+if (window.location.href.includes('admin.html')){
+    var adminButton = document.getElementById("myAdminButton");
+    var adminDropdown = document.getElementById("myAdminDropdown");
+    
+    adminButton.addEventListener('click', () => {
+        console.log(adminDropdown.style.display);
+        if (adminDropdown.style.display === "none") {
+            adminDropdown.style.display = "block";
+          } else {
+            adminDropdown.style.display = "none";
+          }
+    });
+}
