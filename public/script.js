@@ -1,6 +1,5 @@
 // ------numberscounter----------
-
-if (window.location.href.includes('home.hbs')) {
+if (isHomePage){
     function myNumbersCounter(){
         let var1=450;
         let var2=5;
@@ -50,7 +49,7 @@ if (window.location.href.includes('home.hbs')) {
                 }
             } 
         }
-       } 
+    }
         
     const targetDiv = document.querySelector('.myNumbersContainer');
     
@@ -66,8 +65,9 @@ if (window.location.href.includes('home.hbs')) {
     observer.observe(targetDiv);
 }
 
+
 //LOGIN MODAL
-if (!window.location.href.includes('profile.html') && (!(window.location.href.includes('admin.html')))) {
+if ((!isProfilePage) && (!isAdminPage)) {
     const loginButton = document.getElementById("myLogIn");
     const loginModal = document.getElementById("myLoginModal");
     const signUpModal = document.getElementById("mySignUpModal");
@@ -95,13 +95,12 @@ if (!window.location.href.includes('profile.html') && (!(window.location.href.in
 }
 
 // PROFILE DROPDOWN
-if (window.location.href.includes('profile.html')){
+if (isProfilePage){
 
     const profileButton = document.getElementById("myProfileButton");
     const  profileDropdown = document.getElementById("myProfileDropdown");
     
     profileButton.addEventListener('click', () => {
-        console.log(profileDropdown.style.display);
         if (profileDropdown.style.display === "none") {
             profileDropdown.style.display = "block";
           } else {
@@ -112,12 +111,11 @@ if (window.location.href.includes('profile.html')){
 
 
 // ADMIN DROPDOWN
-if (window.location.href.includes('admin.html')){
+if (isAdminPage){
     var adminButton = document.getElementById("myAdminButton");
     var adminDropdown = document.getElementById("myAdminDropdown");
     
     adminButton.addEventListener('click', () => {
-        console.log(adminDropdown.style.display);
         if (adminDropdown.style.display === "none") {
             adminDropdown.style.display = "block";
           } else {
