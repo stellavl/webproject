@@ -19,6 +19,19 @@ export let function1 = () => {
     }
 }
 
+//student submits a message and message is entered in the database
+export let createMessage = (studentEmail, message) => {
+
+    const query = db.prepare("INSERT INTO Message VALUES (null, ?, ?, CURRENT_DATE)");
+    let info;
+    try{
+        info = query.run(message,studentEmail);
+        return true;
+    }
+    catch (err) {
+        throw err;
+    }
+}
 
 
 

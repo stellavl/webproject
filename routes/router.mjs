@@ -2,6 +2,8 @@ import express from 'express'
 const router = express.Router()
 
 // const homeController = await import(`../controller/home.mjs`);
+const contactController = await import(`../controller/contact.mjs`)
+
 
 router.get('/', (req,res) => {
     res.render('home',{
@@ -48,5 +50,15 @@ router.get('/admin', (req,res) => {
         atAdmin: true
     });
 })
+
+
+//submitting a message
+router.get('/contact/submitted', contactController.submitMessage);
+
+
+
+
+
+
 
 export default router;

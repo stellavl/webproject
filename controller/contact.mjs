@@ -1,0 +1,24 @@
+//Controller for page created by ./view/contact.hbs
+
+
+/** Διαλέξτε το κατάλληλο μοντέλο στο αρχείο .env */
+//const model = await import(`../model/${process.env.MODEL}/task-list-model-${process.env.MODEL}.mjs`);
+
+
+
+
+
+
+export async function submitMessage(req, res) {
+    //Student types a message in the contact form
+    //a new message is created
+    const newMessage //= new MyTask(null, req.query.taskName);
+    try {
+       const lastMessage = await model.createMessage(studentEmail, message);
+       //break
+       const allTasks = await model.getAllTasks(userId)
+       res.render('tasks', { tasks: allTasks, model: process.env.MODEL });
+    } catch (error) {
+       res.send(error);
+    }
+ }
