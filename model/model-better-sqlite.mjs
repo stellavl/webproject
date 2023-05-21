@@ -2,7 +2,7 @@
 
 //connecting to the database file
 const sqlite = require('better-sqlite3');
-const db = new sqlite('model/ngo.db', { fileMustExist: true });
+const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 //functions with queries
 //function1
@@ -18,6 +18,8 @@ export let function1 = () => {
         throw err;
     }
 }
+
+
 
 
 
