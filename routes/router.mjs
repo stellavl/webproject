@@ -3,15 +3,6 @@ const router = express.Router()
 
 // const homeController = await import(`../controller/home.mjs`);
 
-// const atHome=false;
-// const atAbout=false;
-// const atExternalEvents=false;
-// const atInternalEvents=false;
-// const atPartners=false;
-// const atContact=false;
-// const atProfile=false;
-// const atAdmin=false;
-
 router.get('/', (req,res) => {
     res.render('home',{
         atHome: true,
@@ -96,18 +87,29 @@ router.get('/contact', (req,res) => {
         atAdmin: false,
     });
 });
-router.get('/profile', (req,res) => {
-    res.render('profile',{
-        atHome: false,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: false,
-        atProfile: true,
-        atAdmin: false,
-    });
+
+const checkAuthenticated = (req, res, next) => {
+    if (req.session.authenticatedEmail)
+        next()
+    else
+    return res.redirect('/home')
+}
+
+router.get('/profile',
+    checkAuthenticated,
+    (req,res) => {
+        res.render('profile',{
+            atHome: false,
+            atAbout: false,
+            atExternalEvents: false,
+            atInternalEvents: false,
+            atPartners: false,
+            atContact: false,
+            atProfile: true,
+            atAdmin: false,
+   });
 });
+
 router.get('/admin', (req,res) => {
     res.render('admin',{
         atHome: false,

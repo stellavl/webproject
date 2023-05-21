@@ -59,18 +59,17 @@
 								<div id="myLoginModal" class="modal">
 									<div id="myLoginModalContent" class="modal-content py-2 px-4">
 										<span class="close">&times;</span>
-										<h3>Log in</h3>
-										<div class="row py-2">
-												<label for="logInEmail"><b>Email</b></label>
-												<input type="email" class="form-control" id="logInEmail" placeholder="Enter email">
-										</div>
-										<div class="row py-2">
-											<label for="logInPassword"><b>Password</b></label>
-											<input type="password" class="form-control" id="logInPassword" placeholder="Enter your Password">
-										</div>
-										<div>
-											<button type="submit" class="btn btn-outline-dark mt-2 mb-4">Submit</button>
-										</div>
+										<form action="/do-login" method="POST">
+											<h3 class="mb-2">Log in</h3>
+											<div class="row py-2">
+												<input name="email" type="text" class="form-control" id="logInEmail" placeholder="Email"><br>
+											</div>
+											<div class="row py-2">
+												<input name="password" type="password" class="form-control" id="logInPassword" placeholder="Password"><br>
+											</div>
+											<button type="submit" class="btn btn-dark mt-2 mb-4">Submit</button>
+											</fieldset>
+										</form>
 										<div class="row py-2">
 											<a href="#" class="pb-2 text-info text-wrap" id="openSignUp"> Don't have an account? Sign up to become a member!</a>
 											<a href="#" class="text-secondary">Forgot Password</a>
@@ -117,7 +116,7 @@
 												</div>
 												<div class="col">
 													<label for="InputDepartment"><b>Department</b></label>
-													<input type="text" class="form-control" id="ApplicationDepartment1" placeholder="Enter your Department (e.g. Physics)">
+													<input type="text" class="form-control" id="ApplicationDepartment1" placeholder="Enter your Department">
 												</div>
 											</div>
 											<button type="submit" class="btn btn-dark mb-5 mt-3">Submit</button>
