@@ -312,11 +312,6 @@ body{
     text-decoration: none; 
   }
  
-  .events-modals { 
-    position: fixed;
-    margin-top: 100px; 
-
-  }
   
   .modal-content{
     display: flex;
