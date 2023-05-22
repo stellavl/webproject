@@ -5,17 +5,9 @@ const router = express.Router()
 const contactController = await import(`../controller/contact.mjs`)
 
 router.get('/', (req,res) => {
-    res.render('home',{
-        atHome: true,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: false,
-        atProfile: false,
-        atAdmin: false,
-    });
+    res.redirect('/home')
 });
+
 router.get('/home', (req,res) => {
     res.render('home',{
         atHome: true,
@@ -50,7 +42,9 @@ router.get('/externalEvents', (req,res) => {
         atContact: false,
         atProfile: false,
         atAdmin: false,
+        eventTitle: "Motivational Weekend"
     });
+    console.log(eventTitle);
 });
 router.get('/internalEvents', (req,res) => {
     res.render('internalEvents',{
