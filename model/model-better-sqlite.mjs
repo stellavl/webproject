@@ -6,6 +6,9 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 //functions with queries - interaction with the database:
 
+
+// (1)---------------CREATE------------------
+
 //student wishes to become a member and fills the form in homepage
 export let register = (name,surname,email,phone,uni,dept) => {
 
@@ -35,6 +38,19 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
         throw err;
     }
 }
+
+//student applies for external event
+export let applyForExt = (studentEmail, extId) => {
+
+}
+
+//member applies for internal event
+export let applyForInt = (memberEmail,intId) => {
+
+}
+
+
+// (2)---------------READ---------------------
 
 //read all members
 export let members = () => {
@@ -88,23 +104,33 @@ export let intEvent = () => {
     }
 }
 
-
-
-//student applies for external event
-export let applyForExt = (studentEmail, extId) => {
-    
-
-
+// read all applications for membership
+export let memberApplicants = () => {
+    const query = db.prepare("SELECT * FROM Member WHERE active='FALSE';");
+    let info;
+    try{
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
 }
 
-
-//member applies for internal event
-export let applyForInt = (memberEmail,intId) => {
-
-
-
+// read all messages
+export let studentMessages = () => {
+    const query = db.prepare("SELECT * FROM Message,Student WHERE student_email==email");
+    let info;
+    try{
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
 }
 
+//-------------------------------- TO DO --------------------------------
 //admin functions (CRUD):
 
 //admin creates an event (C)
@@ -119,7 +145,10 @@ export let applyForInt = (memberEmail,intId) => {
 //admin deletes event from site - event becomes inactive (D)
 
 
+// (3)---------------UPDATE-------------------
 
+
+// (4)---------------DELETE-------------------
 
 
 

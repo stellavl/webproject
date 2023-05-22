@@ -9,6 +9,7 @@ const contactController = await import(`../controller/contact.mjs`)
 import { externalEvents } from '../controller/externalEvents.mjs';
 import { internalEvents } from '../controller/internalEvents.mjs';
 import { members, universities } from '../controller/home.mjs';
+import { memberApplicants, studentMessages } from '../controller/admin.mjs';
 
 router.get('/', (req,res) => {
     res.redirect('/home')
@@ -20,7 +21,6 @@ router.get('/home', async (req,res) => {
         const myExternalEvents = await externalEvents();
         const myInternalEvents = await internalEvents();
         const myUniversities =  await universities();
-        console.log(myUniversities,myUniversities.length)
  
         res.render('home',{
             atHome: true,
@@ -52,6 +52,7 @@ router.get('/about', (req,res) => {
         atAdmin: false,
     });
 });
+
 router.get('/externalEvents', async(req,res) => {
     try {
         const events =  await externalEvents(); 
@@ -104,6 +105,7 @@ router.get('/partners', (req,res) => {
         atAdmin: false,
     });
 });
+
 router.get('/contact', (req,res) => {
     res.render('contact',{
         atHome: false,
@@ -139,18 +141,35 @@ router.get('/profile',
    });
 });
 
-router.get('/admin', (req,res) => {
-    res.render('admin',{
-        atHome: false,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: false,
-        atProfile: false,
-        atAdmin: true,
-    });
+router.get('/admin', async(req,res) => {
+    try {
+        const extEvents = await externalEvents();
+        const intEvents = await internalEvents();
+        const applicants = await memberApplicants();
+        const messages = await studentMessages();
+
+        
+        res.render('admin',{
+            atHome: false,
+            atAbout: false,
+            atExternalEvents: false,
+            atInternalEvents: false,
+            atPartners: false,
+            atContact: false,
+            atProfile: false,
+            atAdmin: true,
+            extEvents: extEvents,
+            intEvents: intEvents,
+            applicants: applicants,
+            messages: messages,
+            numberOfEvents: extEvents.length+intEvents.length,
+        });
+    } 
+    catch (err) {
+        res.send(err);
+    }
 })
+
 
 //submitting a message
 router.get('/contact/submitted', contactController.submitMessage);
