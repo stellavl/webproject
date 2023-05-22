@@ -9,139 +9,41 @@
               </p>
               
               <div class="d-flex flex-wrap justify-content-between">
-                <div class="card mb-4">
-                  {{!-- <img src="files/photos/ex-events1.jpeg" class="card-img-top custom-img-size" alt="External event 1"> --}}
-                  <div class="card-body">
-                  <center>
-                    <h5 class="card-title"><b>{{eventTitle}}</b></h5>
-                    <h6>Join us for a fantastic time!</h6>
-                    <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal5" class="text-to-click"><b>see more....</b></a></p>
-                    <a href="#" class="btn btn-primary"><b>apply</b></a>
-                  </center>
-                  </div>
-                </div>
-
-                {{!-- <div class="modal events-modals" id="myModal5" style="display: none;">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Motivational Weekend</h5>
+                {{#if events}}
+                  {{#each events}}
+                    <div class="card mb-4">
+                      {{!-- <img src="files/photos/ex-events1.jpeg" class="card-img-top custom-img-size" alt="External event 1"> --}}
+                      <div class="card-body">
+                        <center>
+                          <h5 class="card-title"><b>{{name}}</b></h5>
+                          <h6>{{place}}, {{start_date}}</h6>
+                          <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal5" class="text-to-click"><b>see more....</b></a></p>
+                          <a href="#" class="btn btn-primary"><b>apply</b></a>
+                        </center>
                       </div>
-                      <div class="modal-body">
-                        <p>🪄 Embark on an <b>extraordinary adventure</b> filled with fun, connection, and personal growth at our <b>Motivational Weekend!</b><br><br> 
-                          Join us on <b>20-28 July</b> for 8 unforgettable days in a <b>secret location</b> where you'll bond with fellow students, discover new passions, and create lifelong memories. 
-                          Experience thrilling challenges, uplifting workshops, and inspiring talks from renowned speakers.
-                          Step outside your comfort zone and embrace a weekend that will leave you motivated, inspired, and ready to conquer the world!✨<br><br>
-                          🆘 Don't miss out on this transformative experience. Join us and unlock your full potential!</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Apply</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>     
-
-                <div class="card mb-4">
-                  <img src="files/photos/ai-photo.jpeg" class="card-img-top custom-img-size" alt="External event 2">
-                  <div class="card-body">
-                  <center>
-                    <h5 class="card-title"><b>AI Intro</b></h5>
-                    <h6>Interested in the world of AI?</h6>
-                    <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal6" class="text-to-click"><b>see more....</b></a></p>
-                    <a href="#" class="btn btn-primary"><b>apply</b></a>
-                  </center>
-                  </div>
-
-                  <div class="modal events-modals" id="myModal6" style="display: none;">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title">AI Intro</h5>
-                        </div>
-                        <div class="modal-body">
-                          <p>📢 Calling all STEM students! 🚀 <br><br>
-                            Join us on <b>05 of September</b> for an enlightening journey into the world of<b>Artificial Intelligence</b> at our highly anticipated seminar, AI Intro! 
-                            🤖🌐 Explore the cutting-edge advancements and transformative potential of AI in various industries. 🌟 
-                            From machine learning to neural networks, our experts will provide a comprehensive overview and share real-world applications of this rapidly evolving field.<br><br>
-                            📚💡 Don't miss this incredible opportunity to expand your knowledge and be part of the AI revolution.<b>Limited spots available</b>, so secure your place today! 🎓🔬 <br><br>
-                            #AIIntro #STEMStudents #UnlockTheFuture</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-primary">Apply</button>
-                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+                    </div>    
+                    <div class="modal events-modals" id="myModal5" style="display: none;">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">{{name}}</h5>
+                          </div>
+                          <div class="modal-body">
+                            <p>{{description}}</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Apply</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-
-
-                </div>
-
-                <div class="card mb-4">
-                  <img src="files/photos/vr-image.jpeg" class="card-img-top custom-img-size" alt="External event 3">
-                  <div class="card-body">
-                  <center>
-                    <h5 class="card-title"><b>Virtual Reality Seminar</b></h5>
-                    <h6>Learn the basics of VR!</h6>
-                    <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal7" class="text-to-click"><b>see more....</b></a></p>
-                    <a href="#" class="btn btn-primary"><b>apply</b></a>
-                  </center>
-                  </div>
-                </div>
-
-                <div class="modal events-modals" id="myModal7" style="display: none;">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Virtual Reality Seminar</h5>
-                      </div>
-                      <div class="modal-body">
-                        <p>📢 Attention all tech enthusiasts 🌟 Immerse yourself in a mind-bending experience at our much-awaited <b>Virtual Reality Seminar</b> <b>on 02 to 04 of October</b>! <br><br>
-                          🎮🌐 Discover the incredible possibilities of VR technology and its impact on various industries. From gaming and entertainment to healthcare and education, VR is <b>revolutionizing the way we interact with the world</b>. <br><br>
-                          🚀🔥 Join us as experts unravel the secrets behind creating immersive virtual environments and share insights on the future of this groundbreaking technology. Don't miss this chance to dive into a virtual world of endless possibilities. 
-                          <b>Limited spots available</b>, so secure your place now! 📚💻 <br><br>
-                          #VirtualRealitySeminar #TechEnthusiasts #UnlockTheVirtualWorld</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Apply</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="card mb-4">
-                  <img src="files/photos/planetarium.jpeg" class="card-img-top custom-img-size" alt="External event 4">
-                  <div class="card-body">
-                  <center>
-                    <h5 class="card-title"><b>Visit Planetarium</b></h5>
-                    <h6>Are you fascinated by space?</h6>
-                    <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal8" class="text-to-click"><b>see more....</b></a></p>
-                    <a href="#" class="btn btn-primary"><b>apply</b></a>
-                  </center>
-                  </div>
-                </div>
-
-                <div class="modal events-modals" id="myModal8" style="display: none;">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Visit Planetarium</h5>
-                      </div>
-                      <div class="modal-body">
-                        <p>Attention all space enthusiasts! 🌌✨ Embark on an awe-inspiring excursion to the mesmerizing world of stars and galaxies at our upcoming <b>Planetarium Visit</b> on <b>June 29</b>! 🔭 <br><br>
-                          Immerse yourself in a captivating journey through the cosmos as we explore the wonders of our universe. Witness breathtaking celestial displays, learn about the mysteries of distant planets, and <b>unravel the secrets of deep space</b> 🚀. <br><br> 
-                          🌠🪐 This educational and unforgettable experience will ignite your curiosity and leave you with a newfound appreciation for the vastness of the cosmos. Don't miss this chance to embark on a stellar adventure! 🌟🌍 <br><br>
-                          #PlanetariumVisit #SpaceEnthusiasts #JourneyThroughTheCosmos</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Apply</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>       --}}     
+                  {{/each}}
+                {{/if}}
+                {{#else}}
+                  <h5>Sadly there are no upcoming events. Stay tuned though, because there will be many of them soon!</h5>
+                {{/else}}     
+              
               </div>
       </div>
   </main>

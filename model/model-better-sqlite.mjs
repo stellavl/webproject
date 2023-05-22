@@ -1,7 +1,7 @@
 'use strict';
 
 //connecting to the database file
-const sqlite = require('better-sqlite3');
+import sqlite from 'better-sqlite3';
 const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 //functions with queries - interaction with the database:
@@ -36,20 +36,56 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
     }
 }
 
-//all external events 
-export let extEvent = () => {
-
-    const query = db.prepare("SELECT * FROM External_Event WHERE start_date > CURRENT_DATE");
+//read all members
+export let members = () => {
+    const query = db.prepare("SELECT * FROM Member WHERE active='TRUE';");
     let info;
     try{
         info = query.all();
-        //console.log(info);
-        return true;
+        return info;
     }
     catch (err) {
         throw err;
     }
+}
 
+//read distinct universities
+export let universities = () => {
+    const query = db.prepare("SELECT DISTINCT university FROM Member WHERE active='TRUE';");
+    let info;
+    try{
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+//read all external events 
+export let extEvent = () => {
+    const query = db.prepare("SELECT * FROM External_Event WHERE start_date > CURRENT_DATE");
+    let info;
+    try{
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+//read all internal events 
+export let intEvent = () => {
+    const query = db.prepare("SELECT * FROM Internal_Event WHERE start_date > CURRENT_DATE");
+    let info;
+    try{
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
 }
 
 

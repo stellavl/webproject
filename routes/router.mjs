@@ -3,22 +3,42 @@ const router = express.Router()
 
 // const homeController = await import(`../controller/home.mjs`);
 const contactController = await import(`../controller/contact.mjs`)
+// const externalEventsController = await import(`../controller/externalEvents.mjs`)
+// const internalEventsController = await import(`../controller/internalEvents.mjs`)
+
+import { externalEvents } from '../controller/externalEvents.mjs';
+import { internalEvents } from '../controller/internalEvents.mjs';
+import { members, universities } from '../controller/home.mjs';
 
 router.get('/', (req,res) => {
     res.redirect('/home')
 });
 
-router.get('/home', (req,res) => {
-    res.render('home',{
-        atHome: true,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: false,
-        atProfile: false,
-        atAdmin: false,
-    });
+router.get('/home', async (req,res) => {
+    try {
+        const myMembers =  await members(); 
+        const myExternalEvents = await externalEvents();
+        const myInternalEvents = await internalEvents();
+        const myUniversities =  await universities();
+        console.log(myUniversities,myUniversities.length)
+ 
+        res.render('home',{
+            atHome: true,
+            atAbout: false,
+            atExternalEvents: false,
+            atInternalEvents: false,
+            atPartners: false,
+            atContact: false,
+            atProfile: false,
+            atAdmin: false,
+            numberOfMembers: myMembers.length, 
+            numberOfEvents: myExternalEvents.length+myInternalEvents.length,
+            numberOfUniversities: myUniversities.length,
+        });
+    } 
+    catch (err) {
+        res.send(err);
+    }
 });
 router.get('/about', (req,res) => {
     res.render('about',{
@@ -32,32 +52,46 @@ router.get('/about', (req,res) => {
         atAdmin: false,
     });
 });
-router.get('/externalEvents', (req,res) => {
-    res.render('externalEvents',{
-        atHome: false,
-        atAbout: false,
-        atExternalEvents: true,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: false,
-        atProfile: false,
-        atAdmin: false,
-        eventTitle: "Motivational Weekend"
-    });
-    console.log(eventTitle);
+router.get('/externalEvents', async(req,res) => {
+    try {
+        const events =  await externalEvents(); 
+        res.render('externalEvents',{
+            atHome: false,
+            atAbout: false,
+            atExternalEvents: true,
+            atInternalEvents: false,
+            atPartners: false,
+            atContact: false,
+            atProfile: false,
+            atAdmin: false,
+            events: events,
+        });
+    } 
+    catch (err) {
+        res.send(err);
+    }
 });
-router.get('/internalEvents', (req,res) => {
-    res.render('internalEvents',{
-        atHome: false,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: true,
-        atPartners: false,
-        atContact: false,
-        atProfile: false,
-        atAdmin: false,
-    });
+
+router.get('/internalEvents', async (req,res) => {
+    try{
+        const events =  await internalEvents(); 
+        res.render('internalEvents',{
+            atHome: false,
+            atAbout: false,
+            atExternalEvents: false,
+            atInternalEvents: true,
+            atPartners: false,
+            atContact: false,
+            atProfile: false,
+            atAdmin: false,
+            events:events,
+        });
+    } 
+    catch (err) {
+        res.send(err);
+    }
 });
+
 router.get('/partners', (req,res) => {
     res.render('partners',{
         atHome: false,

@@ -1,9 +1,6 @@
 // ------numberscounter----------
 if (isHomePage){
     function myNumbersCounter(){
-        let var1=450;
-        let var2=5;
-        let var3=10;
     
         let delay1=10;
         let delay2=delay1*var1/var2;
@@ -21,7 +18,7 @@ if (isHomePage){
             var count= document.getElementById("myValue1");
             if (count!=null){
                 count.innerHTML=++upto1;
-                if(upto1===450)
+                if(upto1===var1)
                 {
                     clearInterval(counts1);
                 }
@@ -32,7 +29,7 @@ if (isHomePage){
             var count= document.getElementById("myValue2");
             if (count!=null){
                 count.innerHTML=++upto2;
-                if(upto2===5)
+                if(upto2===var2)
                 {
                     clearInterval(counts2);
                 }
@@ -43,7 +40,7 @@ if (isHomePage){
             var count= document.getElementById("myValue3");
             if (count!=null){
                 count.innerHTML=++upto3;
-                if(upto3===10)
+                if(upto3===var3)
                 {
                     clearInterval(counts3);
                 }

@@ -1,4 +1,9 @@
 //Controller for page created by ./views/externalEvents.hbs
+import dotenv from 'dotenv';
+
+if (process.env.NODE_ENV != 'production'){
+   dotenv.config();
+}
 
 //Picking model from file .env
 const model = await import(`../model/model-${process.env.MODEL}.mjs`);
@@ -14,8 +19,7 @@ export async function externalEvents(){
 
     try {
         const events = await model.extEvent()
-        console.log(events);
-        //res.render('tasks', { tasks: tasks, model: process.env.MODEL });
+        return events;
      }
      catch (err) {
         res.send(err);
