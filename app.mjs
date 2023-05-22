@@ -16,7 +16,6 @@ app.use('/',routes);
 app.use(express.static('public'))
 
 // session
-
 // import 'dotenv/config';
 const MemoryStore = createMemoryStore(expSession);
 const sessionConf = {
