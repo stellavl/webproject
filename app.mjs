@@ -9,6 +9,7 @@ const PORT = process.env.PORT || '3000';
 
 //routes
 import routes from './routes/router.mjs'
+import { externalEvents } from './controller/externalEvents.mjs';
 app.use('/',routes);
 
 // Specifying that the "public" folder will contain the static files
@@ -62,4 +63,5 @@ app.post('/do-login', (req, res) => {
 
 
 //starting server
-const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}`) });
+const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}`, externalEvents() )});
+
