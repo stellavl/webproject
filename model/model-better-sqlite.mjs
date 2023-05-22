@@ -4,11 +4,12 @@
 const sqlite = require('better-sqlite3');
 const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
-//functions with queries
-//function1
-export let function1 = () => {
+//functions with queries - interaction with the database
 
-    const query = db.prepare("");
+//student wishes to become a member and fills the form in homepage
+export let register = (name,surname,email,phone,uni,dept) => {
+
+    const query = db.prepare("INSERT INTO ");
     let info;
     try{
         info = query.all();
@@ -33,10 +34,20 @@ export let createMessage = (studentEmail, message) => {
     }
 }
 
+//student applies for external event
+export let applyForExt = (studentEmail, extId) => {
+    
+
+
+}
+
+
+//member applies for internal event
+export let applyForInt = (memberEmail,intId) => {
 
 
 
-
+}
 
 
 
