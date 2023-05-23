@@ -1,3 +1,5 @@
+//Controller for page created by ./views/home.hbs
+
 import dotenv from 'dotenv';
 
 if (process.env.NODE_ENV != 'production'){

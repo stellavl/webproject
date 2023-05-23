@@ -3,8 +3,8 @@ const router = express.Router()
 
 const homeController = await import(`../controller/home.mjs`);
 const contactController = await import(`../controller/contact.mjs`)
-// const externalEventsController = await import(`../controller/externalEvents.mjs`)
-// const internalEventsController = await import(`../controller/internalEvents.mjs`)
+const externalEventsController = await import(`../controller/externalEvents.mjs`)
+const internalEventsController = await import(`../controller/internalEvents.mjs`)
 
 import { externalEvents } from '../controller/externalEvents.mjs';
 import { internalEvents } from '../controller/internalEvents.mjs';
@@ -164,15 +164,24 @@ router.get('/admin', async(req,res) => {
     }
 })
 
+//applying for internal event
+router.get('/internalEvents/:intId', internalEventsController.applyInt);
+
+////applying for external event
+router.get('/externalEvents/:extId', externalEventsController.applyExt);
 
 //submitting a message
-router.get('/contact/submitted', contactController.submitMessage);
-
+router.get('/contact/message-submitted', contactController.submitMessage);
 
 //applying for membership
+router.get('/home/submit-form', homeController.applyForMember);
+
+export default router;
+
+
+
+/* random αποτυχημενο παραδειγμα
 router.post('/home/submit-form', (req, res) => {
     homeController.applyForMember(req, res); // Call the applyForMember function with req and res
  });
- 
-
-export default router;
+ */

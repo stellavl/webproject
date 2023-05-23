@@ -7,7 +7,6 @@ import createMemoryStore from 'memorystore';
 const app = express()
 const PORT = process.env.PORT || '3000';
 
-//routes as router
 
 import { externalEvents } from './controller/externalEvents.mjs';
 import { applyForMember } from './controller/home.mjs';
@@ -38,7 +37,7 @@ app.engine('hbs',engine({ extname: 'hbs' }))
 app.set('view engine', 'hbs');
 
 //for POST requests
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 
 app.post('/do-login', (req, res) => {
     const emailGiven = req.body.email;
