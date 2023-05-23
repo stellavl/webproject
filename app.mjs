@@ -7,10 +7,13 @@ import createMemoryStore from 'memorystore';
 const app = express()
 const PORT = process.env.PORT || '3000';
 
-//routes
-import routes from './routes/router.mjs'
+//routes as router
+import router from './routes/router.mjs';
+
 import { externalEvents } from './controller/externalEvents.mjs';
-app.use('/',routes);
+import { applyForMember } from './controller/home.mjs';
+app.use('/',router);
+
 
 // Specifying that the "public" folder will contain the static files
 app.use(express.static('public'))
@@ -33,7 +36,7 @@ app.engine('hbs',engine({ extname: 'hbs' }))
 app.set('view engine', 'hbs');
 
 //for POST requests
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
 
 app.post('/do-login', (req, res) => {
     const emailGiven = req.body.email;
@@ -62,5 +65,5 @@ app.post('/do-login', (req, res) => {
 
 
 //starting server
-const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}`, externalEvents() )});
+const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}` )});
 

@@ -6,17 +6,18 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 //functions with queries - interaction with the database:
 
-
 // (1)---------------CREATE------------------
 
 //student wishes to become a member and fills the form in homepage
 export let register = (name,surname,email,phone,uni,dept) => {
 
-    const query = db.prepare("INSERT INTO ");
-    let info;
+    const query = db.prepare("INSERT INTO Student VALUES (?, ?, ?, ?, ?, ?)");
+    const query1 = db.prepare("INSERT INTO Member VALUES (?, null, null, null, ?, ?, ?, ?, ?)");
+    let info,memberInfo;
     try{
-        info = query.all();
-        return true;
+        info = query.run(email,name,surname,phone,uni,dept);
+        memberInfo = query1.run(email,name,surname,phone,uni,dept);
+        return memberInfo;
     }
     catch (err) {
         throw err;
@@ -85,7 +86,7 @@ export let universities = () => {
     }
 }
 
-//read all external events 
+/*read all external events 
 export let extEvent = () => {
     const query = db.prepare("SELECT * FROM External_Event WHERE start_date > CURRENT_DATE");
     let info;
@@ -97,6 +98,8 @@ export let extEvent = () => {
         throw err;
     }
 }
+
+*/
 
 //read all internal events 
 export let intEvent = () => {
