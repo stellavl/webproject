@@ -59,20 +59,6 @@ export let members = () => {
 
 }
 
-//all external events 
-export let extEvent = () => {
-
-    const query = db.prepare("SELECT * FROM External_Event WHERE start_date > (SELECT strftime('%d-%m-%Y', CURRENT_DATE))");
-    let info;
-    try{
-        info = query.all();
-        return info;
-    }
-    catch (err) {
-        throw err;
-    }
-}
-
 //read distinct universities
 export let universities = () => {
     const query = db.prepare("SELECT DISTINCT university FROM Member WHERE active='TRUE';");

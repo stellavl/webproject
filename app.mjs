@@ -3,6 +3,11 @@ import { engine } from 'express-handlebars'
 import expSession from 'express-session'
 import bcrypt from "bcrypt";
 import createMemoryStore from 'memorystore';
+import dotenv from 'dotenv';
+
+if (process.env.NODE_ENV != 'production'){
+   dotenv.config();
+}
 
 const app = express()
 const PORT = process.env.PORT || '3000';
@@ -19,7 +24,6 @@ app.use('/',router);
 app.use(express.static('public'))
 
 // session
-// import 'dotenv/config';
 const MemoryStore = createMemoryStore(expSession);
 const sessionConf = {
     secret: process.env.secret || "έναμεγάλοτυχαίοαλφαριθμητικό",
@@ -40,24 +44,27 @@ app.use(express.urlencoded({extended: true}));
 
 app.post('/do-login', (req, res) => {
     const emailGiven = req.body.email;
-    const givenPassword = req.body.password;
+    const passwordGiven = req.body.password;
 
     const myPassword = '123'; 
 
     const saltRounds=10;
 
     const myPasswordHash = bcrypt.hash(myPassword, saltRounds);
-    const givenPasswordHash = bcrypt.hash(myPassword, saltRounds);
+    const passwordGivenHash = bcrypt.hash(passwordGiven, saltRounds);
 
-    bcrypt.compare(myPasswordHash, givenPasswordHash, (err, result) => {
+    bcrypt.compare(myPasswordHash, passwordGivenHash, (err, result) => {
     if (err) {
-        // Handle the error
         console.error(err);
     }
     if (result) {
         req.session.authenticatedEmail = emailGiven;
+        console.log("Authenticated");
+        console.log("Email:",emailGiven,"\nPassword:'",passwordGiven,"\nHash:",passwordGivenHash)
         return res.redirect('/profile');
     } else {
+        console.log("NOT authenticated");
+        console.log("Email:",emailGiven,"\nPassword:'",passwordGiven,"\nHash:",passwordGivenHash)
         return res.redirect('/home');
     }
     });
