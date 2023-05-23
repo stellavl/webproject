@@ -8,11 +8,10 @@ const app = express()
 const PORT = process.env.PORT || '3000';
 
 //routes as router
-import router from './routes/router.mjs';
 
 import { externalEvents } from './controller/externalEvents.mjs';
 import { applyForMember } from './controller/home.mjs';
-app.use('/',router);
+
 
 
 // Specifying that the "public" folder will contain the static files
@@ -30,6 +29,9 @@ const sessionConf = {
 };
 app.use(expSession(sessionConf));
 
+import router from './routes/router.mjs';
+app.use('/',router);
+
 // Using Handlebars as a template engine
 app.engine('hbs',engine({ extname: 'hbs' }))
 // Activating the template engine with res.render()
@@ -46,7 +48,6 @@ app.post('/do-login', (req, res) => {
     const saltRounds=10;
 
     const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
-    const givenPasswordHash = bcrypt.hashSync(givenPassword, saltRounds);
     const storedSalt = myPasswordHash.slice(0, 29);
 
     bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
