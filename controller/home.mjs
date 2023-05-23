@@ -32,7 +32,7 @@ export async function universities(){
 export async function applyForMember(req,res){
 
    try {
-      console.log("no:(");
+      console.log("trying:(");
       console.log(req);
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
          req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, req.body.ApplicationDepartment)

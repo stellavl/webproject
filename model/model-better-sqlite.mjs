@@ -43,11 +43,32 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
 //student applies for external event
 export let applyForExt = (studentEmail, extId) => {
 
+    const query = db.prepare("INSERT INTO student-event VALUES (?, ?)");
+    let info;
+    try{
+        info = query.run(studentEmail, extId);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+
 }
 
 //member applies for internal event
 export let applyForInt = (memberEmail,intId) => {
 
+    const query = db.prepare("INSERT INTO member-internal_event VALUES (?, ?)");
+    let info;
+    try{
+        info = query.run(memberEmail, intId);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+
+    
 }
 
 

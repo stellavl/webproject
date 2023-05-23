@@ -8,11 +8,6 @@ if (process.env.NODE_ENV != 'production'){
 //Picking model from file .env
 const model = await import(`../model/model-${process.env.MODEL}.mjs`);
 
-//applying for external event
-export async function applyExt(id) {
-
-    
-}
 
 //all external events
 export async function externalEvents(){
@@ -26,4 +21,23 @@ export async function externalEvents(){
      }
 
 }
+
+
+//applying for external event
+export async function applyExt(req,res) {
+
+   try {
+      const application = await model.applyForExt(); //εδω να γίνεται έλεγχος για το id του user
+      //θέλουμε να παίρνει 2 ορίσματα, studentEmail και extId, από το req, ανάλογα αν είναι logged in 
+      //ο χρήστης ή όχι. 
+      return application;
+   }
+   catch (err) {
+      console.log("an error occured");
+      res.send(err);
+   }
+    
+}
+
+
 
