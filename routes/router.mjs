@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 
-//const homeController = await import(`../controller/home.mjs`);
+const homeController = await import(`../controller/home.mjs`);
 const contactController = await import(`../controller/contact.mjs`)
 // const externalEventsController = await import(`../controller/externalEvents.mjs`)
 // const internalEventsController = await import(`../controller/internalEvents.mjs`)
@@ -171,9 +171,8 @@ router.get('/contact/submitted', contactController.submitMessage);
 
 //applying for membership
 router.post('/home/submit-form', (req, res) => {
-    applyForMember(req, res); // Call the applyForMember function with req and res
+    homeController.applyForMember(req, res); // Call the applyForMember function with req and res
  });
  
-
 
 export default router;

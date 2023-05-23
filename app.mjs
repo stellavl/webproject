@@ -68,3 +68,11 @@ app.post('/do-login', (req, res) => {
 
 //starting server
 const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}`)});
+
+/*
+app.post('/home/submit-form', (req, res) => {
+    console.log("hi")
+    homeController.applyForMember(req, res); // Call the applyForMember function with req and res
+    console.log("geia")
+ });
+ */
