@@ -39,6 +39,13 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
 //read all members
 export let members = () => {
     const query = db.prepare("SELECT * FROM Member WHERE active='TRUE';");
+
+}
+
+//all external events 
+export let extEvent = () => {
+
+    const query = db.prepare("SELECT * FROM External_Event WHERE start_date > (SELECT strftime('%d-%m-%Y', CURRENT_DATE))");
     let info;
     try{
         info = query.all();
