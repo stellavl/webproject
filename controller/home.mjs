@@ -27,3 +27,29 @@ export async function universities(){
        res.send(err);
     }
 }
+
+//applying for membership
+export async function applyForMember(req,res){
+
+   try {
+      console.log("no:(");
+      console.log(req);
+      const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
+         req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, req.body.ApplicationDepartment)
+      //return newMember? ig no
+      console.log("done");
+      return true;
+   }
+   catch (err) {
+      console.log("an error occured");
+      res.send(err);
+   }
+
+}
+
+
+
+
+
+
+
