@@ -10,6 +10,7 @@ import { externalEvents } from '../controller/externalEvents.mjs';
 import { internalEvents } from '../controller/internalEvents.mjs';
 import { members, universities } from '../controller/home.mjs';
 import { memberApplicants, studentMessages } from '../controller/admin.mjs';
+import { checkAuthenticated } from '../controller/profile.mjs';
 
 router.get('/', (req,res) => {
     res.redirect('/home')
@@ -119,13 +120,6 @@ router.get('/contact', (req,res) => {
     });
 });
 
-const checkAuthenticated = (req, res, next) => {
-    if (req.session.authenticatedEmail)
-        next()
-    else
-    return res.redirect('/home')
-}
-
 router.get('/profile',
     checkAuthenticated,
     (req,res) => {
@@ -173,14 +167,5 @@ router.get('/admin', async(req,res) => {
 
 //submitting a message
 router.get('/contact/submitted', contactController.submitMessage);
-
-
-
-
-
-
-
-
-
 
 export default router;
