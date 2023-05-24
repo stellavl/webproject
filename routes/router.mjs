@@ -21,7 +21,7 @@ router.get('/', (req,res) => {
 
 router.get('/home', async (req,res) => {
     try {
-        // const memberData = req.session.memberData;
+        const memberData = req.session.memberData;
         const myMembers =  await members(); 
         const myExternalEvents = await externalEvents();
         const myInternalEvents = await internalEvents();
@@ -38,30 +38,38 @@ router.get('/home', async (req,res) => {
             numberOfMembers: myMembers.length, 
             numberOfEvents: myExternalEvents.length+myInternalEvents.length,
             numberOfUniversities: myUniversities.length,
-            loggedIn: req.session.authenticatedEmail,
-            // memberData: memberData,
+            memberData: memberData,
         });
     } 
     catch (err) {
         res.send(err);
     }
 });
+
 router.get('/about', (req,res) => {
-    res.render('about',{
-        atHome: false,
-        atAbout: true,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: false,
-        atProfile: false,
-        atAdmin: false,
-    });
+    try{
+        const memberData = req.session.memberData;
+        res.render('about',{
+            atHome: false,
+            atAbout: true,
+            atExternalEvents: false,
+            atInternalEvents: false,
+            atPartners: false,
+            atContact: false,
+            atProfile: false,
+            atAdmin: false,
+            memberData: memberData,
+        });
+    }
+    catch (err) {
+        res.send(err);
+    } 
 });
 
 router.get('/externalEvents', async(req,res) => {
     try {
         const events =  await externalEvents(); 
+        const memberData = req.session.memberData;
         res.render('externalEvents',{
             atHome: false,
             atAbout: false,
@@ -72,6 +80,7 @@ router.get('/externalEvents', async(req,res) => {
             atProfile: false,
             atAdmin: false,
             events: events,
+            memberData: memberData,
         });
     } 
     catch (err) {
@@ -82,6 +91,7 @@ router.get('/externalEvents', async(req,res) => {
 router.get('/internalEvents', async (req,res) => {
     try{
         const events =  await internalEvents(); 
+        const memberData = req.session.memberData;
         res.render('internalEvents',{
             atHome: false,
             atAbout: false,
@@ -92,6 +102,7 @@ router.get('/internalEvents', async (req,res) => {
             atProfile: false,
             atAdmin: false,
             events:events,
+            memberData: memberData,
         });
     } 
     catch (err) {
@@ -100,35 +111,48 @@ router.get('/internalEvents', async (req,res) => {
 });
 
 router.get('/partners', (req,res) => {
-    res.render('partners',{
-        atHome: false,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: true,
-        atContact: false,
-        atProfile: false,
-        atAdmin: false,
-    });
+    try{
+        const memberData = req.session.memberData;
+        res.render('partners',{
+            atHome: false,
+            atAbout: false,
+            atExternalEvents: false,
+            atInternalEvents: false,
+            atPartners: true,
+            atContact: false,
+            atProfile: false,
+            atAdmin: false,
+            memberData: memberData,
+        });
+    }
+    catch (err) {
+        res.send(err);
+    }      
 });
 
 router.get('/contact', (req,res) => {
-    res.render('contact',{
-        atHome: false,
-        atAbout: false,
-        atExternalEvents: false,
-        atInternalEvents: false,
-        atPartners: false,
-        atContact: true,
-        atProfile: false,
-        atAdmin: false,
-    });
+    try{
+        const memberData = req.session.memberData;
+        res.render('contact',{
+            atHome: false,
+            atAbout: false,
+            atExternalEvents: false,
+            atInternalEvents: false,
+            atPartners: false,
+            atContact: true,
+            atProfile: false,
+            atAdmin: false,
+            memberData: memberData,
+        });   
+    }
+    catch (err) {
+        res.send(err);
+    }    
 });
 
 router.get('/profile', checkAuthenticated, (req,res) => {
     try {
         const memberData = req.session.memberData;
-        delete req.session.memberData;
         res.render('profile',{
             atHome: false,
             atAbout: false,
@@ -153,8 +177,7 @@ router.get('/admin', async(req,res) => {
         const intEvents = await internalEvents();
         const applicants = await memberApplicants();
         const messages = await studentMessages();
-
-        
+    
         res.render('admin',{
             atHome: false,
             atAbout: false,
@@ -205,7 +228,7 @@ router.post('/do-login', async(req, res) => {
                     console.error(err);
                 }
                 if (hashedPassword === myPasswordHash)  {
-                    req.session.authenticatedEmail = emailGiven;
+                    // req.session.authenticatedEmail = emailGiven;
                     return res.redirect('/profile');
                 } else {
                     console.log("wrong password")
