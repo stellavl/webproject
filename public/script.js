@@ -120,3 +120,53 @@ if (isAdminPage){
           }
     });
 }
+
+//home form
+function validateFormInputs() {
+
+    const applicationNameInput = document.querySelector('[name="ApplicationName"]');
+    const applicationSurnameInput = document.querySelector('[name="ApplicationSurname"]');
+    const applicationEmailInput = document.querySelector('[name="ApplicationEmail"]');
+    const applicationPhoneNumberInput = document.querySelector('[name="ApplicationPhoneNumber"]');
+    const applicationUniversityInput = document.querySelector('[name="ApplicationUniversity"]');
+    const applicationDepartmentInput = document.querySelector('[name="ApplicationDepartment"]');
+
+    if (applicationNameInput.value.trim() === '') {
+      // Display an error message or handle the validation failure
+      alert('Please fill in the Application Name field.');
+      return false;
+    }
+  
+    if (applicationSurnameInput.value.trim() === '') {
+        // Display an error message or handle the validation failure
+        alert('Please fill in the Application Surname field.');
+        return false;
+    }
+
+    if (applicationEmailInput.value.trim() === '') {
+      // Display an error message or handle the validation failure
+      alert('Please fill in the Application Email field.');
+      return false;
+    }
+
+    if (applicationPhoneNumberInput.value.trim() === '') {
+        // Display an error message or handle the validation failure
+        alert('Please fill in the Application Phone Number field.');
+        return false;
+    }
+
+    if (applicationUniversityInput.value.trim() === '') {
+        // Display an error message or handle the validation failure
+        alert('Please fill in the Application University field.');
+        return false;
+    }
+
+    if (applicationDepartmentInput.value.trim() === '') {
+        // Display an error message or handle the validation failure
+        alert('Please fill in the Application Department field.');
+        return false;
+    }
+    
+    return true;
+
+  }

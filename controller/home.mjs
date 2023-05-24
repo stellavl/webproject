@@ -30,12 +30,13 @@ export async function universities(){
     }
 }
 
+
 //applying for membership
 export async function applyForMember(req,res){
 
    try {
       console.log("trying:(");
-      console.log(req);
+      console.log(req.body);
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
          req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, req.body.ApplicationDepartment)
       //return newMember? ig no
