@@ -8,7 +8,7 @@ if (process.env.NODE_ENV != 'production'){
 const model = await import(`../model/model-${process.env.MODEL}.mjs`);
 
 export async function checkAuthenticated (req, res, next){
-    if (req.session.authenticatedEmail)
+    if (req.session.memberData)
         next()
     else
         return res.redirect('/home')
