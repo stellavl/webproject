@@ -2,7 +2,7 @@
 if (isHomePage){
     function myNumbersCounter(){
     
-        let delay1=10;
+        let delay1=100;
         let delay2=delay1*var1/var2;
         let delay3=delay1*var1/var3;
     

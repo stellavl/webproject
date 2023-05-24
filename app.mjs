@@ -56,10 +56,8 @@ app.post('/do-login', (req, res) => {
         }
         if (hashedPassword === myPasswordHash)  {
             req.session.authenticatedEmail = emailGiven;
-            console.log("Authenticated");
             return res.redirect('/profile');
         } else {
-            console.log("NOT authenticated");
             return res.redirect('/home');
         }
     });

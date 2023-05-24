@@ -36,9 +36,10 @@ router.get('/home', async (req,res) => {
             numberOfEvents: myExternalEvents.length+myInternalEvents.length,
             numberOfUniversities: myUniversities.length,
         });
+
+
     } 
     catch (err) {
-        console.log("error rendering home")
         res.send(err);
     }
 });

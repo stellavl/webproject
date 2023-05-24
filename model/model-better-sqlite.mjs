@@ -55,7 +55,14 @@ export let applyForInt = (memberEmail,intId) => {
 //read all members
 export let members = () => {
     const query = db.prepare("SELECT * FROM Member WHERE active='TRUE';");
-
+    let info;
+    try{
+        info = query.all();
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
 }
 
 //read distinct universities
@@ -80,7 +87,6 @@ export let extEvent = () => {
         return info;
     }
     catch (err) {
-        console.log("not reading data from external event");
         throw err;
     }
 }
