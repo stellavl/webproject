@@ -8,6 +8,8 @@ const contactController = await import(`../controller/contact.mjs`)
 const externalEventsController = await import(`../controller/externalEvents.mjs`)
 const internalEventsController = await import(`../controller/internalEvents.mjs`)
 
+const adminController = await import(`../controller/admin.mjs`);
+
 import { externalEvents } from '../controller/externalEvents.mjs';
 import { internalEvents } from '../controller/internalEvents.mjs';
 import { members, universities } from '../controller/home.mjs';
@@ -317,9 +319,9 @@ router.post('/contact/message-submitted', contactController.submitMessage);
 //applying for membership
 router.post('/home/submit-form', homeController.applyForMember);
 
+//admin accepts student applying for membership
+router.get('/admin/application-accepted', adminController.newMemberAccepted);
 
-//req session
-//router.get('/externalEvents/session', (req, res) => { console.log(req.session) });
 
 export default router;
 

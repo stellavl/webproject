@@ -173,7 +173,7 @@ export let studentMessages = () => {
 
 
 //admin accepts student applying for membership (U)
-export let ApplicationAccepted = () => {
+export let applicationAccepted = () => {
 
     try{
 
@@ -183,6 +183,7 @@ export let ApplicationAccepted = () => {
         try{
             const query1 = db.prepare("UPDATE Member SET active=1 WHERE (email=?)");
             Accepted = query1.run(toBeAccepted);
+            return true;
         }
         catch (err) {
             throw err;

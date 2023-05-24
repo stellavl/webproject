@@ -29,3 +29,16 @@ export async function studentMessages(){
     }
 
 }
+
+//admin accepts student applying for membership
+export async function newMemberAccepted(){
+
+   try{
+      const accepted = await model.applicationAccepted()
+      return accepted;
+   }
+   catch (err) {
+      res.send(err);
+   }
+
+}
