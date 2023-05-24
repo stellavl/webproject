@@ -39,7 +39,7 @@ export async function applyForMember(req,res){
       console.log(req.body);
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
          req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, req.body.ApplicationDepartment)
-      //return newMember? ig no
+      
       console.log("done");
       return true;
    }

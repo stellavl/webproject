@@ -250,7 +250,7 @@ router.get('/externalEvents/:extId', externalEventsController.applyExt);
 router.get('/contact/message-submitted', contactController.submitMessage);
 
 //applying for membership
-router.get('/home/submit-form', homeController.applyForMember);
+router.post('/home/submit-form', homeController.applyForMember);
 
 export default router;
 
