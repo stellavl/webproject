@@ -28,17 +28,24 @@ export let register = (name,surname,email,phone,uni,dept) => {
 //student submits a message and message is entered in the database
 export let createMessage = (studentEmail, message, firstName, lastName) => {
 
-    const query = db.prepare("INSERT INTO Message VALUES (null, ?, ?, CURRENT_DATE)");
     const query1 = db.prepare("INSERT INTO Student VALUES (?, ?, ?, null, null, null)");
-    let info,info1;
+    let info1;
     try{
-        info = query.run(message,studentEmail);
         info1 = query1.run(studentEmail,firstName,lastName);
-        return true;
     }
     catch (err) {
         throw err;
     }
+
+    const query = db.prepare("INSERT INTO Message VALUES (null, ?, ?, CURRENT_DATE)");
+    let info;
+    try{
+        info = query.run(message,studentEmail);
+    }
+    catch (err) {
+        throw err;
+    }
+    
 }
 
 //student applies for external event

@@ -23,7 +23,7 @@ export async function internalEvents(){
 export async function applyInt(req,res) {
 
    try {
-      const application = await model.applyForInt(req.body.myModal ); //εδω να γίνεται έλεγχος για το id του user
+      const application = await model.applyForInt(     ); //εδω να γίνεται έλεγχος για το id του user
       //θέλουμε να παίρνει 2 ορίσματα, memberEmail και intId, από το req, ανάλογα αν είναι logged in 
       //ο χρήστης ή όχι. 
       return application;

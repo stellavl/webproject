@@ -312,17 +312,16 @@ router.get('/internalEvents/:intId', internalEventsController.applyInt);
 router.get('/externalEvents/:extId', externalEventsController.applyExt);
 
 //submitting a message
-router.get('/contact/message-submitted', contactController.submitMessage);
+router.post('/contact/message-submitted', contactController.submitMessage);
 
 //applying for membership
 router.post('/home/submit-form', homeController.applyForMember);
+
+//req session
+//router.get('/externalEvents/session', (req, res) => { console.log(req.session) });
 
 export default router;
 
 
 
-/* random αποτυχημενο παραδειγμα
-router.post('/home/submit-form', (req, res) => {
-    homeController.applyForMember(req, res); // Call the applyForMember function with req and res
- });
- */
+

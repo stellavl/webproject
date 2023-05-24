@@ -35,12 +35,12 @@ export async function universities(){
 export async function applyForMember(req,res){
 
    try {
-      console.log("trying:(");
+      //console.log("trying:(");
       console.log(req.body);
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
          req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, req.body.ApplicationDepartment)
       
-      console.log("done");
+      //console.log("done");
       return true;
    }
    catch (err) {

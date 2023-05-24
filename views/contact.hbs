@@ -3,25 +3,25 @@
 			<div class="col mt-4">
 				<h3>Feeling like getting in touch with us? 💬 <br> Contact us via filling the form below: </h3>
 			</div>
-			<form>
+			<form method="post" action="/contact/message-submitted">
 				<div class="row py-4">
 					<div class="col ">
-						<input type="text" class="form-control myContactInfo" id="ContactName" placeholder="First name" >
+						<input type="text" class="form-control myContactInfo" name="ContactName" placeholder="First name" >
 					</div>
 					<div class="col">
-						<input type="text" class="form-control myContactInfo" id="ContactSurname" placeholder="Last name">
-					</div>
-				</div>
-
-				<div class="row pb-4">
-					<div class="col">
-						<input type="email" class="form-control myContactInfo" id="ContactEmail" placeholder="Email">
+						<input type="text" class="form-control myContactInfo" name="ContactSurname" placeholder="Last name">
 					</div>
 				</div>
 
 				<div class="row pb-4">
 					<div class="col">
-                        <textarea class="form-control myContactInfo" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
+						<input type="email" class="form-control myContactInfo" name="ContactEmail" placeholder="Email">
+					</div>
+				</div>
+
+				<div class="row pb-4">
+					<div class="col">
+                        <textarea class="form-control myContactInfo" id="exampleFormControlTextarea1" name="Message" rows="3" placeholder="Message"></textarea>
                     </div>
 					
 				  </div>
