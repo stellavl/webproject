@@ -317,6 +317,7 @@ router.post('/contact/message-submitted', contactController.submitMessage);
 //applying for membership
 router.post('/home/submit-form', homeController.applyForMember);
 
+
 //req session
 //router.get('/externalEvents/session', (req, res) => { console.log(req.session) });
 

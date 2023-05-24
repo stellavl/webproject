@@ -173,7 +173,28 @@ export let studentMessages = () => {
 
 
 //admin accepts student applying for membership (U)
+export let ApplicationAccepted = () => {
 
+    try{
+
+        const toBeAccepted = db.prepare("SELECT email FROM Member WHERE active=0");
+        let Accepted;
+
+        try{
+            const query1 = db.prepare("UPDATE Member SET active=1 WHERE (email=?)");
+            Accepted = query1.run(toBeAccepted);
+        }
+        catch (err) {
+            throw err;
+        }
+
+    }
+
+    catch (err) {
+        throw err;
+    }
+    
+}
 
 //admin deletes event from site - event becomes inactive (D)
 
