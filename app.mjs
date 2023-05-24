@@ -1,12 +1,10 @@
 import express from 'express'
 import { engine } from 'express-handlebars'
 import expSession from 'express-session'
-import bcrypt from "bcrypt";
 import createMemoryStore from 'memorystore';
 
 const app = express()
 const PORT = process.env.PORT || '3000';
-
 
 import { externalEvents } from './controller/externalEvents.mjs';
 import { applyForMember } from './controller/home.mjs';
@@ -35,33 +33,6 @@ app.use('/',router);
 app.engine('hbs',engine({ extname: 'hbs' }))
 // Activating the template engine with res.render()
 app.set('view engine', 'hbs');
-
-//for POST requests
-app.use(express.urlencoded({extended: false}));
-
-app.post('/do-login', (req, res) => {
-    const emailGiven = req.body.email;
-    const givenPassword = req.body.password;
-    const myPassword = '123'; 
-
-    const saltRounds=10;
-
-    const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
-    const storedSalt = myPasswordHash.slice(0, 29);
-
-    bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
-        if (err) {
-            // Handle the error
-            console.error(err);
-        }
-        if (hashedPassword === myPasswordHash)  {
-            req.session.authenticatedEmail = emailGiven;
-            return res.redirect('/profile');
-        } else {
-            return res.redirect('/home');
-        }
-    });
-});
 
 
 //starting server

@@ -1,4 +1,6 @@
 import express from 'express'
+import bcrypt from "bcrypt";
+
 const router = express.Router()
 
 const homeController = await import(`../controller/home.mjs`);
@@ -10,7 +12,8 @@ import { externalEvents } from '../controller/externalEvents.mjs';
 import { internalEvents } from '../controller/internalEvents.mjs';
 import { members, universities } from '../controller/home.mjs';
 import { memberApplicants, studentMessages } from '../controller/admin.mjs';
-import { checkAuthenticated } from '../controller/profile.mjs';
+import { checkAuthenticated } from '../controller/login.mjs';
+import { memberLogin } from '../controller/login.mjs';
 
 router.get('/', (req,res) => {
     res.redirect('/home')
@@ -22,7 +25,6 @@ router.get('/home', async (req,res) => {
         const myExternalEvents = await externalEvents();
         const myInternalEvents = await internalEvents();
         const myUniversities =  await universities();
- 
         res.render('home',{
             atHome: true,
             atAbout: false,
@@ -35,9 +37,8 @@ router.get('/home', async (req,res) => {
             numberOfMembers: myMembers.length, 
             numberOfEvents: myExternalEvents.length+myInternalEvents.length,
             numberOfUniversities: myUniversities.length,
+            loggedIn: req.session.authenticatedEmail,
         });
-
-
     } 
     catch (err) {
         res.send(err);
@@ -165,6 +166,48 @@ router.get('/admin', async(req,res) => {
         res.send(err);
     }
 })
+
+//for POST requests
+router.use(express.urlencoded({extended: true}));
+
+router.post('/do-login', async(req, res) => {
+    const emailGiven = req.body.email;
+    const givenPassword = req.body.password;
+    if (emailGiven===''||givenPassword===''){
+        console.log("Missing Credentials")
+        return res.redirect('/home');  
+    }
+    else{
+        const memberData =  await memberLogin(req,res); 
+        if (memberData===null){
+            console.log("email not in database")
+            return res.redirect('/home');  
+        }
+        else {
+            const myPassword = memberData[0].password;
+    
+            const saltRounds=10;
+    
+            const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
+            const storedSalt = myPasswordHash.slice(0, 29);
+    
+            bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
+                if (err) {
+                    // Handle the error
+                    console.error(err);
+                }
+                if (hashedPassword === myPasswordHash)  {
+                    req.session.authenticatedEmail = emailGiven;
+                    return res.redirect('/profile');
+                } else {
+                    console.log("wrong password")
+                    return res.redirect('/home');
+                }
+             });
+        }
+    }
+    
+});
 
 //applying for internal event
 router.get('/internalEvents/:intId', internalEventsController.applyInt);
