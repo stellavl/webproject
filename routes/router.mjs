@@ -90,7 +90,7 @@ router.get('/externalEvents', async(req,res) => {
             atAdmin: false,
             events: events,
             memberData: memberData,
-            adminData: adminData
+            adminData: adminData,
         });
     } 
     catch (err) {

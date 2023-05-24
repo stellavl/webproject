@@ -18,7 +18,11 @@
                           <h5 class="card-title"><b>{{name}}</b></h5>
                           <h6>{{place}}, {{start_date}}</h6>
                           <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{id}}" class="text-to-click"><b>see more....</b></a></p>
-                          <a href="#" class="btn btn-primary"><b>apply</b></a>
+                            {{#if adminData}}
+                              <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
+                            {{else}}
+                              <button type="submit" class="btn btn-dark mb-3">apply</button>
+                            {{/if}}
                         </center>
                       </div>
                     </div>    
@@ -32,8 +36,12 @@
                             <p>{{description}}</p>
                           </div>
                           <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Apply</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Back</button>
+                           {{#if adminData}}
+                            <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
+                          {{else}}
+                            <button type="submit" class="btn btn-dark mb-3">apply</button>
+                          {{/if}}
+                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
                           </div>
                         </div>
                       </div>
