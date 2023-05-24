@@ -103,8 +103,10 @@ router.get('/internalEvents', async (req,res) => {
         const events =  await internalEvents(); 
         const memberData = req.session.memberData;
         const adminData = req.session.adminData;
+        console.log(adminData);
         req.session.returnTo = req.originalUrl;
         res.render('internalEvents',{
+            // adminData: [ { email: 'admin@sdo.com', password: '1234' } ],
             atHome: false,
             atAbout: false,
             atExternalEvents: false,
@@ -115,7 +117,7 @@ router.get('/internalEvents', async (req,res) => {
             atAdmin: false,
             events:events,
             memberData: memberData,
-            adminData: adminData
+            adminData: adminData,
         });
     } 
     catch (err) {

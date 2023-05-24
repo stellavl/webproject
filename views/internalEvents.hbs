@@ -19,7 +19,11 @@
                 {{#if adminData}}
                   <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
                 {{else}}
-                  <button type="submit" class="btn btn-dark mb-3">apply</button>
+                  {{#if memberData}}
+                    <button type="submit" class="btn btn-dark mb-3">apply</button>
+                    {{else}}
+                    <button type="submit" class="btn btn-dark mb-3 disabled">login to apply</button>
+                    {{/if}}
                 {{/if}}
               </center> 
             </div>
