@@ -15,12 +15,12 @@
               <center>
                 <h5 class="card-title"><b>{{name}}</b></h5>
                 <h6>{{place}}, {{start_date}}</h6>
-                <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal1" class="text-to-click"><b>see more....</b></a></p>
-                <a href="#" class="btn btn-primary"><b>apply</b></a> 
+                <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{id}}" class="text-to-click"><b>see more....</b></a></p>
+                <a href="#" name="int" class="btn btn-primary"><b>apply</b></a> 
               </center> 
             </div>
           </div>
-          <div class="modal events-modals" id="myModal1" style="display: none;">
+          <div class="modal events-modals" id="myModal{{id}}" style="display: none;">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">

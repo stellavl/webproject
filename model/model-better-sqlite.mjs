@@ -12,10 +12,12 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 //student wishes to become a member and fills the form in homepage
 export let register = (name,surname,email,phone,uni,dept) => {
 
-    const query = db.prepare("INSERT INTO ");
-    let info;
+    const query = db.prepare("INSERT INTO Student VALUES(?, ?, ?, ?, ?, ?)");
+    const query1 = db.prepare("INSERT INTO Member VALUES(?, null, CURRENT_DATE, null, ?, ?, ?, ?, ?)");
+    let info,info1;
     try{
-        info = query.all();
+        info = query.run(email,name,surname,phone,uni,dept);
+        info1 = query1.run(email,name,surname,phone,uni,dept);
         return true;
     }
     catch (err) {
