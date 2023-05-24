@@ -38,6 +38,7 @@ router.get('/home', async (req,res) => {
         });
     } 
     catch (err) {
+        console.log("error rendering home")
         res.send(err);
     }
 });

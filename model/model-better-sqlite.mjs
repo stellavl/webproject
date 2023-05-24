@@ -6,18 +6,17 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 //functions with queries - interaction with the database:
 
+
 // (1)---------------CREATE------------------
 
 //student wishes to become a member and fills the form in homepage
 export let register = (name,surname,email,phone,uni,dept) => {
 
-    const query = db.prepare("INSERT INTO Student VALUES (?, ?, ?, ?, ?, ?)");
-    const query1 = db.prepare("INSERT INTO Member VALUES (?, null, null, null, ?, ?, ?, ?, ?)");
-    let info,memberInfo;
+    const query = db.prepare("INSERT INTO ");
+    let info;
     try{
-        info = query.run(email,name,surname,phone,uni,dept);
-        memberInfo = query1.run(email,name,surname,phone,uni,dept);
-        return memberInfo;
+        info = query.all();
+        return true;
     }
     catch (err) {
         throw err;
@@ -43,32 +42,11 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
 //student applies for external event
 export let applyForExt = (studentEmail, extId) => {
 
-    const query = db.prepare("INSERT INTO student-event VALUES (?, ?)");
-    let info;
-    try{
-        info = query.run(studentEmail, extId);
-        return info;
-    }
-    catch (err) {
-        throw err;
-    }
-
 }
 
 //member applies for internal event
 export let applyForInt = (memberEmail,intId) => {
 
-    const query = db.prepare("INSERT INTO member-internal_event VALUES (?, ?)");
-    let info;
-    try{
-        info = query.run(memberEmail, intId);
-        return info;
-    }
-    catch (err) {
-        throw err;
-    }
-
-    
 }
 
 
@@ -93,7 +71,7 @@ export let universities = () => {
     }
 }
 
-/*read all external events 
+//read all external events 
 export let extEvent = () => {
     const query = db.prepare("SELECT * FROM External_Event WHERE start_date > CURRENT_DATE");
     let info;
@@ -102,11 +80,10 @@ export let extEvent = () => {
         return info;
     }
     catch (err) {
+        console.log("not reading data from external event");
         throw err;
     }
 }
-
-*/
 
 //read all internal events 
 export let intEvent = () => {
