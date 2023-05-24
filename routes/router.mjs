@@ -21,6 +21,7 @@ router.get('/', (req,res) => {
 
 router.get('/home', async (req,res) => {
     try {
+        // const memberData = req.session.memberData;
         const myMembers =  await members(); 
         const myExternalEvents = await externalEvents();
         const myInternalEvents = await internalEvents();
@@ -38,6 +39,7 @@ router.get('/home', async (req,res) => {
             numberOfEvents: myExternalEvents.length+myInternalEvents.length,
             numberOfUniversities: myUniversities.length,
             loggedIn: req.session.authenticatedEmail,
+            // memberData: memberData,
         });
     } 
     catch (err) {
@@ -123,9 +125,10 @@ router.get('/contact', (req,res) => {
     });
 });
 
-router.get('/profile',
-    checkAuthenticated,
-    (req,res) => {
+router.get('/profile', checkAuthenticated, (req,res) => {
+    try {
+        const memberData = req.session.memberData;
+        delete req.session.memberData;
         res.render('profile',{
             atHome: false,
             atAbout: false,
@@ -135,7 +138,13 @@ router.get('/profile',
             atContact: false,
             atProfile: true,
             atAdmin: false,
-   });
+            memberData: memberData,
+        });
+        
+    }
+    catch (err) {
+        res.send(err);
+    } 
 });
 
 router.get('/admin', async(req,res) => {
@@ -184,10 +193,9 @@ router.post('/do-login', async(req, res) => {
             return res.redirect('/home');  
         }
         else {
+            req.session.memberData = memberData;
             const myPassword = memberData[0].password;
-    
             const saltRounds=10;
-    
             const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
             const storedSalt = myPasswordHash.slice(0, 29);
     
