@@ -25,7 +25,11 @@
                     </div>
 					
 				  </div>
-				<button type="submit" class="btn btn-dark mb-3">Submit</button>
+				{{#if adminData}}
+					<button type="submit" class="btn btn-dark mb-3 disabled">Submit</button>
+				{{else}}
+					<button type="submit" class="btn btn-dark mb-3">Submit</button>
+				{{/if}}
 
 			  </form>
 		</div>

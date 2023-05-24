@@ -18,7 +18,11 @@
                           <h5 class="card-title"><b>{{name}}</b></h5>
                           <h6>{{place}}, {{start_date}}</h6>
                           <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal5" class="text-to-click"><b>see more....</b></a></p>
-                          <a href="#" class="btn btn-primary"><b>apply</b></a>
+                          {{#if adminData}}
+                            <a href="#" class="btn btn-primary disabled"><b>apply</b></a>
+                          {{else}}
+                            <a href="#" class="btn btn-primary"><b>apply</b></a>
+                          {{/if}}
                         </center>
                       </div>
                     </div>    

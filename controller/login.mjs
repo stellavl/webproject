@@ -10,17 +10,19 @@ const model = await import(`../model/model-${process.env.MODEL}.mjs`);
 export async function checkAuthenticated (req, res, next){
     if (req.session.memberData)
         next()
-    else
+    else{
         console.log("only for members")
         return res.redirect('/home')
+    }
 }
 
 export async function checkAdmin (req, res, next){
   if (req.session.adminData)
       next()
-  else
+  else{
       console.log("only for admin view")
       return res.redirect('/home')
+  }
 }
 
 export async function memberLogin(req, res) {
