@@ -84,8 +84,16 @@
 						<input type="text" class="form-control" name="ApplicationDepartment" placeholder="Enter your Department (e.g. Physics)" required>
 					</div>
 					
-				  </div>
-				<button type="submit" class="btn btn-dark mb-5 mt-3">Submit</button>
+				</div>
+				{{#if adminData}}
+					<button type="submit" class="btn btn-dark mb-3 disabled">Submit</button>
+				{{else}}
+					{{#if memberData}}
+						<button type="submit" class="btn btn-dark mb-3 disabled">Submit</button>
+						{{else}}
+							<button type="submit" class="btn btn-dark mb-5 mt-3">Submit</button>
+						{{/if}}
+				{{/if}} 
 
 			  </form>
 		</div>
