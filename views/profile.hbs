@@ -1,4 +1,5 @@
 <main>
+	{{#each memberData}}
         <div class="container">
             <div class="row mt-5">
                 <h3 class="myRedText mt-4"><b>My Profile</b></h3>
@@ -10,28 +11,28 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <h6>First Name</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true">Stella</p>
+                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true">{{this.first_name}}</p>
                                     </div>
                                     <div class="col-6">
                                         <h6>Last Name</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true">Vlassi</p>
+                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true">{{this.last_name}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
                                         <h6>Email address</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1 text-wrap" contenteditable="true">stella.vlassi@gmail.com</p>
+                                        <p class="myProfileData border border-secondary rounded px-2 py-1 text-wrap" contenteditable="true">{{this.email}}</p>
                                     </div>
                                     <div class="col-6">
                                         <h6>Password</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true">*********</p>
+                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true">{{this.password}}</p>
                                     </div>
                                 </div>
 								<div class="row">
 									<div class="col-6">
 										<h6>Phone Number</h6>
 										<div class="d-flex">
-											<p class="myProfileData border border-secondary rounded px-2 py-1 flex-grow-1 align-self-center" contenteditable="true">6984009282</p>
+											<p class="myProfileData border border-secondary rounded px-2 py-1 flex-grow-1 align-self-center" contenteditable="true">{{this.phone}}</p>
 										</div>
 									</div>
 									<div class="col-6 d-flex align-items-center justify-content-center">
@@ -58,10 +59,10 @@
 								</button>
 							</div>
                             <div class="row justify-content-end">
-                                <p class="text-faded pt-2 text-center">Member since 2022</p>
+                                <p class="text-faded pt-2 text-center">Member since {{this.registration_date}}</p>
                             </div>
                         </div>
-                </div>
+				</div>
             </div>
         </div>
         
@@ -70,7 +71,7 @@
 					<div class="border border-secondary rounded my-2 py-4 px-5">
 						<div>
 							<h5>Past Events</h5>
-							<p class="pt-2 fst-italic">Hello Stella! Here you can see in which events you have participated so far. Let’s take a look:</p>
+							<p class="pt-2 fst-italic">Hello {{this.first_name}}! Here you can see in which events you have participated so far. Let’s take a look:</p>
 							<ul style="list-style: square">
 								<li>
 									Name of Event 1, date, place
@@ -95,5 +96,5 @@
 					</div>
 				</div>
         </div>
-                    
-    </main>
+  {{/each}}                  
+</main>
