@@ -65,6 +65,18 @@ export let members = () => {
     }
 }
 
+export let memberLogin = (memberEmail) => {
+    const query = db.prepare("SELECT * FROM Member WHERE active='TRUE' AND email=?;");
+    let info;
+    try{
+        info = query.all(memberEmail);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }   
+}
+
 //read distinct universities
 export let universities = () => {
     const query = db.prepare("SELECT DISTINCT university FROM Member WHERE active='TRUE';");
