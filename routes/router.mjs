@@ -13,7 +13,9 @@ import { internalEvents } from '../controller/internalEvents.mjs';
 import { members, universities } from '../controller/home.mjs';
 import { memberApplicants, studentMessages } from '../controller/admin.mjs';
 import { checkAuthenticated } from '../controller/login.mjs';
+import { checkAdmin } from '../controller/login.mjs';
 import { memberLogin } from '../controller/login.mjs';
+import { adminLogin } from '../controller/login.mjs';
 
 router.get('/', (req,res) => {
     res.redirect('/home')
@@ -22,6 +24,7 @@ router.get('/', (req,res) => {
 router.get('/home', async (req,res) => {
     try {
         const memberData = req.session.memberData;
+        const adminData = req.session.adminData;
         const myMembers =  await members(); 
         const myExternalEvents = await externalEvents();
         const myInternalEvents = await internalEvents();
@@ -39,6 +42,7 @@ router.get('/home', async (req,res) => {
             numberOfEvents: myExternalEvents.length+myInternalEvents.length,
             numberOfUniversities: myUniversities.length,
             memberData: memberData,
+            adminData: adminData
         });
     } 
     catch (err) {
@@ -49,6 +53,8 @@ router.get('/home', async (req,res) => {
 router.get('/about', (req,res) => {
     try{
         const memberData = req.session.memberData;
+        const adminData = req.session.adminData;
+        req.session.returnTo = req.originalUrl;
         res.render('about',{
             atHome: false,
             atAbout: true,
@@ -59,6 +65,7 @@ router.get('/about', (req,res) => {
             atProfile: false,
             atAdmin: false,
             memberData: memberData,
+            adminData: adminData
         });
     }
     catch (err) {
@@ -70,6 +77,8 @@ router.get('/externalEvents', async(req,res) => {
     try {
         const events =  await externalEvents(); 
         const memberData = req.session.memberData;
+        const adminData = req.session.adminData;
+        req.session.returnTo = req.originalUrl;
         res.render('externalEvents',{
             atHome: false,
             atAbout: false,
@@ -81,6 +90,7 @@ router.get('/externalEvents', async(req,res) => {
             atAdmin: false,
             events: events,
             memberData: memberData,
+            adminData: adminData
         });
     } 
     catch (err) {
@@ -92,6 +102,8 @@ router.get('/internalEvents', async (req,res) => {
     try{
         const events =  await internalEvents(); 
         const memberData = req.session.memberData;
+        const adminData = req.session.adminData;
+        req.session.returnTo = req.originalUrl;
         res.render('internalEvents',{
             atHome: false,
             atAbout: false,
@@ -103,6 +115,7 @@ router.get('/internalEvents', async (req,res) => {
             atAdmin: false,
             events:events,
             memberData: memberData,
+            adminData: adminData
         });
     } 
     catch (err) {
@@ -113,6 +126,8 @@ router.get('/internalEvents', async (req,res) => {
 router.get('/partners', (req,res) => {
     try{
         const memberData = req.session.memberData;
+        const adminData = req.session.adminData;
+        req.session.returnTo = req.originalUrl;
         res.render('partners',{
             atHome: false,
             atAbout: false,
@@ -123,6 +138,7 @@ router.get('/partners', (req,res) => {
             atProfile: false,
             atAdmin: false,
             memberData: memberData,
+            adminData: adminData
         });
     }
     catch (err) {
@@ -133,6 +149,8 @@ router.get('/partners', (req,res) => {
 router.get('/contact', (req,res) => {
     try{
         const memberData = req.session.memberData;
+        const adminData = req.session.adminData;
+        req.session.returnTo = req.originalUrl;
         res.render('contact',{
             atHome: false,
             atAbout: false,
@@ -143,6 +161,7 @@ router.get('/contact', (req,res) => {
             atProfile: false,
             atAdmin: false,
             memberData: memberData,
+            adminData: adminData
         });   
     }
     catch (err) {
@@ -153,6 +172,7 @@ router.get('/contact', (req,res) => {
 router.get('/profile', checkAuthenticated, (req,res) => {
     try {
         const memberData = req.session.memberData;
+        req.session.returnTo = req.originalUrl;
         res.render('profile',{
             atHome: false,
             atAbout: false,
@@ -171,13 +191,14 @@ router.get('/profile', checkAuthenticated, (req,res) => {
     } 
 });
 
-router.get('/admin', async(req,res) => {
+router.get('/admin', checkAdmin, async(req,res) => {
     try {
         const extEvents = await externalEvents();
         const intEvents = await internalEvents();
         const applicants = await memberApplicants();
         const messages = await studentMessages();
-    
+        const adminData = req.session.adminData;
+        req.session.returnTo = req.originalUrl; 
         res.render('admin',{
             atHome: false,
             atAbout: false,
@@ -192,6 +213,7 @@ router.get('/admin', async(req,res) => {
             applicants: applicants,
             messages: messages,
             numberOfEvents: extEvents.length+intEvents.length,
+            adminData: adminData
         });
     } 
     catch (err) {
@@ -207,16 +229,45 @@ router.post('/do-login', async(req, res) => {
     const givenPassword = req.body.password;
     if (emailGiven===''||givenPassword===''){
         console.log("Missing Credentials")
-        return res.redirect('/home');  
+        const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+        delete req.session.returnTo; // Clear the returnTo value from session
+        return res.redirect(returnTo); 
     }
     else{
         const memberData =  await memberLogin(req,res); 
         if (memberData===null){
-            console.log("email not in database")
-            return res.redirect('/home');  
+            const adminData =  await adminLogin(req,res); 
+            if (adminData===null){
+                console.log("You don't have an account, or you account is not activated yet.")
+                const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                delete req.session.returnTo; // Clear the returnTo value from session
+                return res.redirect(returnTo);
+            }
+            else {
+                const myPassword = adminData[0].password;
+                const saltRounds=10;
+                const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
+                const storedSalt = myPasswordHash.slice(0, 29);
+                bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
+                    if (err) {
+                        // Handle the error
+                        console.error(err);
+                    }
+                    if (hashedPassword === myPasswordHash)  {
+                        req.session.adminData = adminData;
+                        const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                        delete req.session.returnTo; // Clear the returnTo value from session
+                        return res.redirect(returnTo);
+                    } else {
+                        console.log("wrong password")
+                        const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                        delete req.session.returnTo; // Clear the returnTo value from session
+                        return res.redirect(returnTo);
+                    }
+                });
+            }
         }
         else {
-            req.session.memberData = memberData;
             const myPassword = memberData[0].password;
             const saltRounds=10;
             const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
@@ -228,17 +279,31 @@ router.post('/do-login', async(req, res) => {
                     console.error(err);
                 }
                 if (hashedPassword === myPasswordHash)  {
-                    // req.session.authenticatedEmail = emailGiven;
-                    return res.redirect('/profile');
+                    req.session.memberData = memberData;
+                    const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                    delete req.session.returnTo; // Clear the returnTo value from session
+                    return res.redirect(returnTo);
                 } else {
                     console.log("wrong password")
-                    return res.redirect('/home');
+                    const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                    delete req.session.returnTo; // Clear the returnTo value from session
+                    return res.redirect(returnTo);
                 }
              });
         }
-    }
-    
+    }  
 });
+
+router.get('/logout', (req, res) => {
+    const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Error destroying session:', err);
+      }
+    return res.redirect(returnTo);
+    });
+  });
+  
 
 //applying for internal event
 router.get('/internalEvents/:intId', internalEventsController.applyInt);
