@@ -104,12 +104,9 @@ router.get('/internalEvents', async (req,res) => {
     try{
         const events =  await internalEvents(); 
         const memberData = req.session.memberData;
-        console.log("memberData=",memberData);
         const adminData = req.session.adminData;
-        // console.log(adminData);
         req.session.returnTo = req.originalUrl;
         res.render('internalEvents',{
-            // adminData: [ { email: 'admin@sdo.com', password: '1234' } ],
             atHome: false,
             atAbout: false,
             atExternalEvents: false,
@@ -310,7 +307,15 @@ router.get('/logout', (req, res) => {
   
 
 //applying for internal event
-router.get('/internalEvents/apply', internalEventsController.applyInt);
+router.get('/internalEvents/apply/:id', (req, res) => {
+    try {
+        console.log('/internalEvents/apply/:id')
+        internalEventsController.applyInt(req, res);
+    }
+    catch (err) {
+        res.send(err);
+    } 
+});
 
 ////applying for external event
 router.get('/externalEvents/apply', externalEventsController.applyExt);
