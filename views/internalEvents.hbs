@@ -8,7 +8,7 @@
     </p>
     <div class="d-flex flex-wrap justify-content-between">
       {{#if events}}
-        {{#each events}}
+      {{#each events}}
           <div class="card mb-4">
             {{!-- <img src="files/int-photos/meetup.jpeg" class="card-img-top custom-img-size" alt="Internal event 1"> --}}
             <div class="card-body">  
@@ -16,15 +16,18 @@
                 <h5 class="card-title"><b>{{name}}</b></h5>
                 <h6>{{place}}, {{start_date}}</h6>
                 <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{id}}" class="text-to-click"><b>see more....</b></a></p>
-                {{#if adminData}}
+                <button type="submit" class="btn btn-dark mb-3">apply</button>
+                {{!-- {{#if adminData}}
                   <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
-                {{else}}
-                  {{#if memberData}}
-                    <button type="submit" class="btn btn-dark mb-3">apply</button>
-                  {{else}}
-                    <button type="submit" class="btn btn-dark mb-3 disabled">login to apply</button>
-                  {{/if}}
                 {{/if}}
+                {{#if memberData}}
+                    <button type="submit" class="btn btn-dark mb-3">apply</button>
+                {{/if}}
+                {{#unless adminData}}
+                  {{#unless memberData}}
+                    <button type="submit" class="btn btn-dark mb-3 disabled">login to apply</button>
+                  {{/unless}}
+                {{/unless}} --}}
               </center> 
             </div>
           </div>
@@ -38,12 +41,13 @@
                   <p>{{description}} </p>
                 </div>
                 <div class="modal-footer">
-                {{#if adminData}}
+                {{!-- {{#if adminData}}
                   <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
                 {{else}}
                   <a href="/internalEvents/apply" class="btn btn-dark mb-3">apply</a>
-                {{/if}}
-                  <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
+                {{/if}} --}}
+                <a href="/internalEvents/apply" class="btn btn-dark mb-3">apply</a>
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
                 </div>
               </div>
             </div>
