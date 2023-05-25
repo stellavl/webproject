@@ -72,7 +72,16 @@ export let checkIfAppliedIntEvent = (memberEmail, intId) => {
 }
 
 export let applyForInt = (memberEmail,intId) => {
-
+    const query = db.prepare("INSERT INTO 'member-internal_event' VALUES (?,?)");
+    let info;
+    try{
+        info = query.run(memberEmail,intId);
+        return true;
+    }
+    catch (err) {
+        console.log("model/applyForInt error")
+        throw err;
+    }
 }
 
 
