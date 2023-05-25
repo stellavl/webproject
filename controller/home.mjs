@@ -40,6 +40,7 @@ export async function applyForMember(req,res){
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
          req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, 
          req.body.ApplicationDepartment, req.body.ApplicationPassword);
+      res.redirect('/home');
       //console.log("done");
       return true;
    }
