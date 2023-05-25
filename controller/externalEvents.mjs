@@ -22,6 +22,27 @@ export async function externalEvents(){
 
 }
 
+export async function memberExternalEventsPast(req,res){
+   try {
+      const events = await model.memberExtEventPast(req.session.memberData[0].email)
+      return events;
+   }
+   catch (err) {
+      res.send(err);
+   }
+}
+
+export async function memberExternalEventsFuture(req,res){
+   try {
+      const events = await model.memberExtEventFuture(req.session.memberData[0].email)
+      return events;
+   }
+   catch (err) {
+      res.send(err);
+   }
+}
+
+
 
 //applying for external event
 export async function applyExt(req,res) {
