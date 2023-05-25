@@ -38,8 +38,8 @@ export async function applyForMember(req,res){
       console.log(req.session);
       console.log(req.body);
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
-         req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, req.body.ApplicationDepartment)
-      //
+         req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, 
+         req.body.ApplicationDepartment, req.body.ApplicationPassword);
       //console.log("done");
       return true;
    }
@@ -49,8 +49,6 @@ export async function applyForMember(req,res){
    }
 
 }
-
-
 
 
 
