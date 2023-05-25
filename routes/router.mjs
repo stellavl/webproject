@@ -237,59 +237,26 @@ router.use(express.urlencoded({extended: true}));
 router.post('/do-login', async(req, res) => {
     const emailGiven = req.body.email;
     const givenPassword = req.body.password;
-    if (emailGiven===''||givenPassword===''){
-        console.log("Missing Credentials")
-        const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
-        delete req.session.returnTo; // Clear the returnTo value from session
-        return res.redirect(returnTo); 
-    }
-    else{
-        const memberData =  await memberLogin(req,res); 
-        if (memberData===null){
-            const adminData =  await adminLogin(req,res); 
-            if (adminData===null){
-                console.log("You don't have an account, or you account is not activated yet.")
-                const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
-                delete req.session.returnTo; // Clear the returnTo value from session
-                return res.redirect(returnTo);
-            }
-            else {
-                const myPassword = adminData[0].password;
-                const saltRounds=10;
-                const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
-                const storedSalt = myPasswordHash.slice(0, 29);
-                bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
-                    if (err) {
-                        // Handle the error
-                        console.error(err);
-                    }
-                    if (hashedPassword === myPasswordHash)  {
-                        req.session.adminData = adminData;
-                        const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
-                        delete req.session.returnTo; // Clear the returnTo value from session
-                        return res.redirect(returnTo);
-                    } else {
-                        console.log("wrong password")
-                        const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
-                        delete req.session.returnTo; // Clear the returnTo value from session
-                        return res.redirect(returnTo);
-                    }
-                });
-            }
+    const memberData =  await memberLogin(req,res); 
+    if (memberData===null){
+        const adminData =  await adminLogin(req,res); 
+        if (adminData===null){
+            console.log("You don't have an account, or you account is not activated yet.")
+            const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+            delete req.session.returnTo; // Clear the returnTo value from session
+            return res.redirect(returnTo);
         }
         else {
-            const myPassword = memberData[0].password;
+            const myPassword = adminData[0].password;
             const saltRounds=10;
             const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
             const storedSalt = myPasswordHash.slice(0, 29);
-    
             bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
                 if (err) {
-                    // Handle the error
                     console.error(err);
                 }
                 if (hashedPassword === myPasswordHash)  {
-                    req.session.memberData = memberData;
+                    req.session.adminData = adminData;
                     const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
                     delete req.session.returnTo; // Clear the returnTo value from session
                     return res.redirect(returnTo);
@@ -299,8 +266,32 @@ router.post('/do-login', async(req, res) => {
                     delete req.session.returnTo; // Clear the returnTo value from session
                     return res.redirect(returnTo);
                 }
-             });
+            });
         }
+    }
+    else {
+        const myPassword = memberData[0].password;
+        const saltRounds=10;
+        const myPasswordHash = bcrypt.hashSync(myPassword, saltRounds);
+        const storedSalt = myPasswordHash.slice(0, 29);
+
+        bcrypt.hash(givenPassword, storedSalt, (err, hashedPassword) => {
+            if (err) {
+                // Handle the error
+                console.error(err);
+            }
+            if (hashedPassword === myPasswordHash)  {
+                req.session.memberData = memberData;
+                const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                delete req.session.returnTo; // Clear the returnTo value from session
+                return res.redirect(returnTo);
+            } else {
+                console.log("wrong password")
+                const returnTo = req.session.returnTo || '/home'; // Default to home if returnTo is not set
+                delete req.session.returnTo; // Clear the returnTo value from session
+                return res.redirect(returnTo);
+            }
+            });
     }  
 });
 

@@ -67,10 +67,10 @@
 										<form action="/do-login" method="POST">
 											<h3 class="mb-2">Log in</h3>
 											<div class="row py-2">
-												<input name="email" type="text" class="form-control" id="logInEmail" placeholder="Email"><br>
+												<input name="email" type="text" class="form-control" id="logInEmail" placeholder="Email" required><br>
 											</div>
 											<div class="row py-2">
-												<input name="password" type="password" class="form-control" id="logInPassword" placeholder="Password"><br>
+												<input name="password" type="password" class="form-control" id="logInPassword" placeholder="Password" required><br>
 											</div>
 											<button type="submit" class="btn btn-dark mt-2 mb-4">Submit</button>
 											</fieldset>
@@ -90,38 +90,39 @@
 											<div class="row py-4">
 												<div class="col">
 													<label for="InpuName"><b>Name</b></label>
-													<input type="text" class="form-control" id="ApplicationName1" placeholder="Enter your Name">
+													<input type="text" class="form-control" id="ApplicationName1" placeholder="Enter your Name" required>
 												</div>
 												<div class="col">
 													<label for="InputSurname"><b>Surname</b></label>
-													<input type="text" class="form-control" id="ApplicationSurname1" placeholder="Enter your Surname">
+													<input type="text" class="form-control" id="ApplicationSurname1" placeholder="Enter your Surname" required>
 												</div>
 											</div>
 											<div class="row pb-4">
 												<div class="col">
 													<label for="InputEmail"><b>Email address</b></label>
-													<input type="email" class="form-control" id="ApplicationEmail1" placeholder="Enter email">
+													<input type="email" class="form-control" id="ApplicationEmail1" placeholder="Enter email" required>
 												</div>
 												<div class="col">
 													<label for="InputPhoneNumber"><b>Phone Number</b></label>
-													<input type="tel" class="form-control" id="ApplicationPhoneNumber2" placeholder="Enter phone number">
+													<input type="tel" class="form-control" id="ApplicationPhoneNumber2" placeholder="Enter phone number" required>
 												</div>
 											</div>
 											<div class="row pb-4">
 												<div class="col">
 													<label for="InputUniversity"><b>University</b></label>
-													<select class="form-select" id="ApplicationUniversity1" aria-label="Select University" text-muted>
-														<option selected>Select University</option>
-														<option>National Technical University of Athens (NTUA) </option>
+													<select class="form-select" name="ApplicationUniversity" aria-label="Select University" text-muted required>
+														<option selected disabled hidden>Select University</option>
+														<option>National Technical University of Athens (NTUA)</option>
 														<option>Aristotle University of Thessaloniki (AUTh)</option>
-														<option>University of Patras (UoP) </option>
+														<option>University of Patras (UoP)</option>
 														<option>Technical University of Crete (TUC)</option>
-														<option>University of Thessaly (UTh) </option>
+														<option>University of Thessaly (UTh)</option>
 													</select>
+
 												</div>
 												<div class="col">
 													<label for="InputDepartment"><b>Department</b></label>
-													<input type="text" class="form-control" id="ApplicationDepartment1" placeholder="Enter your Department">
+													<input type="text" class="form-control" id="ApplicationDepartment1" placeholder="Enter your Department" required>
 												</div>
 											</div>
 											<button type="submit" class="btn btn-dark mb-5 mt-3">Submit</button>
