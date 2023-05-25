@@ -34,9 +34,10 @@ export async function studentMessages(){
 export async function newMemberAccepted(req,res){
 
    try{
-      const accepted = await model.applicationAccepted(req.query.email)
-      console.log("member added");
+      const accepted = await model.applicationAccepted(req.params.email)
+      console.log(req.params.email);
       res.redirect('/admin');
+      console.log("member added");
    }
    catch (err) {
       console.log("errorrrr")
@@ -44,6 +45,23 @@ export async function newMemberAccepted(req,res){
    }
 
 }
+
+//admin rejects student applying for membership
+export async function applicantRejected(req,res){
+
+   try{
+      const rejected = await model.applicationRejected(req.params.email)
+      console.log(req.params.email);
+      res.redirect('/admin');
+      console.log("rejected");
+   }
+   catch (err) {
+      console.log("errorr")
+      res.send(err);
+   }
+
+}
+
 
 //admin deletes event from site - event becomes inactive (D)
 export async function eventDeleted(eventId) {

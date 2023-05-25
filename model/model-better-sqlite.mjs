@@ -266,7 +266,6 @@ export let studentMessages = () => {
     }
 }
 
-//-------------------------------- TO DO --------------------------------
 //admin functions (CRUD):
 
 //admin creates an event (C)
@@ -281,7 +280,7 @@ export let applicationAccepted = (email) => {
         //const toBeAccepted = db.prepare("SELECT email FROM Member WHERE active=0");
 
         let Accepted;
-        const query1 = db.prepare("UPDATE Member SET active=1 WHERE (email=?)");
+        const query1 = db.prepare("UPDATE Member SET active='TRUE' WHERE (email=?)");
 
         try{
             Accepted = query1.run(email);
@@ -294,14 +293,24 @@ export let applicationAccepted = (email) => {
         }
 }
 
+//admin rejects student applying for membership (D)
+export let applicationRejected = (email) => {
+
+    let Rejected;
+    const query1 = db.prepare("DELETE FROM Member WHERE (email=?)");
+
+    try{
+        Rejected = query1.run(email);
+        console.log("deleted from database")
+        return true;
+    }
+    catch (err) {
+        console.log("errr");
+        throw err;
+    }
+}
+
 //admin deletes event from site - event becomes inactive (D)
-
-
-// (3)---------------UPDATE-------------------
-
-
-// (4)---------------DELETE-------------------
-
 
 
 

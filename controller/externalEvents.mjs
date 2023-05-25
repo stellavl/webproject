@@ -46,8 +46,11 @@ export async function memberExternalEventsFuture(req,res){
 //student applies for external event
 export async function checkIfAppliedExtEvent(req,res){
    try {
-      if (req.session.memberData===undefined){
-         console.log("Not a Member")
+      if (req.session.adminData!==undefined){
+         console.log("Only students can apply")
+      }
+      else if (req.session.memberData===undefined){
+         //insert code here
       }
       else{
          const alreadyApplied = await model.checkIfAppliedExtEvent(req.session.memberData[0].email, req.params.id);

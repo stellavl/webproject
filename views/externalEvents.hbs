@@ -7,7 +7,7 @@
                   Through your participation in such event, be sure that you will gain valuable skills, have fun and get to know many like-minded people.
                   <br>So what are you waiting for? Apply in as many actions as you wish from the list below:</center><br>
               </p>
-              
+
               <div class="d-flex flex-wrap justify-content-between">
                 {{#if events}}
                   {{#each events}}
@@ -31,7 +31,8 @@
                             <p>{{description}}</p>
                           </div>
                           <div class="modal-footer">
-                            <a href="/externalEvents/apply/{{id}}" class="btn btn-dark mb-3">apply</a>                        
+                            
+                            <a href="/externalEvents/apply/{{id}}" data-bs-toggle="modal" data-bs-target="#myEventApplyModal{{id}}" class="btn btn-dark mb-3" id="myApplyButton">apply</a>                        
                             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
                           </div>
                         </div>
@@ -42,7 +43,36 @@
                 {{#else}}
                   <h5>Sadly there are no upcoming events. Stay tuned though, because there will be many of them soon!</h5>
                 {{/else}}     
-              
               </div>
+              
+              <div id="myEventApplyModal{{id}}" class="modal" style="display: none;">
+                  <div id="myEventApplyModalContent" class="modal-content py-2 px-4">
+                    <span class="close">&times;</span>
+                      <form action="/externalEvents/apply/{{id}}" method="POST">
+                        <h3 class="mb-2">Apply</h3>
+                          <div class="row py-4">
+                              <div class="col">
+                                <label for="InputName"><b>Name</b></label>
+                                <input type="text" class="form-control" id="ApplicationName1" placeholder="Enter your Name" required>
+                              </div>
+                              <div class="col">
+                                <label for="InputSurname"><b>Surname</b></label>
+                                <input type="text" class="form-control" id="ApplicationSurname1" placeholder="Enter your Surname" required>
+                              </div>
+                            </div>
+                            <div class="row pb-4">
+                              <div class="col">
+                                <label for="InputEmail"><b>Email address</b></label>
+                                <input type="email" class="form-control" id="ApplicationEmail1" placeholder="Enter email" required>
+                              </div>
+                              <div class="col">
+                                <label for="InputPhoneNumber"><b>Phone Number</b></label>
+                                <input type="tel" class="form-control" id="ApplicationPhoneNumber2" placeholder="Enter phone number" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark mb-5 mt-3">Apply</button>
+                      </form>
+                  </div>
+                </div>
+
       </div>
   </main>
