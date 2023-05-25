@@ -21,9 +21,9 @@
                 {{else}}
                   {{#if memberData}}
                     <button type="submit" class="btn btn-dark mb-3">apply</button>
-                    {{else}}
+                  {{else}}
                     <button type="submit" class="btn btn-dark mb-3 disabled">login to apply</button>
-                    {{/if}}
+                  {{/if}}
                 {{/if}}
               </center> 
             </div>
@@ -41,7 +41,7 @@
                 {{#if adminData}}
                   <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
                 {{else}}
-                  <button type="submit" class="btn btn-dark mb-3">apply</button>
+                  <a href="/internalEvents/apply" class="btn btn-dark mb-3">apply</a>
                 {{/if}}
                   <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
                 </div>

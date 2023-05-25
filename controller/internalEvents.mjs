@@ -42,16 +42,21 @@ export async function memberInternalEventsFuture(req,res){
 
 //member applies for internal event
 export async function applyInt(req,res) {
-
-   try {
-      const application = await model.applyForInt(req.session.memberData.email, req.query.intId); //εδω να γίνεται έλεγχος για το id του user
-      //θέλουμε να παίρνει 2 ορίσματα, memberEmail και intId, από το req, ανάλογα αν είναι logged in 
-      //ο χρήστης ή όχι. 
-      return application;
-   }
-   catch (err) {
-      console.log("an error occured");
-      res.send(err);
-   }
+   console.log("req.session.memberData.email, req.query.intId",req.session.memberData.email, req.query.intId);
+   // try {
+   //    const alreadyApplied = await model.checkIfAppliedIntEvent(req.session.memberData.email, req.query.intId);
+   //    if (alreadyApplied){
+   //       console.log("You have already applied to this event.")
+   //    }
+   //    else{
+   //       const application = await model.applyForInt(req.session.memberData.email, req.query.intId);
+   //       console.log("Application Accepted");
+   //       return application;
+   //    }
+   // }
+   // catch (err) {
+   //    console.log("an error occured");
+   //    res.send(err);
+   // }
 
 }

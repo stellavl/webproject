@@ -48,12 +48,28 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
     
 }
 
+
 //student applies for external event
 export let applyForExt = (studentEmail, extId) => {
 
+    
 }
 
 //member applies for internal event
+
+// first check that they haven't applied already
+export let checkIfAppliedIntEvent = (memberEmail, intId) => {
+    const query = db.prepare("SELECT *  FROM 'member-internal_event' WHERE member_email==? AND internal_event_id==?");
+    let info;
+    try{
+        info = query.all(memberEmail,intId);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
 export let applyForInt = (memberEmail,intId) => {
 
 }

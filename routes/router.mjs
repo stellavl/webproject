@@ -104,6 +104,7 @@ router.get('/internalEvents', async (req,res) => {
     try{
         const events =  await internalEvents(); 
         const memberData = req.session.memberData;
+        console.log("memberData=",memberData);
         const adminData = req.session.adminData;
         // console.log(adminData);
         req.session.returnTo = req.originalUrl;
@@ -309,10 +310,10 @@ router.get('/logout', (req, res) => {
   
 
 //applying for internal event
-router.get('/internalEvents/:intId', internalEventsController.applyInt);
+router.get('/internalEvents/apply', internalEventsController.applyInt);
 
 ////applying for external event
-router.get('/externalEvents/:extId', externalEventsController.applyExt);
+router.get('/externalEvents/apply', externalEventsController.applyExt);
 
 //submitting a message
 router.post('/contact/message-submitted', contactController.submitMessage);
