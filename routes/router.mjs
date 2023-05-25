@@ -319,8 +319,18 @@ router.get('/internalEvents/apply/:id', (req, res) => {
     } 
 });
 
-////applying for external event
-router.get('/externalEvents/apply', externalEventsController.applyExt);
+
+router.get('/externalEvents/apply/:id', (req, res) => {
+    const returnTo = req.session.returnTo || '/home'; 
+    delete req.session.returnTo;
+    try {
+        externalEventsController.checkIfAppliedExtEvent(req, res);
+        res.redirect(returnTo);
+    }
+    catch (err) {
+        res.send(err);
+    } 
+});
 
 //submitting a message
 router.post('/contact/message-submitted', contactController.submitMessage);

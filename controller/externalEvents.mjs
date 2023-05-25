@@ -43,22 +43,38 @@ export async function memberExternalEventsFuture(req,res){
 }
 
 
-
-//applying for external event
-export async function applyExt(req,res) {
-
+//student applies for external event
+export async function checkIfAppliedIntEvent(req,res){
    try {
-      const application = await model.applyForExt(); //εδω να γίνεται έλεγχος για το id του user
-      //θέλουμε να παίρνει 2 ορίσματα, studentEmail και extId, από το req, ανάλογα αν είναι logged in 
-      //ο χρήστης ή όχι. 
+      if (req.session.memberData===undefined){
+         console.log("Not a Member")
+      }
+      else{
+         const alreadyApplied = await model.checkIfAppliedExtEvent(req.session.memberData[0].email, req.params.id);
+         if (alreadyApplied!=''){
+            console.log("You have already applied to this event.")
+         }
+         else{
+            applyExt(req,res);
+         }
+      }
+   }
+   catch (err) {
+      console.log("externalEvents.mjs/checkIfAppliedExtEvent error occured");
+      res.send(err);
+   }
+}
+
+ async function applyExt(req,res) {
+   try{
+      const application = await model.applyForExt(req.session.memberData[0].email, req.params.id);
+      console.log("Application Accepted");
       return application;
    }
    catch (err) {
-      console.log("an error occured");
+      console.log("applyExt error occured");
       res.send(err);
    }
-    
 }
-
 
 

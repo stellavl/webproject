@@ -43,12 +43,17 @@ export async function memberInternalEventsFuture(req,res){
 //member applies for internal event
 export async function checkIfAppliedIntEvent(req,res){
    try {
-      const alreadyApplied = await model.checkIfAppliedIntEvent(req.session.memberData[0].email, req.params.id);
-      if (alreadyApplied!=''){
-         console.log("You have already applied to this event.")
+      if (req.session.memberData===undefined){
+         console.log("You have to login as a member to apply to internal events")
       }
       else{
-         applyInt(req,res);
+         const alreadyApplied = await model.checkIfAppliedIntEvent(req.session.memberData[0].email, req.params.id);
+         if (alreadyApplied!=''){
+            console.log("You have already applied to this event.")
+         }
+         else{
+            applyInt(req,res);
+         }
       }
    }
    catch (err) {
