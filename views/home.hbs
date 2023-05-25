@@ -82,9 +82,15 @@
 					<div class="col">
 						<label for="InputDepartment"><b>Department</b></label>
 						<input type="text" class="form-control" name="ApplicationDepartment" placeholder="Enter your Department (e.g. Physics)" required>
-					</div>
-					
+					</div>	
 				</div>
+				<div class="row pb-4">
+					<div class="col-6">
+						<label for="InputPassword"><b>Future Password</b></label>
+						<input type="tel" class="form-control" name="ApplicationPassword" placeholder="Enter future password" required>
+					</div>
+				</div>
+
 				{{#if adminData}}
 					<button type="submit" class="btn btn-dark mb-3 disabled">Submit</button>
 				{{else}}
