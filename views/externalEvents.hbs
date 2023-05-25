@@ -12,17 +12,12 @@
                 {{#if events}}
                   {{#each events}}
                     <div class="card mb-4">
-                      {{!-- <img src="files/photos/ex-events1.jpeg" class="card-img-top custom-img-size" alt="External event 1"> --}}
                       <div class="card-body">
                         <center>
                           <h5 class="card-title"><b>{{name}}</b></h5>
                           <h6>{{place}}, {{start_date}}</h6>
                           <p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{id}}" class="text-to-click"><b>see more....</b></a></p>
-                            {{#if adminData}}
-                              <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
-                            {{else}}
-                              <button type="submit" class="btn btn-dark mb-3">apply</button>
-                            {{/if}}
+                          <a href="/externalEvents/apply/{{id}}" class="btn btn-dark mb-3">apply</a>                        
                         </center>
                       </div>
                     </div>    
@@ -36,12 +31,8 @@
                             <p>{{description}}</p>
                           </div>
                           <div class="modal-footer">
-                           {{#if adminData}}
-                            <button type="submit" class="btn btn-dark mb-3 disabled">apply</button>
-                          {{else}}
-                            <button type="submit" class="btn btn-dark mb-3">apply</button>
-                          {{/if}}
-                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
+                            <a href="/externalEvents/apply/{{id}}" class="btn btn-dark mb-3">apply</a>                        
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
                           </div>
                         </div>
                       </div>
