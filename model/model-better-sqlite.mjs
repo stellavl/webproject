@@ -52,31 +52,31 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
 //student applies for external event
 
 // first check that they haven't applied already
-export let checkIfAppliedExtEvent = (studentEmail, intId) => {
-    const query = db.prepare("SELECT *  FROM 'member-internal_event' WHERE member_email==? AND internal_event_id==?");
+export let checkIfAppliedExtEvent = (studentEmail, extId) => {
+    const query = db.prepare("SELECT *  FROM 'student-event'  WHERE student_email==? AND event_id==?");
     let info;
     try{
-        info = query.all(memberEmail,intId);
+        info = query.all(studentEmail,extId);
         return info;
     }
     catch (err) {
-        console.log("model/checkIfAppliedIntEvent error");
+        console.log("model/checkIfAppliedExtEvent error");
         throw err;
     }
 }
 
-// export let applyForInt = (memberEmail,intId) => {
-//     const query = db.prepare("INSERT INTO 'member-internal_event' VALUES (?,?)");
-//     let info;
-//     try{
-//         info = query.run(memberEmail,intId);
-//         return true;
-//     }
-//     catch (err) {
-//         console.log("model/applyForInt error")
-//         throw err;
-//     }
-// }
+export let applyForExt = (studentEmail,extId) => {
+    const query = db.prepare("INSERT INTO 'student-event' VALUES (?,?)");
+    let info;
+    try{
+        info = query.run(studentEmail,extId);
+        return true;
+    }
+    catch (err) {
+        console.log("model/applyForExt error")
+        throw err;
+    }
+}
 
 //member applies for internal event
 

@@ -44,7 +44,7 @@ export async function memberExternalEventsFuture(req,res){
 
 
 //student applies for external event
-export async function checkIfAppliedIntEvent(req,res){
+export async function checkIfAppliedExtEvent(req,res){
    try {
       if (req.session.memberData===undefined){
          console.log("Not a Member")
