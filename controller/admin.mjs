@@ -36,11 +36,11 @@ export async function newMemberAccepted(req,res){
    try{
       const accepted = await model.applicationAccepted(req.query.email)
       console.log("member added");
-      return accepted;
+      res.redirect('/admin');
    }
    catch (err) {
       console.log("errorrrr")
-      //res.send(err);
+      res.send(err);
    }
 
 }
