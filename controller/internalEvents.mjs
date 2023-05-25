@@ -41,22 +41,31 @@ export async function memberInternalEventsFuture(req,res){
 
 
 //member applies for internal event
-export async function applyInt(req,res) {
-   console.log("req.session.memberData.email, req.query.intId",req.session.memberData.email, req.query.intId);
-   // try {
-   //    const alreadyApplied = await model.checkIfAppliedIntEvent(req.session.memberData.email, req.query.intId);
-   //    if (alreadyApplied){
-   //       console.log("You have already applied to this event.")
-   //    }
-   //    else{
-   //       const application = await model.applyForInt(req.session.memberData.email, req.query.intId);
-   //       console.log("Application Accepted");
-   //       return application;
-   //    }
-   // }
-   // catch (err) {
-   //    console.log("an error occured");
-   //    res.send(err);
-   // }
+export async function checkIfAppliedIntEvent(req,res){
+   try {
+      const alreadyApplied = await model.checkIfAppliedIntEvent(req.session.memberData[0].email, req.params.id);
+      if (alreadyApplied){
+         console.log("You have already applied to this event.")
+      }
+      else{
+         applyInt(req,res);
+      }
+   }
+   catch (err) {
+      console.log("an error occured");
+      res.send(err);
+   }
+}
 
+
+ async function applyInt(req,res) {
+   try{
+      const application = await model.applyForInt(req.session.memberData[0].email, req.params.id);
+      console.log("Application Accepted");
+      return application;
+   }
+   catch (err) {
+      console.log("an error occured");
+      res.send(err);
+   }
 }
