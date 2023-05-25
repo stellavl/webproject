@@ -243,19 +243,21 @@ export let studentMessages = () => {
 
 
 //admin accepts student applying for membership (U)
-export let applicationAccepted = () => {
+export let applicationAccepted = (email) => {
 
     try{
 
-        const toBeAccepted = db.prepare("SELECT email FROM Member WHERE active=0");
+        //const toBeAccepted = db.prepare("SELECT email FROM Member WHERE active=0");
         let Accepted;
 
         try{
             const query1 = db.prepare("UPDATE Member SET active=1 WHERE (email=?)");
-            Accepted = query1.run(toBeAccepted);
+            Accepted = query1.run(email);
+            
             return true;
         }
         catch (err) {
+            console.log("errr");
             throw err;
         }
 

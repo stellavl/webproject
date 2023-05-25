@@ -15,12 +15,12 @@
 								</div>
 								<div class="col-7">
 									<ul class="list-inline">
-										<li class="list-inline-item">{{this.first_name}} {{this.last_name}}</li>
+										<li class="list-inline-item">{{this.first_name}} {{this.last_name}},  {{this.email}}</li>
 									</ul>
 								</div>
 								
 								<div class="col-4">
-									<a href="/admin/application-accepted" class="btn btn-dark py-1">Accept</a>
+									<a href="/admin/application-accepted/{{email}}" class="btn btn-dark py-1">Accept</a>
 									<a href="#" class="btn btn-dark py-1">Reject</a>
 								</div>
 							</div>

@@ -31,10 +31,10 @@ export async function studentMessages(){
 }
 
 //admin accepts student applying for membership
-export async function newMemberAccepted(){
+export async function newMemberAccepted(req,res){
 
    try{
-      const accepted = await model.applicationAccepted()
+      const accepted = await model.applicationAccepted(req.query.email)
       return accepted;
    }
    catch (err) {
