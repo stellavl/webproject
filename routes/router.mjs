@@ -341,6 +341,9 @@ router.post('/home/submit-form', homeController.applyForMember);
 //admin accepts student applying for membership
 router.get('/admin/application-accepted/:email', adminController.newMemberAccepted);
 
+//admin rejects student applying for membership
+router.get('/admin/application-rejected/:email', adminController.applicantRejected);
+
 //admin deletes event from site
 router.get('/admin/event-deleted', adminController.eventDeleted);
 
