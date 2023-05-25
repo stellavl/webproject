@@ -308,9 +308,11 @@ router.get('/logout', (req, res) => {
 
 //applying for internal event
 router.get('/internalEvents/apply/:id', (req, res) => {
+    const returnTo = req.session.returnTo || '/home'; 
+    delete req.session.returnTo;
     try {
-        console.log('/internalEvents/apply/:id')
-        internalEventsController.applyInt(req, res);
+        internalEventsController.checkIfAppliedIntEvent(req, res);
+        res.redirect(returnTo);
     }
     catch (err) {
         res.send(err);

@@ -44,7 +44,7 @@ export async function memberInternalEventsFuture(req,res){
 export async function checkIfAppliedIntEvent(req,res){
    try {
       const alreadyApplied = await model.checkIfAppliedIntEvent(req.session.memberData[0].email, req.params.id);
-      if (alreadyApplied){
+      if (alreadyApplied!=''){
          console.log("You have already applied to this event.")
       }
       else{
@@ -52,11 +52,10 @@ export async function checkIfAppliedIntEvent(req,res){
       }
    }
    catch (err) {
-      console.log("an error occured");
+      console.log("internalEvents.mjs/checkIfAppliedIntEvent error occured");
       res.send(err);
    }
 }
-
 
  async function applyInt(req,res) {
    try{
@@ -65,7 +64,7 @@ export async function checkIfAppliedIntEvent(req,res){
       return application;
    }
    catch (err) {
-      console.log("an error occured");
+      console.log("applyInt error occured");
       res.send(err);
    }
 }

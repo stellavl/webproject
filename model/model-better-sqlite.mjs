@@ -66,6 +66,7 @@ export let checkIfAppliedIntEvent = (memberEmail, intId) => {
         return info;
     }
     catch (err) {
+        console.log("model/checkIfAppliedIntEvent error");
         throw err;
     }
 }
