@@ -18,9 +18,10 @@
 										<li class="list-inline-item">{{this.first_name}} {{this.last_name}}</li>
 									</ul>
 								</div>
+								
 								<div class="col-4">
-									<button class="btn btn-dark py-1">Accept</button>
-									<button class="btn btn-dark py-1">Reject</button>
+									<a href="/admin/application-accepted" class="btn btn-dark py-1">Accept</a>
+									<a href="#" class="btn btn-dark py-1">Reject</a>
 								</div>
 							</div>
 						</li>
@@ -69,13 +70,14 @@
 									<center>
 										<h5 class="card-title"><b>{{this.name}}</b></h5>
 										<h6>{{this.place}}, {{this.start_date}}</h6>
-										<p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal5" class="text-to-click"><b>see more....</b></a></p>
+										<p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{id}}" class="text-to-click"><b>see more....</b></a></p>
 										<a href="#" class="btn btn-primary"><b>update</b></a>
 										<a href="#" class="btn btn-primary"><b>delete</b></a>
 									</center>
 								</div>
+
 							</div>    
-							<div class="modal events-modals" id="myModal5" style="display: none;">
+							<div class="modal events-modals" id="myModal{{id}}" style="display: none;">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 									<div class="modal-header">
@@ -95,7 +97,7 @@
 
 						<h4 class="mt-4 py-2">
 							Internal Events&nbsp;&nbsp;
-							<a href="#" class="btn btn-primary"><b>Create New Event</b></a>
+							<a href="/event-created" class="btn btn-primary"><b>Create New Event</b></a>
 						</h4>
 						<div class="d-flex my-2">
 						{{#each intEvents}}
@@ -104,13 +106,13 @@
 									<center>
 										<h5 class="card-title"><b>{{this.name}}</b></h5>
 										<h6>{{this.place}}, {{this.start_date}}</h6>
-										<p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal5" class="text-to-click"><b>see more....</b></a></p>
+										<p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{id}}" class="text-to-click"><b>see more....</b></a></p>
 										<a href="#" class="btn btn-primary"><b>update</b></a>
-										<a href="#" class="btn btn-primary"><b>delete</b></a>
+										<a href="#" class="btn btn-primary" id="delEventbtn"><b>delete</b></a>
 									</center>
 								</div>
 							</div>    
-							<div class="modal events-modals" id="myModal5" style="display: none;">
+							<div class="modal events-modals" id="myModal{{id}}" style="display: none;">
 								<div class="modal-dialog modal-dialog-centered">
 									<div class="modal-content">
 									<div class="modal-header">
@@ -132,4 +134,23 @@
 
 			</div>
 		</div>
+
+		<script>
+
+			//admin creates new event in site
+			const btnCrEv = document.getElementById('')
+
+
+			//admin deletes event from site
+			const delEventbtn = document.getElementById('delEventbtn');
+			delEventbtn.addEventListener('click', () => {
+  			window.location.href = '/admin/event-deleted'; 
+			});
+
+
+
+		</script>
+
+
+
 </main>

@@ -324,6 +324,8 @@ router.post('/home/submit-form', homeController.applyForMember);
 //admin accepts student applying for membership
 router.get('/admin/application-accepted', adminController.newMemberAccepted);
 
+//admin deletes event from site
+router.get('/admin/event-deleted', adminController.eventDeleted);
 
 export default router;
 

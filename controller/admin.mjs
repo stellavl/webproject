@@ -38,7 +38,30 @@ export async function newMemberAccepted(){
       return accepted;
    }
    catch (err) {
-      res.send(err);
+      console.log("errorrrr")
+      //res.send(err);
    }
 
 }
+
+//admin deletes event from site - event becomes inactive (D)
+export async function eventDeleted(eventId) {
+
+   try{
+      const deleted = await model.applicationAccepted()
+      //return accepted;
+      console.log("event deleted");
+   }
+   catch (err) {
+      console.log("an error occured");
+      res.send(err);
+   }
+   
+}
+
+
+
+
+
+
+
