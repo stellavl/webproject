@@ -16,8 +16,29 @@ export async function internalEvents(){
      catch (err) {
         res.send(err);
      }
-
 }
+
+export async function memberInternalEventsPast(req,res){
+   try {
+      const events = await model.memberIntEventPast(req.session.memberData[0].email);
+      return events;
+   }
+   catch (err) {
+      res.send(err);
+   }
+}
+
+export async function memberInternalEventsFuture(req,res){
+   try {
+      const events = await model.memberIntEventFuture(req.session.memberData[0].email);
+      return events;
+   }
+   catch (err) {
+      res.send(err);
+   }
+}
+
+
 
 //member applies for internal event
 export async function applyInt(req,res) {

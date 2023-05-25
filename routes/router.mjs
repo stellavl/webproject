@@ -103,7 +103,7 @@ router.get('/internalEvents', async (req,res) => {
         const events =  await internalEvents(); 
         const memberData = req.session.memberData;
         const adminData = req.session.adminData;
-        console.log(adminData);
+        // console.log(adminData);
         req.session.returnTo = req.originalUrl;
         res.render('internalEvents',{
             // adminData: [ { email: 'admin@sdo.com', password: '1234' } ],
@@ -171,9 +171,15 @@ router.get('/contact', (req,res) => {
     }    
 });
 
-router.get('/profile', checkAuthenticated, (req,res) => {
+router.get('/profile', checkAuthenticated, async(req,res) => {
     try {
         const memberData = req.session.memberData;
+        const internalEventsPast = await internalEventsController.memberInternalEventsPast(req, res);
+        const externalEventsPast = await externalEventsController.memberExternalEventsPast(req, res);
+        const eventsPast = [...internalEventsPast, ...externalEventsPast];    
+        const internalEventsFuture = await internalEventsController.memberInternalEventsFuture(req, res);
+        const externalEventsFuture = await externalEventsController.memberExternalEventsFuture(req, res);
+        const eventsFuture = [...internalEventsFuture, ...externalEventsFuture];            
         req.session.returnTo = req.originalUrl;
         res.render('profile',{
             atHome: false,
@@ -185,6 +191,8 @@ router.get('/profile', checkAuthenticated, (req,res) => {
             atProfile: true,
             atAdmin: false,
             memberData: memberData,
+            eventsPast: eventsPast,
+            eventsFuture: eventsFuture,
         });
         
     }

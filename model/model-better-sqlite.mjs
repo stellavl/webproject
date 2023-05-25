@@ -130,6 +130,60 @@ export let intEvent = () => {
     }
 }
 
+//read all external events the member has participated
+export let memberExtEventPast = (memberEmail) => {
+    const query = db.prepare("SELECT * FROM External_Event, 'student-event'  WHERE (end_date < CURRENT_DATE) AND (event_id==id) AND student_email==?");
+    let info;
+    try{
+        info = query.all(memberEmail);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+//read all internal events the member has participated
+export let memberIntEventPast = (memberEmail) => {
+    const query = db.prepare("SELECT * FROM Internal_Event, 'member-internal_event'  WHERE (end_date < CURRENT_DATE) AND (internal_event_id==id) AND member_email==?");
+    let info;
+    try{
+        info = query.all(memberEmail);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+//read all external events the member will participate
+export let memberExtEventFuture = (memberEmail) => {
+    const query = db.prepare("SELECT * FROM External_Event, 'student-event'  WHERE (start_date > CURRENT_DATE) AND (event_id==id) AND student_email==?");
+    let info;
+    try{
+        info = query.all(memberEmail);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+//read all innernal events the member will participate
+export let memberIntEventFuture = (memberEmail) => {
+    const query = db.prepare("SELECT * FROM Internal_Event, 'member-internal_event'  WHERE (start_date > CURRENT_DATE) AND (internal_event_id==id) AND member_email==?");
+    let info;
+    try{
+        info = query.all(memberEmail);
+        return info;
+    }
+    catch (err) {
+        throw err;
+    }
+}
+
+
+
 // read all applications for membership
 export let memberApplicants = () => {
     const query = db.prepare("SELECT * FROM Member WHERE active='FALSE';");

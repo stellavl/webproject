@@ -1,6 +1,7 @@
 <main>
 	{{#each memberData}}
         <div class="container">
+
             <div class="row mt-5">
                 <h3 class="myRedText mt-4"><b>My Profile</b></h3>
                 <h4 class="mt-4"><b>User Info</b></h4>
@@ -64,37 +65,80 @@
                         </div>
 				</div>
             </div>
-        </div>
-        
-				<div class="row mt-5">
-					<h4 class="mt-4 "><b>Events</b></h4>
-					<div class="border border-secondary rounded my-2 py-4 px-5">
-						<div>
-							<h5>Past Events</h5>
+       		</div>
+
+			<div class="row mt-5">
+				<h4 class="mt-4 "><b>Events</b></h4>
+				<div class="border border-secondary rounded my-2 py-4 px-5">
+					<div>
+						<h5>Past Events</h5>
 							<p class="pt-2 fst-italic">Hello {{this.first_name}}! Here you can see in which events you have participated so far. Let’s take a look:</p>
-							<ul style="list-style: square">
-								<li>
-									Name of Event 1, date, place
-								</li>
-								<li>
-									Name of Event 2, date, place
-								</li>
-							</ul>
+	{{/each}}     
+						<div class="container">
+							<div class="row">
+								{{#each eventsPast}}
+								<div class="col-lg-3 col-md-6 mb-4 d-flex">
+									<div class="card" style="width: 100%;">
+										<div class="card-body">
+											<h5 class="card-title"><b>{{this.name}}</b></h5>
+											<h6>{{this.place}}, {{this.start_date}}</h6>
+											<p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{this.id}}" class="text-to-click"><b>See more...</b></a></p>
+										</div>
+									</div>
+									<div class="modal events-modals" id="myModal{{this.id}}" style="display: none;">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">{{this.name}}</h5>
+											</div>
+											<div class="modal-body">
+												<p>{{this.description}}</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								{{/each}}
+							</div>
 						</div>
 						<div>
 							<h5 class="pt-3">Upcoming Events</h5>
-							<p class="pt-2 fst-italic">Don’t forget that you also have some upcoming events soon!</p>
-							<ul style="list-style: square">
-								<li>
-									Name of Event 1, date, place
-								</li>
-								<li>
-									Name of Event 2, date, place
-								</li>
-							</ul>
+								<p class="pt-2 fst-italic">Don’t forget that you also have some upcoming events soon!</p>
+								<div class="container">
+							<div class="row">
+								{{#each eventsFuture}}
+								<div class="col-lg-3 col-md-6 mb-4 d-flex">
+									<div class="card" style="width: 100%;">
+										<div class="card-body">
+											<h5 class="card-title"><b>{{this.name}}</b></h5>
+											<h6>{{this.place}}, {{this.start_date}}</h6>
+											<p class="card-text"><a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{this.id}}" class="text-to-click"><b>See more...</b></a></p>
+										</div>
+									</div>
+									<div class="modal events-modals" id="myModal{{this.id}}" style="display: none;">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">{{this.name}}</h5>
+											</div>
+											<div class="modal-body">
+												<p>{{this.description}}</p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								{{/each}}
+							</div>
+						</div>
 						</div>
 					</div>
 				</div>
-        </div>
-  {{/each}}                  
+        </div>     
 </main>
