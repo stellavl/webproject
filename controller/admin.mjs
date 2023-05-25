@@ -35,6 +35,7 @@ export async function newMemberAccepted(req,res){
 
    try{
       const accepted = await model.applicationAccepted(req.query.email)
+      console.log("member added");
       return accepted;
    }
    catch (err) {
