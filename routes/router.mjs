@@ -361,24 +361,16 @@ router.get('/externalEvents/apply/:id', (req, res) => {
 // }
 
 
-router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPassword/:userPhoneNumber', (req, res) => {
-    const userFirstName = req.params.userFirstName;
-    const userLastName = req.params.userLastName;
-    const userEmail = req.params.userEmail;
-    const userPassword = req.params.userPassword;
-    const userPhoneNumber = req.params.userPhoneNumber;
+router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPassword/:userPhoneNumber', async (req, res) => {
 
-    console.log("userFirstName", userFirstName, "userLastName", userLastName, "userEmail", userEmail, "userPassword", userPassword, "userPhoneNumber", userPhoneNumber);
-    const returnTo = req.session.returnTo || '/home'; 
-    delete req.session.returnTo;
-
-    // try {
-    //     profileController.updateInfo(req, res);
-    //     res.redirect(returnTo);
-    // }
-    // catch (err) {
-    //     res.send(err);
-    // } 
+    try {
+        const memberData = profileController.updateInfo(req, res);
+        req.session.memberData = memberData;
+        res.redirect('/profile')
+    }
+    catch (err) {
+        res.send(err);
+    } 
 });
 
 

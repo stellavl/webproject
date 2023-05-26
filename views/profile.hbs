@@ -143,28 +143,4 @@
 				</div>
         </div>   
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				var updateButton = document.getElementById('updateButton');
-				updateButton.addEventListener('click', function(event) {
-					event.preventDefault(); // Prevent the default button behavior
-
-					// Get the edited values from the <p> elements
-					var userFirstName = document.getElementById('userFirstName').textContent;
-					var userLastName = document.getElementById('userLastName').textContent;
-					var userEmail = document.getElementById('userEmail').textContent;
-					var userPassword = document.getElementById('userPassword').textContent;
-					var userPhoneNumber = document.getElementById('userPhoneNumber').textContent;
-
-					console.log("SCRIPT", userFirstName, userLastName, userEmail, userPassword, userPhoneNumber);
-					
-					// Construct the updated URL
-					//var updatedUrl = '/profile/update/' + userFirstName + '/' + userLastName + '/' + userEmail + '/' + userPassword + '/' + userPhoneNumber;
-
-					// Redirect to the updated URL
-					//window.location.href = updatedUrl;
-    		});
-			});
-
-		</script>  
 </main>

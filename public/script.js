@@ -94,10 +94,27 @@ if ((!isProfilePage) && (!isAdminPage)) {
 
 // PROFILE DROPDOWN
 if (isProfilePage){
-
     const profileButton = document.getElementById("myProfileButton");
     const  profileDropdown = document.getElementById("myProfileDropdown");
-    
+    const updateButton = document.getElementById('updateButton');
+
+    updateButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default button behavior
+
+        // Get the edited values from the <p> elements
+        const userFirstName = document.getElementById('userFirstName').textContent;
+        const userLastName = document.getElementById('userLastName').textContent;
+        const userEmail = document.getElementById('userEmail').textContent;
+        const userPassword = document.getElementById('userPassword').textContent;
+        const userPhoneNumber = document.getElementById('userPhoneNumber').textContent;
+        
+        // Construct the updated URL
+        const updatedUrl = '/profile/update/' + userFirstName + '/' + userLastName + '/' + userEmail + '/' + userPassword + '/' + userPhoneNumber;
+
+        // Redirect to the updated URL
+        window.location.href = updatedUrl;
+    }); 
+
     profileButton.addEventListener('click', () => {
         if (profileDropdown.style.display === "none") {
             profileDropdown.style.display = "block";
