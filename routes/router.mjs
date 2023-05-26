@@ -365,11 +365,12 @@ router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPasswor
 
     try {
         const memberData = profileController.updateInfo(req, res);
-        req.session.memberData = memberData;
+        // req.session.memberData = memberData;
         res.redirect('/profile')
     }
     catch (err) {
-        res.send(err);
+        // res.send(err);
+        console.log("error in router profile update")
     } 
 });
 
