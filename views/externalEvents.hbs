@@ -31,9 +31,14 @@
                             <p>{{description}}</p>
                           </div>
                           <div class="modal-footer">
-                            
-                            <a href="/externalEvents/apply/{{id}}" data-bs-toggle="modal" data-bs-target="#myEventApplyModal{{id}}" class="btn btn-dark mb-3" id="myApplyButton">apply</a>                        
-                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="/externalEvents/apply/{{id}}" data-bs-toggle="modal" data-bs-target="#myEventApplyModal{{id}}" class="btn btn-dark mb-3" id="myApplyButton">Apply</a>
+                                </div>
+                                  <div class="col-md-6">
+                                      <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
+                                  </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -45,34 +50,49 @@
                 {{/else}}     
               </div>
               
-              <div id="myEventApplyModal{{id}}" class="modal" style="display: none;">
-                  <div id="myEventApplyModalContent" class="modal-content py-2 px-4">
-                    <span class="close">&times;</span>
-                      <form action="/externalEvents/apply/{{id}}" method="POST">
-                        <h3 class="mb-2">Apply</h3>
-                          <div class="row py-4">
-                              <div class="col">
-                                <label for="InputName"><b>Name</b></label>
-                                <input type="text" class="form-control" id="ApplicationName1" placeholder="Enter your Name" required>
-                              </div>
-                              <div class="col">
-                                <label for="InputSurname"><b>Surname</b></label>
-                                <input type="text" class="form-control" id="ApplicationSurname1" placeholder="Enter your Surname" required>
-                              </div>
+              {{#if showModal}}
+              <div id="myEventApplyModal{{id}}" class="modal myEventApplyModal" style="display: block;">
+                  <div id="myEventApplyModalContent" class="modal-dialog modal-sm">
+                    {{!-- <span class="close">&times;</span> --}}
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Apply</h5>
+                      </div>
+                      <div class="modal-body">
+                        <form action="/externalEvents/apply/{{id}}" method="POST">
+                          <div class="form-group py-1">
+                            <label for="ApplicationName1">Name</label>
+                            <input type="text" class="form-control" id="ApplicationName" placeholder="Enter your Name" required>
+                          </div>
+                          <div class="form-group py-1">
+                            <label for="ApplicationSurname1">Surname</label>
+                            <input type="text" class="form-control" id="ApplicationSurname" placeholder="Enter your Surname" required>
+                          </div>
+                          <div class="form-group py-1">
+                            <label for="ApplicationEmail1">Email address</label>
+                            <input type="email" class="form-control" id="ApplicationEmail" placeholder="Enter email" required>
+                          </div>
+                          <div class="form-group  py-1">
+                            <label for="ApplicationPhoneNumber2">Phone Number</label>
+                            <input type="tel" class="form-control" id="ApplicationPhoneNumber" placeholder="Enter phone number" required>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                          <div class="row justify-content-between">
+                            <div class="col-md-6">
+                          <button type="submit" class="btn btn-dark mb-5 mt-3">Apply</button>
                             </div>
-                            <div class="row pb-4">
-                              <div class="col">
-                                <label for="InputEmail"><b>Email address</b></label>
-                                <input type="email" class="form-control" id="ApplicationEmail1" placeholder="Enter email" required>
-                              </div>
-                              <div class="col">
-                                <label for="InputPhoneNumber"><b>Phone Number</b></label>
-                                <input type="tel" class="form-control" id="ApplicationPhoneNumber2" placeholder="Enter phone number" required>
+                            <div class="col-md-6">
+                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
                             </div>
-                            <button type="submit" class="btn btn-dark mb-5 mt-3">Apply</button>
-                      </form>
-                  </div>
-                </div>
+                         </div>
+                      </div>
+                    </div>             
+                 </div>
+              </div>
+          {{/if}}
+              
 
       </div>
   </main>

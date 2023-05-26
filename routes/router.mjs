@@ -94,6 +94,7 @@ router.get('/externalEvents', async(req,res) => {
             events: events,
             memberData: memberData,
             adminData: adminData,
+            showModal: req.session.showModal,
         });
     } 
     catch (err) {
@@ -327,11 +328,38 @@ router.get('/externalEvents/apply/:id', (req, res) => {
     try {
         externalEventsController.checkIfAppliedExtEvent(req, res);
         res.redirect(returnTo);
+        // res.render('externalEvents', { showModal: res.session.showModal });
+        // res.locals.showModal=false;
     }
     catch (err) {
         res.send(err);
     } 
 });
+
+
+// try {
+//     const events =  await externalEvents(); 
+//     const memberData = req.session.memberData;
+//     const adminData = req.session.adminData;
+//     req.session.returnTo = req.originalUrl;
+//     res.render('externalEvents',{
+//         atHome: false,
+//         atAbout: false,
+//         atExternalEvents: true,
+//         atInternalEvents: false,
+//         atPartners: false,
+//         atContact: false,
+//         atProfile: false,
+//         atAdmin: false,
+//         events: events,
+//         memberData: memberData,
+//         adminData: adminData,
+//     });
+// } 
+// catch (err) {
+//     res.send(err);
+// }
+
 
 router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPassword/:userPhoneNumber', (req, res) => {
     const userFirstName = req.params.userFirstName;

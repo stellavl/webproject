@@ -50,7 +50,8 @@ export async function checkIfAppliedExtEvent(req,res){
          console.log("Only students can apply")
       }
       else if (req.session.memberData===undefined){
-         //insert code here
+         // res.locals.showModal = true;
+         req.session.showModal = true;
       }
       else{
          const alreadyApplied = await model.checkIfAppliedExtEvent(req.session.memberData[0].email, req.params.id);

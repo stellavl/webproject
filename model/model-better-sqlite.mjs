@@ -314,7 +314,7 @@ export let updateInfo = (fName,lName,newEmail,password,pNumber, oldEmail) => {
         return true;
     }
     catch (err) {
-        console.log("model/applyForExt error")
+        console.log("model/update info error")
         throw err;
     }
 }

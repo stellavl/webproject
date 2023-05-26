@@ -91,6 +91,7 @@ if ((!isProfilePage) && (!isAdminPage)) {
     });    
 }
 
+
 // PROFILE DROPDOWN
 if (isProfilePage){
 
