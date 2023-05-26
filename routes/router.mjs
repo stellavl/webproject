@@ -7,6 +7,7 @@ const homeController = await import(`../controller/home.mjs`);
 const contactController = await import(`../controller/contact.mjs`)
 const externalEventsController = await import(`../controller/externalEvents.mjs`)
 const internalEventsController = await import(`../controller/internalEvents.mjs`)
+const profileController = await import(`../controller/profile.mjs`)
 
 const adminController = await import(`../controller/admin.mjs`);
 
@@ -331,6 +332,27 @@ router.get('/externalEvents/apply/:id', (req, res) => {
         res.send(err);
     } 
 });
+
+router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPassword/:userPhoneNumber', (req, res) => {
+    const userFirstName = req.params.userFirstName;
+    const userLastName = req.params.userLastName;
+    const userEmail = req.params.userEmail;
+    const userPassword = req.params.userPassword;
+    const userPhoneNumber = req.params.userPhoneNumber;
+
+    console.log("userFirstName", userFirstName, "userLastName", userLastName, "userEmail", userEmail, "userPassword", userPassword, "userPhoneNumber", userPhoneNumber);
+    const returnTo = req.session.returnTo || '/home'; 
+    delete req.session.returnTo;
+
+    // try {
+    //     profileController.updateInfo(req, res);
+    //     res.redirect(returnTo);
+    // }
+    // catch (err) {
+    //     res.send(err);
+    // } 
+});
+
 
 //submitting a message
 router.post('/contact/message-submitted', contactController.submitMessage);

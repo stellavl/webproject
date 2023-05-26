@@ -10,25 +10,25 @@
                         <div class="col-8">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-6">
-                                        <h6>First Name</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1">{{this.first_name}}</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <h6>Last Name</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1">{{this.last_name}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <h6>Email address</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1 text-wrap">{{this.email}}</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <h6>Password</h6>
-                                        <p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true" id="userPassword">{{this.password}}</p>
-                                    </div>
-                                </div>
+									<div class="col-6">
+										<h6>First Name</h6>
+										<p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true" id="userFirstName">{{this.first_name}}</p>
+									</div>
+									<div class="col-6">
+										<h6>Last Name</h6>
+										<p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true" id="userLastName">{{this.last_name}}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-6">
+										<h6>Email address</h6>
+										<p class="myProfileData border border-secondary rounded px-2 py-1 text-wrap" contenteditable="true" id="userEmail">{{this.email}}</p>
+									</div>
+									<div class="col-6">
+										<h6>Password</h6>
+										<p class="myProfileData border border-secondary rounded px-2 py-1" contenteditable="true" id="userPassword">{{this.password}}</p>
+									</div>
+								</div>
 								<div class="row">
 									<div class="col-6">
 										<h6>Phone Number</h6>
@@ -37,7 +37,8 @@
 										</div>
 									</div>
 									<div class="col-6 d-flex align-items-center justify-content-center">
-										<button class="btn btn-dark" id="updateButton">Update Info</button>
+										 <button id="updateButton" class="btn btn-dark mb-3">Update Info</button>
+										{{!-- <a href="/profile/update/{{userFirstName}}/{{userLastName}}/{{userEmail}}/{{userPassword}}/{{userPhoneNumber}}" id="updateLink" class="btn btn-dark mb-3">Update Info</a>										<button class="btn btn-dark" id="updateButton">Update Info</button> --}}
 									</div>
 								</div>
                             </div>
@@ -140,5 +141,30 @@
 						</div>
 					</div>
 				</div>
-        </div>     
+        </div>   
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var updateButton = document.getElementById('updateButton');
+				updateButton.addEventListener('click', function(event) {
+					event.preventDefault(); // Prevent the default button behavior
+
+					// Get the edited values from the <p> elements
+					var userFirstName = document.getElementById('userFirstName').textContent;
+					var userLastName = document.getElementById('userLastName').textContent;
+					var userEmail = document.getElementById('userEmail').textContent;
+					var userPassword = document.getElementById('userPassword').textContent;
+					var userPhoneNumber = document.getElementById('userPhoneNumber').textContent;
+
+					console.log("SCRIPT", userFirstName, userLastName, userEmail, userPassword, userPhoneNumber);
+					
+					// Construct the updated URL
+					//var updatedUrl = '/profile/update/' + userFirstName + '/' + userLastName + '/' + userEmail + '/' + userPassword + '/' + userPhoneNumber;
+
+					// Redirect to the updated URL
+					//window.location.href = updatedUrl;
+    		});
+			});
+
+		</script>  
 </main>

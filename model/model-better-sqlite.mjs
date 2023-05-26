@@ -9,7 +9,7 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 // (1)---------------CREATE------------------
 
-//student wishes to become a member and fills the form in homepage
+//student wishes to become a - and fills the form in homepage
 export let register = (name,surname,email,phone,uni,dept,password) => {
 
     const query = db.prepare("INSERT INTO Student VALUES(?, ?, ?, ?, ?, ?)");
@@ -266,12 +266,6 @@ export let studentMessages = () => {
     }
 }
 
-//admin functions (CRUD):
-
-//admin creates an event (C)
-
-
-//admin wishes to see all active members (R)
 
 
 //admin accepts student applying for membership (U)
@@ -311,6 +305,20 @@ export let applicationRejected = (email) => {
 }
 
 //admin deletes event from site - event becomes inactive (D)
+
+export let updateInfo = (fName,lName,newEmail,password,pNumber, oldEmail) => {
+    const query = db.prepare("UPDATE Member SET first_name=?,last_name=?, email=?, password=?, phone=? WHERE email=?")
+    let info;
+    try{
+        info = query.run(fName,lName,newEmail,password,pNumber,oldEmail);
+        return true;
+    }
+    catch (err) {
+        console.log("model/applyForExt error")
+        throw err;
+    }
+}
+
 
 
 
