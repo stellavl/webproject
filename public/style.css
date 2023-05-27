@@ -297,6 +297,12 @@ body{
 
  }
 
+ .btn-secondary{
+  background-color: #110d0d7e;
+  border-color: #000000;
+  color: #ffffff;
+ }
+
  .card {
     width: 300px; 
     
