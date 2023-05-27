@@ -13,11 +13,12 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 export let register = (name,surname,email,phone,uni,dept,password) => {
 
     const query = db.prepare("INSERT INTO Student VALUES(?, ?, ?, ?, ?, ?)");
-    const query1 = db.prepare("INSERT INTO Member VALUES(?, ?, CURRENT_DATE, null, ?, ?, ?, ?, ?)");
+    const query1 = db.prepare("INSERT INTO Member VALUES(?, ?, CURRENT_DATE, 0, ?, ?, ?, ?, ?)");
     let info,info1;
     try{
         info = query.run(email,name,surname,phone,uni,dept);
         info1 = query1.run(email,password,name,surname,phone,uni,dept);
+        //console.log("db ok");
         return true;
     }
     catch (err) {
@@ -112,7 +113,7 @@ export let applyForInt = (memberEmail,intId) => {
 
 //read all members
 export let members = () => {
-    const query = db.prepare("SELECT * FROM Member WHERE active='TRUE';");
+    const query = db.prepare("SELECT * FROM Member WHERE active=1;");
     let info;
     try{
         info = query.all();
@@ -124,7 +125,7 @@ export let members = () => {
 }
 
 export let memberLogin = (memberEmail) => {
-    const query = db.prepare("SELECT * FROM Member WHERE active='TRUE' AND email=?;");
+    const query = db.prepare("SELECT * FROM Member WHERE active=1 AND email=?;");
     let info;
     try{
         info = query.all(memberEmail);
@@ -149,7 +150,7 @@ export let adminLogin = (adminEmail) => {
 
 //read distinct universities
 export let universities = () => {
-    const query = db.prepare("SELECT DISTINCT university FROM Member WHERE active='TRUE';");
+    const query = db.prepare("SELECT DISTINCT university FROM Member WHERE active=1;");
     let info;
     try{
         info = query.all();
@@ -242,7 +243,7 @@ export let memberIntEventFuture = (memberEmail) => {
 
 // read all applications for membership
 export let memberApplicants = () => {
-    const query = db.prepare("SELECT * FROM Member WHERE active='FALSE';");
+    const query = db.prepare("SELECT * FROM Member WHERE active=0;");
     let info;
     try{
         info = query.all();
@@ -274,7 +275,7 @@ export let applicationAccepted = (email) => {
         //const toBeAccepted = db.prepare("SELECT email FROM Member WHERE active=0");
 
         let Accepted;
-        const query1 = db.prepare("UPDATE Member SET active='TRUE' WHERE (email=?)");
+        const query1 = db.prepare("UPDATE Member SET active=1 WHERE (email=?)");
 
         try{
             Accepted = query1.run(email);

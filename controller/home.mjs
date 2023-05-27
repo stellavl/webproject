@@ -35,13 +35,13 @@ export async function universities(){
 export async function applyForMember(req,res){
 
    try {
-      console.log(req.session);
+      
       console.log(req.body);
       const newMember = await model.register(req.body.ApplicationName, req.body.ApplicationSurname, 
          req.body.ApplicationEmail, req.body.ApplicationPhoneNumber, req.body.ApplicationUniversity, 
          req.body.ApplicationDepartment, req.body.ApplicationPassword);
       res.redirect('/home');
-      //console.log("done");
+      console.log("done");
       return true;
    }
    catch (err) {
