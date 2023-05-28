@@ -91,6 +91,19 @@ if ((!isProfilePage) && (!isAdminPage)) {
     });    
 }
 
+// if(isExtEventPage){
+//     document.addEventListener("DOMContentLoaded", function() {
+//         console.log("event page")
+//         const applyModal = document.getElementsByClassName("events-modals");
+//         console.log("applyModal=",applyModal)
+//         const backButton = document.getElementById("backButton");
+//         console.log("backButton=",backButton)
+//         function closeModal() {
+//             applyModal.style.display = "none";
+//         }
+//         backButton.addEventListener("click", closeModal);   
+//     });
+// }
 
 // PROFILE DROPDOWN
 if (isProfilePage){
@@ -127,8 +140,8 @@ if (isProfilePage){
 
 // ADMIN DROPDOWN
 if (isAdminPage){
-    var adminButton = document.getElementById("myAdminButton");
-    var adminDropdown = document.getElementById("myAdminDropdown");
+    const adminButton = document.getElementById("myAdminButton");
+    const adminDropdown = document.getElementById("myAdminDropdown");
     
     adminButton.addEventListener('click', () => {
         if (adminDropdown.style.display === "none") {

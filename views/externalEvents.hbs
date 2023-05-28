@@ -34,7 +34,7 @@
                           <div class="modal-footer">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <a href="/externalEvents/apply/{{id}}" data-bs-toggle="modal" data-bs-target="#myEventApplyModal{{id}}" class="btn btn-dark mb-3" id="myApplyButton">Apply</a>
+                                    <a href="/externalEvents/apply/{{id}}" data-bs-toggle="modal" data-bs-target="#myEventApplyModal{{id}}" class="btn btn-dark mb-3" >Apply</a>
                                 </div>
                                   <div class="col-md-6">
                                       <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
@@ -45,6 +45,7 @@
                       </div>
                     </div>
                   {{/each}}
+
                 {{/if}}
                 {{#else}}
                   <h5>Sadly there are no upcoming events. Stay tuned though, because there will be many of them soon!</h5>
@@ -54,7 +55,6 @@
               {{#if showModal}}
               <div id="myEventApplyModal{{id}}" class="modal myEventApplyModal" style="display: block;">
                   <div id="myEventApplyModalContent" class="modal-dialog modal-sm">
-                    {{!-- <span class="close">&times;</span> --}}
                     <div class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title">Apply</h5>
@@ -79,15 +79,16 @@
                           </div>
                         </form>
                       </div>
+          
                       <div class="modal-footer">
-                          <div class="row justify-content-between">
-                            <div class="col-md-6">
-                          <button type="submit" class="btn btn-dark mb-5 mt-3">Apply</button>
-                            </div>
-                            <div class="col-md-6">
-                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Back</button>
-                            </div>
-                         </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <a href="/externalEvents/apply/{{id}}" data-bs-toggle="modal" data-bs-target="#myEventApplyModal{{id}}" class="btn btn-dark mb-3" >Apply</a>
+                          </div>
+                          <div class="col-md-6">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" >Back</button>
+                          </div>
+                        </div>
                       </div>
                     </div>             
                  </div>
