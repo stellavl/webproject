@@ -25,9 +25,18 @@ router.get('/', (req,res) => {
 });
 
 router.get('/home', async (req,res) => {
+
     try {
-        const memberData = req.session.memberData;
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         const myMembers =  await members(); 
         const myExternalEvents = await externalEvents();
         const myInternalEvents = await internalEvents();
@@ -45,18 +54,28 @@ router.get('/home', async (req,res) => {
             numberOfEvents: myExternalEvents.length+myInternalEvents.length,
             numberOfUniversities: myUniversities.length,
             memberData: memberData,
-            adminData: adminData
+            adminData: adminData,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
     } 
     catch (err) {
-        res.send(err);
+        throw err;
     }
 });
 
 router.get('/about', (req,res) => {
     try{
-        const memberData = req.session.memberData;
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         req.session.returnTo = req.originalUrl;
         res.render('about',{
             atHome: false,
@@ -68,19 +87,29 @@ router.get('/about', (req,res) => {
             atProfile: false,
             atAdmin: false,
             memberData: memberData,
-            adminData: adminData
+            adminData: adminData,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
     }
     catch (err) {
-        res.send(err);
+        throw err;
     } 
 });
 
 router.get('/externalEvents', async(req,res) => {
     try {
         const events =  await externalEvents(); 
-        const memberData = req.session.memberData;
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         req.session.returnTo = req.originalUrl;
         res.render('externalEvents',{
             atHome: false,
@@ -95,18 +124,28 @@ router.get('/externalEvents', async(req,res) => {
             memberData: memberData,
             adminData: adminData,
             showModal: req.session.showModal,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
     } 
     catch (err) {
-        res.send(err);
+        throw err;
     }
 });
 
 router.get('/internalEvents', async (req,res) => {
     try{
         const events =  await internalEvents(); 
-        const memberData = req.session.memberData;
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         req.session.returnTo = req.originalUrl;
         res.render('internalEvents',{
             atHome: false,
@@ -120,17 +159,27 @@ router.get('/internalEvents', async (req,res) => {
             events:events,
             memberData: memberData,
             adminData: adminData,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
     } 
     catch (err) {
-        res.send(err);
+        throw err;
     }
 });
 
 router.get('/partners', (req,res) => {
     try{
-        const memberData = req.session.memberData;
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         req.session.returnTo = req.originalUrl;
         res.render('partners',{
             atHome: false,
@@ -142,18 +191,28 @@ router.get('/partners', (req,res) => {
             atProfile: false,
             atAdmin: false,
             memberData: memberData,
-            adminData: adminData
+            adminData: adminData,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
     }
     catch (err) {
-        res.send(err);
+        throw err;
     }      
 });
 
 router.get('/contact', (req,res) => {
     try{
-        const memberData = req.session.memberData;
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         req.session.returnTo = req.originalUrl;
         res.render('contact',{
             atHome: false,
@@ -165,17 +224,28 @@ router.get('/contact', (req,res) => {
             atProfile: false,
             atAdmin: false,
             memberData: memberData,
-            adminData: adminData
+            adminData: adminData,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });   
     }
     catch (err) {
-        res.send(err);
+        throw err;
     }    
 });
 
 router.get('/profile', checkAuthenticated, async(req,res) => {
     try {
-        const memberData = req.session.memberData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         const internalEventsPast = await internalEventsController.memberInternalEventsPast(req, res);
         const externalEventsPast = await externalEventsController.memberExternalEventsPast(req, res);
         const eventsPast = [...internalEventsPast, ...externalEventsPast];    
@@ -195,11 +265,13 @@ router.get('/profile', checkAuthenticated, async(req,res) => {
             memberData: memberData,
             eventsPast: eventsPast,
             eventsFuture: eventsFuture,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
         
     }
     catch (err) {
-        res.send(err);
+        throw err;
     } 
 });
 
@@ -209,7 +281,16 @@ router.get('/admin', checkAdmin, async(req,res) => {
         const intEvents = await internalEvents();
         const applicants = await memberApplicants();
         const messages = await studentMessages();
-        const adminData = req.session.adminData;
+        let isMember=false;
+        let isAdmin=false;
+        let memberData = req.session.memberData;
+        let adminData = req.session.adminData;
+        if (memberData!=undefined){
+             isMember=true;
+        }
+        if (adminData!=undefined){
+             isAdmin=true;
+        }
         req.session.returnTo = req.originalUrl; 
         res.render('admin',{
             atHome: false,
@@ -225,11 +306,13 @@ router.get('/admin', checkAdmin, async(req,res) => {
             applicants: applicants,
             messages: messages,
             numberOfEvents: extEvents.length+intEvents.length,
-            adminData: adminData
+            adminData: adminData,
+            isMember: isMember,
+            isAdmin: isAdmin,
         });
     } 
     catch (err) {
-        res.send(err);
+        throw err;
     }
 })
 
@@ -317,7 +400,7 @@ router.get('/internalEvents/apply/:id', (req, res) => {
         res.redirect(returnTo);
     }
     catch (err) {
-        res.send(err);
+        throw err;
     } 
 });
 
@@ -332,33 +415,9 @@ router.get('/externalEvents/apply/:id', (req, res) => {
         // res.locals.showModal=false;
     }
     catch (err) {
-        res.send(err);
+        throw err;
     } 
 });
-
-
-// try {
-//     const events =  await externalEvents(); 
-//     const memberData = req.session.memberData;
-//     const adminData = req.session.adminData;
-//     req.session.returnTo = req.originalUrl;
-//     res.render('externalEvents',{
-//         atHome: false,
-//         atAbout: false,
-//         atExternalEvents: true,
-//         atInternalEvents: false,
-//         atPartners: false,
-//         atContact: false,
-//         atProfile: false,
-//         atAdmin: false,
-//         events: events,
-//         memberData: memberData,
-//         adminData: adminData,
-//     });
-// } 
-// catch (err) {
-//     res.send(err);
-// }
 
 
 router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPassword/:userPhoneNumber', async (req, res) => {
@@ -368,8 +427,9 @@ router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPasswor
         // req.session.memberData = memberData;
         res.redirect('/profile')
     }
+
     catch (err) {
-        // res.send(err);
+        throw err;
         console.log("error in router profile update")
     } 
 });

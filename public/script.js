@@ -64,7 +64,7 @@ if (isHomePage){
 
 
 //LOGIN MODAL
-if ((!isProfilePage) && (!isAdminPage)) {
+if ((!isProfilePage) && (!isAdminPage) && (!isMember) && (!isAdmin)){
     const loginButton = document.getElementById("myLogIn");
     const loginModal = document.getElementById("myLoginModal");
     const signUpModal = document.getElementById("mySignUpModal");
@@ -91,24 +91,8 @@ if ((!isProfilePage) && (!isAdminPage)) {
     });    
 }
 
-// if(isExtEventPage){
-//     document.addEventListener("DOMContentLoaded", function() {
-//         console.log("event page")
-//         const applyModal = document.getElementsByClassName("events-modals");
-//         console.log("applyModal=",applyModal)
-//         const backButton = document.getElementById("backButton");
-//         console.log("backButton=",backButton)
-//         function closeModal() {
-//             applyModal.style.display = "none";
-//         }
-//         backButton.addEventListener("click", closeModal);   
-//     });
-// }
-
-// PROFILE DROPDOWN
 if (isProfilePage){
-    const profileButton = document.getElementById("myProfileButton");
-    const  profileDropdown = document.getElementById("myProfileDropdown");
+
     const updateButton = document.getElementById('updateButton');
 
     updateButton.addEventListener('click', function(event) {
@@ -128,6 +112,13 @@ if (isProfilePage){
         window.location.href = updatedUrl;
     }); 
 
+}
+
+//ProfileDropdown
+if (isMember){
+    const profileButton = document.getElementById("myProfileButton");
+    const profileDropdown = document.getElementById("myProfileDropdown");
+    
     profileButton.addEventListener('click', () => {
         if (profileDropdown.style.display === "none") {
             profileDropdown.style.display = "block";
@@ -136,10 +127,8 @@ if (isProfilePage){
           }});
 }
 
-
-
 // ADMIN DROPDOWN
-if (isAdminPage){
+if (isAdmin){
     const adminButton = document.getElementById("myAdminButton");
     const adminDropdown = document.getElementById("myAdminDropdown");
     
