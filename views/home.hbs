@@ -78,16 +78,26 @@
 							<option>University of Thessaly (UTh)</option>
 						</select>
 					</div>
-
 					<div class="col">
 						<label for="InputDepartment"><b>Department</b></label>
-						<input type="text" class="form-control" name="ApplicationDepartment" placeholder="Enter your Department (e.g. Physics)" required>
+						<select class="form-select" name="ApplicationDepartment" aria-label="Select Department" text-muted required>
+							<option value="" selected disabled hidden>Select Department</option>
+							<option>Computer Science</option>
+							<option>Electrical & Computer Engineering</option>
+							<option>Mathematics</option>
+							<option>Mechanical Engineering</option>
+							<option>Chemical Engineering</option>
+							<option>Civil Engineering</option>
+							<option>CEID</option>
+							<option>Chemistry</option>
+							<option>Physics</option>
+						</select>
 					</div>	
 				</div>
 				<div class="row pb-4">
 					<div class="col-6">
 						<label for="InputPassword"><b>Future Password</b></label>
-						<input type="tel" class="form-control" name="ApplicationPassword" placeholder="Enter future password" required>
+						<input type="text" class="form-control" name="ApplicationPassword" placeholder="Enter future password" required>
 					</div>
 				</div>
 

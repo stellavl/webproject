@@ -90,28 +90,28 @@
 											<div class="row py-4">
 												<div class="col">
 													<label for="InputName"><b>Name</b></label>
-													<input type="text" class="form-control" id="ApplicationName1" placeholder="Enter your Name" required>
+													<input type="text" class="form-control" name="ApplicationName" placeholder="Enter your Name" required>
 												</div>
 												<div class="col">
 													<label for="InputSurname"><b>Surname</b></label>
-													<input type="text" class="form-control" id="ApplicationSurname1" placeholder="Enter your Surname" required>
+													<input type="text" class="form-control" name="ApplicationSurname" placeholder="Enter your Surname" required>
 												</div>
 											</div>
 											<div class="row pb-4">
 												<div class="col">
 													<label for="InputEmail"><b>Email address</b></label>
-													<input type="email" class="form-control" id="ApplicationEmail1" placeholder="Enter email" required>
+													<input type="email" class="form-control" name="ApplicationEmail" placeholder="Enter email" required>
 												</div>
 												<div class="col">
 													<label for="InputPhoneNumber"><b>Phone Number</b></label>
-													<input type="tel" class="form-control" id="ApplicationPhoneNumber2" placeholder="Enter phone number" required>
+													<input type="tel" class="form-control" name="ApplicationPhoneNumber" placeholder="Enter phone number" required>
 												</div>
 											</div>
 											<div class="row pb-4">
 												<div class="col">
 													<label for="InputUniversity"><b>University</b></label>
 													<select class="form-select" name="ApplicationUniversity" aria-label="Select University" text-muted required>
-														<option selected disabled hidden>Select University</option>
+														<option value="" selected disabled hidden>Select University</option>
 														<option>National Technical University of Athens (NTUA)</option>
 														<option>Aristotle University of Thessaloniki (AUTh)</option>
 														<option>University of Patras (UoP)</option>
@@ -122,10 +122,30 @@
 												</div>
 												<div class="col">
 													<label for="InputDepartment"><b>Department</b></label>
-													<input type="text" class="form-control" id="ApplicationDepartment1" placeholder="Enter your Department" required>
+													<select class="form-select" name="ApplicationDepartment" aria-label="Select Department" text-muted required>
+														<option value="" selected disabled hidden>Select Department</option>
+														<option>Computer Science</option>
+														<option>Electrical & Computer Engineering</option>
+														<option>Mathematics</option>
+														<option>Mechanical Engineering</option>
+														<option>Chemical Engineering</option>
+														<option>Civil Engineering</option>
+														<option>CEID</option>
+														<option>Chemistry</option>
+														<option>Physics</option>
+													</select>
 												</div>
 											</div>
-											<button type="submit" class="btn btn-dark mb-5 mt-3">Submit</button>
+											<div class="row pb-4">
+												<div class="col-6">
+													<label for="InputPassword"><b>Future Password</b></label>
+													<input type="text" class="form-control" name="ApplicationPassword" placeholder="Enter future password" required>
+												</div>
+												<div class="col-6 d-flex align-items-end">
+													<button type="submit" class="btn btn-dark">Submit</button>
+												</div>
+											</div>
+		
 										</form>
 									
 									</div>
