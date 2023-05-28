@@ -6,16 +6,10 @@ import createMemoryStore from 'memorystore';
 const app = express()
 const PORT = process.env.PORT || '3000';
 
-import { externalEvents } from './controller/externalEvents.mjs';
-import { applyForMember } from './controller/home.mjs';
-
-
-
 // Specifying that the "public" folder will contain the static files
 app.use(express.static('public'))
 
 // session
-// import 'dotenv/config';
 const MemoryStore = createMemoryStore(expSession);
 const sessionConf = {
     secret: process.env.secret || "έναμεγάλοτυχαίοαλφαριθμητικό",
@@ -38,10 +32,3 @@ app.set('view engine', 'hbs');
 //starting server
 const server = app.listen(PORT, () => { console.log(`http://127.0.0.1:${PORT}`)});
 
-/*
-app.post('/home/submit-form', (req, res) => {
-    console.log("hi")
-    homeController.applyForMember(req, res); // Call the applyForMember function with req and res
-    console.log("geia")
- });
- */
