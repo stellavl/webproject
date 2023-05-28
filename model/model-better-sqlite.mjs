@@ -6,9 +6,6 @@ const db = new sqlite('model/db/ngo.db', { fileMustExist: true });
 
 //functions with queries - interaction with the database:
 
-
-// (1)---------------CREATE------------------
-
 //student wishes to become a - and fills the form in homepage
 export let register = (name,surname,email,phone,uni,dept,password) => {
 
@@ -48,7 +45,6 @@ export let createMessage = (studentEmail, message, firstName, lastName) => {
     }
     
 }
-
 
 //student applies for external event
 
@@ -107,9 +103,6 @@ export let applyForInt = (memberEmail,intId) => {
         throw err;
     }
 }
-
-
-// (2)---------------READ---------------------
 
 //read all members
 export let members = () => {
@@ -268,11 +261,8 @@ export let studentMessages = () => {
 }
 
 
-
 //admin accepts student applying for membership (U)
 export let applicationAccepted = (email) => {
-
-        //const toBeAccepted = db.prepare("SELECT email FROM Member WHERE active=0");
 
         let Accepted;
         const query1 = db.prepare("UPDATE Member SET active=1 WHERE (email=?)");
