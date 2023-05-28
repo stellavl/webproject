@@ -295,22 +295,18 @@ export let applicationRejected = (email) => {
     }
 }
 
-//admin deletes event from site - event becomes inactive (D)
+export let updateInfo = (fName,lName,password,pNumber, email) => {
 
-export let updateInfo = (fName,lName,newEmail,password,pNumber, oldEmail) => {
-    const query = db.prepare("UPDATE Member SET first_name=?,last_name=?, email=?, password=?, phone=? WHERE email=?")
-    let info;
+    const query1 = db.prepare("UPDATE Student SET first_name=?,last_name=?, phone=? WHERE email=?")
+    const query = db.prepare("UPDATE Member SET first_name=?,last_name=?, password=?, phone=? WHERE email=?")
+
+    let info,info1;
     try{
         
-        info = query.run(fName,lName,newEmail,password,pNumber,oldEmail);
+        info1 = query1.run(fName,lName,pNumber,email);
+        info = query.run(fName,lName,password,pNumber,email);
 
-        return {
-            email: newEmail,
-            password: password,
-            first_name: fName,
-            last_name: lName,
-            phone: pNumber
-        }
+        return true;
     }
 
     catch (err) {
