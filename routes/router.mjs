@@ -361,12 +361,18 @@ router.get('/externalEvents/apply/:id', (req, res) => {
 // }
 
 
-router.get('/profile/update/:userFirstName/:userLastName/:userEmail/:userPassword/:userPhoneNumber', async (req, res) => {
+router.get('/profile/update', async (req, res) => {
 
     try {
-        const memberData = profileController.updateInfo(req, res);
+        const memberData = await profileController.updateInfo(req, res);
+        //const { userFirstName, userLastName, userEmail, userPassword, userPhoneNumber } = req.params;
+
         // req.session.memberData = memberData;
-        res.redirect('/profile')
+        console.log("redirected")
+       
+
+        res.redirect(`/profile?firstName=${memberData[0].first_name}&lastName=${memberData[0].last_name}&email=${memberData[0].email}&password=${memberData[0].password}&phoneNumber=${memberData[0].phone}`);
+
     }
     catch (err) {
         // res.send(err);
