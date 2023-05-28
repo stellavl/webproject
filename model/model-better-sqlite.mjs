@@ -311,9 +311,18 @@ export let updateInfo = (fName,lName,newEmail,password,pNumber, oldEmail) => {
     const query = db.prepare("UPDATE Member SET first_name=?,last_name=?, email=?, password=?, phone=? WHERE email=?")
     let info;
     try{
+        
         info = query.run(fName,lName,newEmail,password,pNumber,oldEmail);
-        return true;
+
+        return {
+            email: newEmail,
+            password: password,
+            first_name: fName,
+            last_name: lName,
+            phone: pNumber
+        }
     }
+
     catch (err) {
         console.log("model/update info error")
         throw err;
